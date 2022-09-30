@@ -8,6 +8,7 @@ import { UserComponent } from './user/user.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
   { path: 'users', component: UserComponent},
+  //Quando o caminho da rota for vazio, redireciona
   { path: '', pathMatch:'full', redirectTo:'/home'}
 ];
 
