@@ -7,9 +7,9 @@ import { UserComponent } from './user/user.component';
 //Declaração de rotas
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'user', component: UserComponent},
+  { path: 'users', component: UserComponent},
   //Quando o caminho da rota for vazio, redireciona
-  { path: '', pathMatch:'full', redirectTo:'/home'}
+  { path: '', pathMatch:'full', redirectTo:'home'}
 ];
 
 @NgModule({
