@@ -7,7 +7,7 @@ import { UserComponent } from './user/user.component';
 //Declaração de rotas
 const routes: Routes = [
   { path: 'home', component: HomeComponent},
-  { path: 'users', component: UserComponent},
+  { path: 'user', component: UserComponent},
   //Quando o caminho da rota for vazio, redireciona
   { path: '', pathMatch:'full', redirectTo:'/home'}
 ];

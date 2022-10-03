@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { UsersService } from './users.service' 
 import { User } from './user'
+import {DividerModule} from 'primeng/divider';
 
 @Component({
   selector: 'user',
