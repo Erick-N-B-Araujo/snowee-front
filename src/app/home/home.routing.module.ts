@@ -1,26 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './home.component';
 
 //Declaração de rotas
 const routes: Routes = [
-  { 
-    path: 'home', 
-    loadChildren: 
-      () => import('./home/home.module')
-        .then(x => x.HomeModule)
-  },
-  { 
-    path: 'users', 
-    loadChildren: 
-      () => import('./user/user.module')
-        .then(x => x.UserModule)
-  },
   //Quando o caminho da rota for vazio, redireciona
   { 
     path: '', 
-    pathMatch:'full', 
-    redirectTo:'home'
+    component: HomeComponent
   }
 ];
 
@@ -29,11 +17,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     //Importa as rotas no inicio
-    RouterModule.forRoot(routes, {useHash:true})
+    RouterModule.forChild(routes)
   ],
   //Exporta e executa
   exports: [ RouterModule ]
 })
 
 //Classe para importar e definir as rotas da SPA
-export class AppRoutingModule { }
+export class HomeRoutingModule { }

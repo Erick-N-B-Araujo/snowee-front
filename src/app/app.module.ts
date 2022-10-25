@@ -3,8 +3,6 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
@@ -16,8 +14,6 @@ import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    UserComponent,
     SidebarComponent,
     NavbarComponent,
     MenubarComponent,
