@@ -2,9 +2,19 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
+import { LoginComponent } from './login/login.component';
+import { SigninComponent } from './signin/signin.component';
 
 //Declaração de rotas
 const routes: Routes = [
+  {
+    path: 'login',
+    component:LoginComponent
+  },
+  {
+    path: 'signin',
+    component:SigninComponent
+  },
   //Quando o caminho da rota for vazio, redireciona
   { 
     path: '', 
