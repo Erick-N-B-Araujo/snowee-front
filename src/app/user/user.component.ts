@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
-import { UsersService } from './users.service' 
-import { User } from './user'
+
+import { User } from '../model/User'
 import {DividerModule} from 'primeng/divider';
+import { UsersService } from '../service/users.service';
 
 @Component({
   selector: 'user',
@@ -59,7 +60,6 @@ export class UserComponent implements OnInit {
       .elevarPermission(user.id)
         .subscribe({
           next: (userElevated) => {
-            user.admin = userElevated.admin
             user.updatedAt = userElevated.updatedAt
             this.listUsers()
           }
