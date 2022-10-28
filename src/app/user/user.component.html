@@ -10,14 +10,13 @@
           <h4>Password:</h4>
           <input type="password" class="form-control" formControlName="password"/>
           <div class="d-grid">
-            <button type="submit" class="btn btn-primary mt-3" [disabled]="!userForm.valid">Salvar</button>
+            <button type="submit" class="btn btn-primary mt-3">Salvar</button>
           </div>
         </form>
       </div>
       <div class="col-md-6">
         <ul class="list-group">
-          <li *ngFor="let user of users" class="list-group-item d-flex justify-content-between align-items-center">
-            {{ user.email }}
+          <li class="list-group-item d-flex justify-content-between align-items-center">
           </li>      
         </ul>
       </div>
