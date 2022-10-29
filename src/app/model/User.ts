@@ -1,12 +1,9 @@
-import { Permission } from "./Permission";
-
 export class User{
     id: number;
-    firstname: string;
-    lastname: string;
+    firstName: string;
+    lastName: string;
     email: string;
     password: string;
-    permissions: Permission[]
     createdAt: string;
     updatedAt: string;
 }

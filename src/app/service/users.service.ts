@@ -16,7 +16,7 @@ export class UsersService {
 
   //POST na API com todos os campos do objeto preenchidos
   salvar(user: User) : Observable<User> {
-    return this.http.post<User>(this.apiUrl, user);
+    return this.http.post<User>(this.apiUrl+"/auth/signin", user);
   }
 
   //GET na API sem parametros no endpoint /users
