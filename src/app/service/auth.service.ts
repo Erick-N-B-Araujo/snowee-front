@@ -19,10 +19,6 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-  login(userLogin: UserLogin): Observable<UserLogin>{
-    return this.http.post<UserLogin>(this.apiUrl+"/users/login" , userLogin)
-  }
-
   //POST na API com todos os campos do objeto preenchidos
   salvarLogin(userLogin: UserLogin) : Observable<UserLogin> {
     return this.http.post<UserLogin>(this.apiUrl+"/auth/login", userLogin);
@@ -48,7 +44,11 @@ export class AuthService {
       .post<Token>(this.apiUrl+"/oauth/token", bodyAuth, options)
   }
 
-  signin(userSignin: User): Observable<User>{
-    return this.http.post<User>(this.apiUrl+"/users/signin" , userSignin)
+  getUserLogged(username: string): Observable<UserLogin>{
+    return this.http.get<UserLogin>(this.apiUrl+"/auth/login/"+username)
+  }
+
+  updateUserLogged(id: number, userLogged: UserLogin){
+    return this.http.patch<UserLogin>(this.apiUrl+"/auth/login/"+id+"/logged", userLogged)
   }
 }
