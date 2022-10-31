@@ -18,7 +18,8 @@ const routes: Routes = [
   //Quando o caminho da rota for vazio, redireciona
   { 
     path: '', 
-    component:UserComponent
+    pathMatch:'full', 
+    redirectTo:'login'
   }
 ];
 

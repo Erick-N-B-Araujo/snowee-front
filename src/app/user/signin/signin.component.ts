@@ -35,35 +35,21 @@ export class SigninComponent implements OnInit {
     this.confirmPassword = event.target.value
   }
 
-  cadastrar(){
-    this.user.firstName = "Erick"
-    this.user.lastName = "Neves"
-    this.user.email = "erickneves_13@hotmail.com"
-    this.user.password = "1234"
+  //POST envia e salva o objeto no BD 
+  submit(){
     if (this.user.password != this.confirmPassword){
       alert("Password don't match!")
     }
     else{
-      const userToSave: User = this.user
-      console.log(userToSave)
-      this.userService.salvar(userToSave).subscribe(
-        (resp: User) => {
-          this.user = resp
-          this.router.navigate(['/home'])
-          alert("User signed-in!")
-        }
-      )
-    }
-  }
-
-  //POST envia e salva o objeto no BD 
-  submit(){
-    console.log(this.userForm.value)
-    const userToSave: User = {...this.userForm.value}
-    this.userService
+      console.log(this.userForm.value)
+      const userToSave: User = {...this.userForm.value}
+      this.userService
         .salvar(userToSave)
         .subscribe(savedUser => {
           this.userForm.reset()
+          this.router.navigate(['/home'])
+          alert("User signed-in!")
         })
+    }
   }
 }
