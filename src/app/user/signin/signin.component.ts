@@ -41,14 +41,13 @@ export class SigninComponent implements OnInit {
       alert("Password don't match!")
     }
     else{
-      console.log(this.userForm.value)
       const userToSave: User = {...this.userForm.value}
       this.userService
         .salvar(userToSave)
         .subscribe(savedUser => {
           this.userForm.reset()
-          this.router.navigate(['/home'])
-          alert("User signed-in!")
+          this.router.navigate(['/auth/login'])
+          alert("User created!")
         })
     }
   }

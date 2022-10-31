@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Oauth2 } from 'src/app/model/Oauth2';
-import { Permission } from 'src/app/model/Permission';
 import { UserLogin } from 'src/app/model/UserLogin';
 import { AuthService } from 'src/app/service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'login',
@@ -16,13 +17,17 @@ export class LoginComponent implements OnInit {
   userLogin: UserLogin = new UserLogin
   token: string
   loggedPass: string
+  idLogged: number
   
   loginForm: FormGroup = new FormGroup({
     email : new FormControl('username', [Validators.required]),
-    password : new FormControl('pass', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
+    password : new FormControl('password', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
   })
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(){
     window.scroll(0,0)
@@ -36,6 +41,7 @@ export class LoginComponent implements OnInit {
           if (resp != null){
             console.log("User found, has logged")
             this.loggedPass = this.userLogin.password
+            this.idLogged = resp.id
             this.userLogin = resp
             this.authService.
               tokenOauth2(this.userLogin.username, this.loggedPass)
@@ -45,18 +51,25 @@ export class LoginComponent implements OnInit {
                     let json = JSON.parse(strJson)
                     this.token = json.access_token
                     this.userLogin.token = this.token
-                    console.log(this.userLogin.token)
-                    console.log("Save this")
-                    console.log(userToSave)
                     userToSave.token = this.token
-                    console.log("Save this with token")
-                    console.log(userToSave)
                     this.authService
-                      .updateUserLogged(this.userLogin.id, userToSave)
+                      .updateUserLogged(this.idLogged, userToSave)
                         .subscribe({
                           next: (resp) => {
-                            console.log(resp)
-                            this.userLogin = new UserLogin
+                            environment.id = resp.id
+                            environment.token = resp.token
+                            console.log(environment)
+                            this.authService
+                              .getInfoFromUserId(resp.id)
+                                .subscribe({
+                                  next: (resp) => {
+                                    environment.firstName = resp.firstName
+                                    console.log(environment)
+                                    this.userLogin = new UserLogin
+                                    this.router.navigate(['/home'])
+                                    alert("User Logged-in!")
+                                  }
+                                })
                           }
                         })
                   }
@@ -71,18 +84,24 @@ export class LoginComponent implements OnInit {
                     let json = JSON.parse(strJson)
                     this.token = json.access_token
                     this.userLogin.token = this.token
-                    console.log(this.userLogin.token)
-                    console.log(this.userLogin)
-                    console.log(userToSave)
-                    console.log(userToSave.permissions)
-                    this.authService
-                      .salvarLogin(this.userLogin)
-                        .subscribe({
-                          next: (resp) => {
-                            console.log(resp)
-                            this.userLogin = new UserLogin
-                          }
-                        })
+                    this.authService.getInfoFromUserUsername(this.userLogin.username)
+                      .subscribe({
+                        next: (resp) => {
+                          environment.id = resp.id
+                          environment.token = this.token
+                          environment.firstName = resp.firstName
+                          console.log(environment)
+                          this.authService
+                            .salvarLogin(this.userLogin)
+                              .subscribe({
+                                next: (resp) => {
+                                  this.userLogin = new UserLogin
+                                  this.router.navigate(['/home'])
+                                  alert("User Logged-in!")
+                                }
+                              })
+                        }
+                      })
                   }
                 })
           }

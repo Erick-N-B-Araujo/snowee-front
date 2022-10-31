@@ -48,7 +48,19 @@ export class AuthService {
     return this.http.get<UserLogin>(this.apiUrl+"/auth/login/"+username)
   }
 
+  getLastIdUserLogged(): Observable<UserLogin>{
+    return this.http.get<UserLogin>(this.apiUrl+"/auth/login")
+  }
+
   updateUserLogged(id: number, userLogged: UserLogin){
     return this.http.patch<UserLogin>(this.apiUrl+"/auth/login/"+id+"/logged", userLogged)
+  }
+
+  getInfoFromUserId(id: number){
+    return this.http.get<User>(this.apiUrl+"/auth/signin/"+id)
+  }
+
+  getInfoFromUserUsername(username: string){
+    return this.http.get<User>(this.apiUrl+"/auth/signin/username/"+username)
   }
 }
