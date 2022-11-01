@@ -10,6 +10,7 @@ import {MenubarModule} from 'primeng/menubar';
 import { MenubarComponent } from './menubar/menubar.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
+import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     MenubarComponent,
     FooterComponent,
+    NavbarNotloggedComponent,
   ],
   imports: [
     BrowserModule,

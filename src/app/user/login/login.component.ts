@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   token: string
   loggedPass: string
   idLogged: number
+  username: string
   
   loginForm: FormGroup = new FormGroup({
     email : new FormControl('username', [Validators.required]),
@@ -39,12 +40,11 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (resp) => {
           if (resp != null){
-            console.log("User found, has logged")
-            this.loggedPass = this.userLogin.password
-            this.idLogged = resp.id
-            this.userLogin = resp
+            console.log("User found, has logged:")
+            environment.id = resp.id
+            environment.firstName = resp.firstname
             this.authService.
-              tokenOauth2(this.userLogin.username, this.loggedPass)
+              tokenOauth2(this.userLogin.username, this.userLogin.password)
                 .subscribe({
                   next: (resp) => {
                     let strJson = JSON.stringify(resp)
@@ -53,29 +53,17 @@ export class LoginComponent implements OnInit {
                     this.userLogin.token = this.token
                     userToSave.token = this.token
                     this.authService
-                      .updateUserLogged(this.idLogged, userToSave)
+                      .updateUserLogged(environment.id, userToSave)
                         .subscribe({
                           next: (resp) => {
-                            environment.id = resp.id
-                            environment.token = resp.token
-                            console.log(environment)
-                            this.authService
-                              .getInfoFromUserId(resp.id)
-                                .subscribe({
-                                  next: (resp) => {
-                                    environment.firstName = resp.firstName
-                                    console.log(environment)
-                                    this.userLogin = new UserLogin
-                                    this.router.navigate(['/home'])
-                                    alert("User Logged-in!")
-                                  }
-                                })
-                          }
-                        })
+                            this.router.navigate(['/home'])
+                            alert("User Logged-in!")
+                            }
+                       })
                   }
                 })
           } else {
-            console.log("User found, never logged")
+            console.log("User not found, never logged")
             this.authService.
               tokenOauth2(this.userLogin.username, this.userLogin.password)
                 .subscribe({
@@ -87,15 +75,14 @@ export class LoginComponent implements OnInit {
                     this.authService.getInfoFromUserUsername(this.userLogin.username)
                       .subscribe({
                         next: (resp) => {
-                          environment.id = resp.id
                           environment.token = this.token
                           environment.firstName = resp.firstName
-                          console.log(environment)
+                          userToSave.firstname = resp.firstName
+                          userToSave.token = this.token
                           this.authService
-                            .salvarLogin(this.userLogin)
+                            .salvarLogin(userToSave)
                               .subscribe({
                                 next: (resp) => {
-                                  this.userLogin = new UserLogin
                                   this.router.navigate(['/home'])
                                   alert("User Logged-in!")
                                 }

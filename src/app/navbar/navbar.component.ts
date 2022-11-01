@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
   }
 
   setUserName(){
+    console.log("User logged: " + environment.firstName)
     this.name = environment.firstName
   }
 

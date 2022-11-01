@@ -25,9 +25,6 @@ export class AuthService {
   }
 
   tokenOauth2(username: string, password: string): Observable<Token>{
-    //auth.grant_type = "password"
-    //username = "batistasd678@gmail.com"
-    //password = "1234"
     let bodyAuth = new URLSearchParams();
     bodyAuth.set("grant_type", "password")
     bodyAuth.set("username", username)
@@ -66,11 +63,9 @@ export class AuthService {
 
   isLogged(){
     let ok: boolean = false
-
     if (environment.token != ''){
       ok = true
     }
-
     return ok
   }
 }
