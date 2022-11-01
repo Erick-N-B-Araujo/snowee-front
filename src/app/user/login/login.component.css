@@ -1,11 +1,11 @@
 #img-bg{
-    background-image: url('../../../assets/img/bg_login0.png');
+    background-image: url('../../../assets/img/space.jpg');
 
-    min-height: 812px;
+    min-height: 1000px;
 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; 
 }
 
 .img-login{

@@ -1,15 +1,55 @@
 <nav class="navbar navbar-expand-lg bg-dark">
   <div class="container-fluid">
-    <img src="../assets/img/Logo_Statico.png" height="40" class="mr-2">
-    <a class="p-1 navbar-brand fw-bold text-light" routerLink="home">Snowee Gamecorp</a>
-    <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <img src="../assets/img/Logo_Statico.png" height="40">
+    <a class="navbar-brand text-white fw-bold pt-1 p-2 m-0" routerLink="/home">Snowee Gamecorp</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active text-light" aria-current="page" routerLink="home">Home</a>
-        <a class="nav-link text-light" routerLink="auth/login">Loggin/Signin</a>
-      </div>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link active text-white fw-bold" aria-current="page" routerLink="/home">Home</a>
+        </li>
+      </ul>
+      <ul *ngIf="auth.isLogged() == false" class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <p class="text-white fw-bold fs-6 m-0 mt-1 p-1">
+            Enter
+          </p>
+        </li>
+        <li class="nav-item">
+          <a routerLink="auth/login">
+            <p class="text-white fs-6 mb-0 mt-0 p-1">
+              <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+            </p>
+          </a> 
+        </li>
+      </ul>
+      <ul *ngIf="auth.isLogged()" class="navbar-nav ml-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{name}}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <p class="text-white fw-bold fs-6 m-0 mt-1 p-1">
+            Sign-Out
+          </p>
+        </li>
+        <li class="nav-item">
+          <a routerLink="auth/login">
+            <p class="text-white fs-6 mb-0 mt-0 p-1">
+              <i class="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+            </p>
+          </a> 
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

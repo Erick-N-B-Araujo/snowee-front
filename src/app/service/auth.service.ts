@@ -63,4 +63,14 @@ export class AuthService {
   getInfoFromUserUsername(username: string){
     return this.http.get<User>(this.apiUrl+"/auth/signin/username/"+username)
   }
+
+  isLogged(){
+    let ok: boolean = false
+
+    if (environment.token != ''){
+      ok = true
+    }
+
+    return ok
+  }
 }
