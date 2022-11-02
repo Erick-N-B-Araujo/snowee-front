@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'home',
@@ -10,9 +12,14 @@ export class HomeComponent implements OnInit {
   public descSlugan1:string
   public descSlugan2:string
   public descSlugan3:string
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
+    if(environment.token == ''){
+      alert("Token expired, login to generate another")
+    }
     this.descSlugan1 = "A narrativa conta a história de um E.T. chamado Slugan, em que acidentalmente cai no planeta terra e é alvo de pesquisa dos humanos. Sendo mal-tratado, Slugan..."
     this.descSlugan2 = "Slugan II continua a contar a história do homônimo ET, que ao final do jogo anterior conseguiu fugir da Terra e esta à caminho de retornar ao seu planeta natal."
     this.descSlugan3 = "Slugan III o personagem jogável viaja pelo espaço com o intuito de chegar ao seu planeta natal, mas até lá se depara com vários problemas, obstáculos e escassez de recursos..."

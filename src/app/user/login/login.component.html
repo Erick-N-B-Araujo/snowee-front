@@ -5,21 +5,20 @@
                 <div class="col-md-10">
                     <h1 class="text-center fw-bold mb-3">Login</h1>
                     <div class="d-flex justify-content-center">
-                        <img src="../assets/img/Logo_Statico.png" class="img-login">
+                        <img src="https://i.imgur.com/LGGL7VJ.png" class="img-login">
                     </div>
                     <form [formGroup]="loginForm" (ngSubmit)="login()">
-                        <label for="username" class="mt-3">Username</label>
+                        <label for="username" class="mt-3">Username:</label>
                         <input [(ngModel)]='userLogin.username' type="text" class="form-control" formControlName="email" placeholder="You email"/>
-                        <label for="password" class="mt-1">Password</label>
+                        <label for="password" class="mt-1">Password:</label>
                         <input [(ngModel)]='userLogin.password' type="password" class="form-control" formControlName="password" placeholder="You password"/>
                         <div class="d-grid">
-                          <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                          <button type="submit" class="btn btn-primary mt-3">Enter</button>
                         </div>
                     </form>
                     <hr class="mt-5 mb-5">
-
-                    <p class="text-center">
-                        Não tem uma conta ainda? <a routerLink="/auth/signin">Cadastre-se</a>
+                    <p class="text-center mb-5">
+                        Do not have an account yet? <a routerLink="/auth/signin">Register here</a>
                     </p>
                 </div>  
             </div>

@@ -5,23 +5,29 @@
         <div class="col-md-6">
             <div class="row d-flex justify-content-center">
                 <div class="col-md-10">
-                    <h1 class="text-center mt-5 mb-3">Sign in</h1>
+                    <h1 class="text-center mt-2 mb-3">Sign in</h1>
                     <div class="d-flex justify-content-center">
-                        <img src="../assets/img/Logo_Statico.png" class="img-login">
+                        <img src="https://i.imgur.com/LGGL7VJ.png" class="img-login">
                     </div>
                     <form [formGroup]="userForm" (ngSubmit)="submit()">
-                        <h4>Firstname:</h4>
-                        <input type="text" class="form-control" formControlName="firstName"/>
-                        <h4>Lastname:</h4>
-                        <input type="text" class="form-control" formControlName="lastName"/>
-                        <h4>Username:</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="mt-1">Firstname:</label>
+                                <input type="text" class="form-control" formControlName="firstName"/>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="mt-1">Lastname:</label>
+                                <input type="text" class="form-control" formControlName="lastName"/>
+                            </div>
+                        </div>                        
+                        <label class="mt-1">Username:</label>
                         <input type="text" class="form-control" formControlName="email"/>
-                        <h4>Password:</h4>
+                        <label class="mt-1">Password:</label>
                         <input type="password" class="form-control" (input)="confirmPass($event)"/>
-                        <h4>Confirm Password:</h4>
+                        <label class="mt-1">Confirm password:</label>
                         <input [(ngModel)]='user.password' type="password" class="form-control" formControlName="password"/>
                         <div class="d-grid">
-                          <button type="submit" class="btn btn-primary mt-3">Salvar</button>
+                          <button type="submit" class="btn btn-primary mt-3">Save</button>
                         </div>
                     </form>
                 </div>  

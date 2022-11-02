@@ -11,6 +11,9 @@ import { MenubarComponent } from './menubar/menubar.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.component';
+import { ForumComponent } from './forum/forum.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.co
     MenubarComponent,
     FooterComponent,
     NavbarNotloggedComponent,
+    ForumComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,10 @@ import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.co
     AppRoutingModule,
     MenubarModule
   ],
-  providers: [],
+  providers: [{
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

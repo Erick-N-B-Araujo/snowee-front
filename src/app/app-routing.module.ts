@@ -16,6 +16,12 @@ const routes: Routes = [
       () => import('./user/user.module')
         .then(x => x.UserModule)
   },
+  { 
+    path: 'forum', 
+    loadChildren: 
+      () => import('./forum/forum.module')
+        .then(x => x.ForumModule)
+  },
   //Quando o caminho da rota for vazio, redireciona
   { 
     path: '', 

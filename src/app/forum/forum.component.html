@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row bg-secondary d-flex align-items-center">
+        <div class="col-md-6">
+            
+            <div class="row d-flex justify-content-center text-light mb-2">
+                <div class="col-md-6">
+                    <h1 class="fs-54">Seja bem vindo(a)!</h1>
+                    <h5 class="fs-18">junte-se a causa do conhecimento descentralizado, compartilhe!</h5>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-3 d-grid mt-2">
+                    <button class="btn btn-light">Novo post</button>
+                </div>
+                <div class="col-md-3 d-grid mt-2">
+                    <a class="btn btn-outline-light" href="#postagens">Ver postagens</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 d-flex justify-content-center">
+            <img src="https://i.imgur.com/6s5cG47.png" width="500px" height="500px">
+        </div>
+    </div>
+</div>
+<div class="container mt-2 mb-2" id="postagens">
+    <ul class="nav nav-tabs d-flex justify-content-center" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="todasPostagens-tab" data-bs-toggle="tab" data-bs-target="#todasPostagens-tab-pane" type="button" role="tab" aria-controls="todasPostagens-tab-pane" aria-selected="true">Todas postagens</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="minhasPostagens-tab" data-bs-toggle="tab" data-bs-target="#minhasPostagens-tab-pane" type="button" role="tab" aria-controls="minhasPostagens-tab-pane" aria-selected="false">Minhas postagens</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="temaPostagem-tab" data-bs-toggle="tab" data-bs-target="#temaPostagem-tab-pane" type="button" role="tab" aria-controls="temaPostagem-tab-pane" aria-selected="false">Postagens por tema</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="todasPostagens-tab-pane" role="tabpanel" aria-labelledby="todasPostagens-tab" tabindex="0">...Todas postagens</div>
+        <div class="tab-pane fade" id="minhasPostagens-tab-pane" role="tabpanel" aria-labelledby="minhasPostagens-tab" tabindex="0">...Minhas postagens</div>
+        <div class="tab-pane fade" id="temaPostagem-tab-pane" role="tabpanel" aria-labelledby="temaPostagem-tab" tabindex="0">...Postagens por tema</div>
+      </div>  
+</div>

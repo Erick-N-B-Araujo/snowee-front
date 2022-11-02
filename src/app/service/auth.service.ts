@@ -63,9 +63,13 @@ export class AuthService {
 
   isLogged(){
     let ok: boolean = false
-    if (environment.token != ''){
+    if (environment.token != '' && environment.isLogged == true){
       ok = true
     }
     return ok
+  }
+
+  userLogout(){
+    this.isLogged()
   }
 }

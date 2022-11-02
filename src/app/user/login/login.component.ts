@@ -36,63 +36,78 @@ export class LoginComponent implements OnInit {
 
   login(){
     const userToSave: UserLogin = this.userLogin
-    this.authService.getUserLogged(userToSave.username)
-      .subscribe({
-        next: (resp) => {
-          if (resp != null){
-            console.log("User found, has logged:")
-            environment.id = resp.id
-            environment.firstName = resp.firstname
-            this.authService.
-              tokenOauth2(this.userLogin.username, this.userLogin.password)
+    this.authService
+      .getInfoFromUserUsername(this.userLogin.username)
+        .subscribe({
+          next: (userSigned) => {
+            if (userSigned == null){
+              console.log("User not found!")
+              this.router.navigate(['/auth/signin'])
+              alert("User not found! Sign-in first")
+            } else {
+              this.authService.getUserLogged(userToSave.username)
                 .subscribe({
                   next: (resp) => {
-                    let strJson = JSON.stringify(resp)
-                    let json = JSON.parse(strJson)
-                    this.token = json.access_token
-                    this.userLogin.token = this.token
-                    userToSave.token = this.token
-                    this.authService
-                      .updateUserLogged(environment.id, userToSave)
-                        .subscribe({
-                          next: (resp) => {
-                            this.router.navigate(['/home'])
-                            alert("User Logged-in!")
+                    if (resp != null){
+                      console.log("User found, has logged:")
+                      environment.id = resp.id
+                      environment.firstName = resp.firstname
+                      this.authService.
+                        tokenOauth2(this.userLogin.username, this.userLogin.password)
+                          .subscribe({
+                            next: (resp) => {
+                              let strJson = JSON.stringify(resp)
+                              let json = JSON.parse(strJson)
+                              this.token = json.access_token
+                              this.userLogin.token = this.token
+                              environment.token = this.token
+                              userToSave.token = this.token
+                              this.authService
+                                .updateUserLogged(environment.id, userToSave)
+                                  .subscribe({
+                                    next: (resp) => {
+                                      environment.isLogged = true
+                                      this.router.navigate(['/home'])
+                                      alert("User Logged-in!")
+                                      }
+                                })
                             }
-                       })
+                          })
+                    } else {
+                      console.log("User never logged")
+                      this.authService.
+                        tokenOauth2(this.userLogin.username, this.userLogin.password)
+                          .subscribe({
+                            next: (resp) => {
+                              let strJson = JSON.stringify(resp)
+                              let json = JSON.parse(strJson)
+                              this.token = json.access_token
+                              this.userLogin.token = this.token
+                              this.authService.getInfoFromUserUsername(this.userLogin.username)
+                                .subscribe({
+                                  next: (resp) => {
+                                    environment.token = this.token
+                                    environment.firstName = resp.firstName
+                                    userToSave.firstname = resp.firstName
+                                    userToSave.token = this.token
+                                    this.authService
+                                      .salvarLogin(userToSave)
+                                        .subscribe({
+                                          next: (resp) => {
+                                            environment.isLogged = true
+                                            this.router.navigate(['/home'])
+                                            alert("User Logged-in!")
+                                          }
+                                        })
+                                  }
+                                })
+                            }
+                          })
+                    }
                   }
                 })
-          } else {
-            console.log("User not found, never logged")
-            this.authService.
-              tokenOauth2(this.userLogin.username, this.userLogin.password)
-                .subscribe({
-                  next: (resp) => {
-                    let strJson = JSON.stringify(resp)
-                    let json = JSON.parse(strJson)
-                    this.token = json.access_token
-                    this.userLogin.token = this.token
-                    this.authService.getInfoFromUserUsername(this.userLogin.username)
-                      .subscribe({
-                        next: (resp) => {
-                          environment.token = this.token
-                          environment.firstName = resp.firstName
-                          userToSave.firstname = resp.firstName
-                          userToSave.token = this.token
-                          this.authService
-                            .salvarLogin(userToSave)
-                              .subscribe({
-                                next: (resp) => {
-                                  this.router.navigate(['/home'])
-                                  alert("User Logged-in!")
-                                }
-                              })
-                        }
-                      })
-                  }
-                })
+            }
           }
-        }
-      })
+        })
   }
 }

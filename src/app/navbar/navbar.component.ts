@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthService } from '../service/auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'navbar',
@@ -11,9 +11,9 @@ import { AuthService } from '../service/auth.service';
 export class NavbarComponent implements OnInit {
 
   public name: string //= "Eriwck" //environment.firstName
-
   constructor(
-    public auth: AuthService
+    public auth: AuthService,
+    private router: Router
   ){}
 
   ngOnInit() {
@@ -25,6 +25,13 @@ export class NavbarComponent implements OnInit {
   setUserName(){
     console.log("User logged: " + environment.firstName)
     this.name = environment.firstName
+  }
+
+  loggout(){
+    environment.isLogged = false
+    environment.token = ''
+    this.router.navigate(['/auth/login'])
+    alert("User logged out!")
   }
 
 }

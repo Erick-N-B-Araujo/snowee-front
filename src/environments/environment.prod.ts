@@ -3,5 +3,6 @@ export const environment = {
   apiUrl: 'https://snowee-api.herokuapp.com',
   token: '',
   id: 0,
-  firstName: ''
+  firstName: '',
+  isLogged: false
 };
