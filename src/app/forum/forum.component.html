@@ -57,12 +57,12 @@
             <input type="text" class="form-control" formControlName="imgUrl" placeholder="Your image URL"/>                   
             <label class="mt-1">Texto:</label>
             <textarea class="form-control" name="articleText" id="articleText" rows="3" placeholder="Your article text"></textarea>
-            <label class="mt-1">Escolha um tema ou <a href="">cadastre um novo:</a></label>
+            <label class="mt-2 mb-1 p-0">Escolha um tema ou <button type="button" class="btn btn-link mb-1 p-0" data-bs-dismiss="modal" routerLink="/forum/themes">cadastre um novo:</button></label>
             <select class="form-control" name="theme" id="theme" placeholder="Temas">Temas</select>
         </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
           <button type="button" class="btn btn-primary">Publicar</button>
         </div>
       </div>

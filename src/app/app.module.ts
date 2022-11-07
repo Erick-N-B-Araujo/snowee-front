@@ -22,8 +22,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NavbarComponent,
     MenubarComponent,
     FooterComponent,
-    NavbarNotloggedComponent,
-    ForumComponent
+    NavbarNotloggedComponent
   ],
   imports: [
     BrowserModule,

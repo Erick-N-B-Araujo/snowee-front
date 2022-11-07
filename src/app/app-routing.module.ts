@@ -17,7 +17,8 @@ const routes: Routes = [
         .then(x => x.UserModule)
   },
   { 
-    path: 'forum', 
+    path: 'forum',
+    
     loadChildren: 
       () => import('./forum/forum.module')
         .then(x => x.ForumModule)
