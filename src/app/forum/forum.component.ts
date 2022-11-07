@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'forum',
@@ -9,7 +10,12 @@ export class ForumComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
+
+  myGroup = new FormGroup({
+      firstName: new FormControl()
+  });
+  ngOnInit(){
+    window.scroll(0,0)
   }
 
   scroll(el: HTMLElement) {

@@ -15,6 +15,7 @@ export class UserComponent implements OnInit {
   constructor(private userService: UsersService) { }
 
   ngOnInit(): void {
+    window.scroll(0,0)
     this.listUsers()
   }
   //Manipulador de formularios para validar campos

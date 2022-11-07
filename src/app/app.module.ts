@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -30,7 +30,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    MenubarModule
+    MenubarModule,
+    FormsModule
   ],
   providers: [{
     provide: LocationStrategy,
