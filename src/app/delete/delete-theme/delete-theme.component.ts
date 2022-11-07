@@ -1,0 +1,40 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Theme } from 'src/app/model/Theme';
+import { ThemeService } from 'src/app/service/theme.service';
+
+@Component({
+  selector: 'delete-theme',
+  templateUrl: './delete-theme.component.html',
+  styleUrls: ['./delete-theme.component.css']
+})
+export class DeleteThemeComponent implements OnInit {
+
+  theme: Theme = new Theme
+
+  constructor(
+    private themeService: ThemeService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(){
+    let id = this.route.snapshot.params['id']
+    this.findByIdTheme(id)
+  }
+
+  findByIdTheme(id: number){
+    this.themeService.getById(id)
+    .subscribe((resp: Theme) => {
+      this.theme = resp
+    })
+  }
+
+  delete(){
+    this.themeService.deleteTheme(this.theme.id)
+    .subscribe((resp) =>{
+      alert("Tema deletado com sucesso!")
+      this.router.navigate(['/forum/themes'])
+    })
+  }
+}

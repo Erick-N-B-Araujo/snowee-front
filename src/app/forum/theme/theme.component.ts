@@ -37,7 +37,6 @@ export class ThemeComponent implements OnInit {
   setPages(totalPages: number){
     for (let i = 0; i < totalPages; i++) {
       this.pages.push(i)
-      console.log("Pagina: "+i)
     }
   }
 
@@ -53,7 +52,6 @@ export class ThemeComponent implements OnInit {
     this.themeService
     .getAllThemes(this.page)
     .subscribe((resp: PagedObj) => {
-      console.log(resp)
       this.totalPages = resp.totalPages
       this.themeList = resp.content
       this.setPages(resp.totalPages)
@@ -64,7 +62,6 @@ export class ThemeComponent implements OnInit {
     this.themeService
     .postTheme(this.theme)
     .subscribe((resp: Theme) => {
-      console.log(resp)
       this.theme = resp
       alert("Tema cadastrado com sucesso!")
       this.theme = new Theme

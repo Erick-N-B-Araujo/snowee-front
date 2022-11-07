@@ -13,6 +13,8 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.component';
 import { ForumComponent } from './forum/forum.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { EditThemeComponent } from './edit/edit-theme/edit-theme.component';
+import { DeleteThemeComponent } from './delete/delete-theme/delete-theme.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NavbarComponent,
     MenubarComponent,
     FooterComponent,
-    NavbarNotloggedComponent
+    NavbarNotloggedComponent,
+    EditThemeComponent,
+    DeleteThemeComponent
   ],
   imports: [
     BrowserModule,

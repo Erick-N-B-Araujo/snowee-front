@@ -37,6 +37,16 @@ export class ThemeService {
     return this.http.get<PagedObj>(url, options)
   }
 
+  getById(id: number): Observable<Theme>{
+    let headers = new HttpHeaders({
+      //'Authorization': 'Bearer '+ environment.token
+      'Authorization': 'Bearer '+ this.localToken
+    })
+
+    let options = { headers: headers}
+    return this.http.get<Theme>(this.apiUrl+`/themes/${id}`, options)
+  }
+
   postTheme(theme: Theme): Observable<Theme>{
     let headers = new HttpHeaders({
       'Authorization': 'Bearer '+ environment.token
@@ -45,6 +55,26 @@ export class ThemeService {
     let options = { headers: headers}
 
     return this.http.post<Theme>(this.apiUrl+"/themes", theme, options)
+  }
+
+  putTheme(theme: Theme): Observable<Theme>{
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer '+ environment.token
+    })
+
+    let options = { headers: headers}
+
+    return this.http.put<Theme>(this.apiUrl+`/themes/${theme.id}`, theme, options)
+  }
+
+  deleteTheme(id: number){
+    let headers = new HttpHeaders({
+      'Authorization': 'Bearer '+ environment.token
+    })
+
+    let options = { headers: headers}
+
+    return this.http.delete(this.apiUrl+`/themes/${id}`, options)
   }
 
 

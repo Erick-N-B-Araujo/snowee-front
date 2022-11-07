@@ -47,8 +47,8 @@
                       <th scope="row">{{item.id}}</th>
                       <td>{{item.name}}</td>
                       <td class="d-flex justify-content-end">
-                        <button class="btn btn-info  m-1">Editar</button>
-                        <button class="btn btn-danger m-1">Apagar</button>
+                        <button class="btn btn-info  m-1" [routerLink]="['/forum/theme-edit', item.id]">Editar</button>
+                        <button class="btn btn-danger m-1" [routerLink]="['/forum/theme-delete', item.id]">Apagar</button>
                       </td>
                     </tr>
                   </tbody>                
