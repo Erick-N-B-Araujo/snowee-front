@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Theme } from 'src/app/model/Theme';
 import { ThemeService } from 'src/app/service/theme.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'edit-theme',
@@ -19,6 +20,10 @@ export class EditThemeComponent implements OnInit {
   ) { }
 
   ngOnInit(){
+    if(environment.token == ''){
+      alert("Token expired, login to generate another")
+      this.router.navigate(['/auth/login'])
+    }
     let id = this.route.snapshot.params['id']
     this.findByIdTheme(id)
   }

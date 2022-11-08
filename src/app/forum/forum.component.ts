@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Article } from '../model/Article';
+import { ArticleService } from '../service/article.service';
+import { ThemeService } from '../service/theme.service';
 
 @Component({
   selector: 'forum',
@@ -8,12 +12,13 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class ForumComponent implements OnInit {
 
-  constructor() { }
+  article: Article = new Article
+  constructor(
+    private router: Router,
+    private articleService: ArticleService,
+    private themeService: ThemeService
+  ) { }
 
-
-  myGroup = new FormGroup({
-      firstName: new FormControl()
-  });
   ngOnInit(){
     window.scroll(0,0)
   }
@@ -22,4 +27,7 @@ export class ForumComponent implements OnInit {
     el.scrollIntoView({behavior: 'smooth'});
   }
 
+  getAllThemes(){
+  
+  }
 }
