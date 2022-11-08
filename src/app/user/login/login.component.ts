@@ -45,13 +45,15 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/auth/signin'])
               alert("User not found! Sign-in first")
             } else {
+              environment.id = userSigned.id
+              environment.firstName = userSigned.firstName
+              environment.lastName = userSigned.lastName
+              environment.username = userSigned.email
               this.authService.getUserLogged(userToSave.username)
                 .subscribe({
                   next: (resp) => {
                     if (resp != null){
                       console.log("User found, has logged:")
-                      environment.id = resp.id
-                      environment.firstName = resp.firstname
                       this.authService.
                         tokenOauth2(this.userLogin.username, this.userLogin.password)
                           .subscribe({

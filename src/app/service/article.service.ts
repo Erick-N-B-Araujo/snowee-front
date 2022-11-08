@@ -13,38 +13,47 @@ export class ArticleService {
   //Varia de acordo com o ambiente
   apiUrl: string = environment.apiUrl
 
-  headers = new HttpHeaders({
-    //'Authorization': 'Bearer '+ environment.token
-    'Authorization': 'Bearer '+ environment.token
-  })
-
-  options = { headers: this.headers}
-
   constructor(
     private http: HttpClient
   ) { }
 
+  setOptions(){
+    let headers = new HttpHeaders({
+      //'Authorization': 'Bearer '+ environment.token
+      'Authorization': 'Bearer '+ environment.token
+    })
+    let options = { headers: headers}
+    return options
+  }
+
   getAllArticles(page: number): Observable<PagedObj>{
-
     const url = this.apiUrl+"/articles?page="+page+"&linesPerPage=10&direction=ASC&orderBy=name"
-
-    return this.http.get<PagedObj>(url, this.options)
+    let options = this.setOptions()
+    return this.http.get<PagedObj>(url, options)
   }
 
   getById(id: number): Observable<Article>{
-    return this.http.get<Article>(this.apiUrl+`/articles/${id}`, this.options)
+    let options = this.setOptions()
+    return this.http.get<Article>(this.apiUrl+`/articles/${id}`, options)
   }
 
-  postTheme(article: Article): Observable<Article>{
-    return this.http.post<Article>(this.apiUrl+"/articles", article, this.options)
+  getAllList(): Observable<Article[]>{
+    return this.http.get<Article[]>(this.apiUrl+"/articles/list-all")
   }
 
-  putTheme(article: Article): Observable<Article>{
-    return this.http.put<Article>(this.apiUrl+`/articles/${article.id}`, article, this.options)
+  postArticle(article: Article): Observable<Article>{
+    let options = this.setOptions()
+    return this.http.post<Article>(this.apiUrl+"/articles", article, options)
   }
 
-  deleteTheme(id: number){
-    return this.http.delete(this.apiUrl+`/articles/${id}`, this.options)
+  putArticle(article: Article): Observable<Article>{
+    let options = this.setOptions()
+    return this.http.put<Article>(this.apiUrl+`/articles/${article.id}`, article, options)
+  }
+
+  deleteArticle(id: number){
+    let options = this.setOptions()
+    return this.http.delete(this.apiUrl+`/articles/${id}`, options)
   }
 
 }

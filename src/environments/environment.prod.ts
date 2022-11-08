@@ -4,5 +4,7 @@ export const environment = {
   token: '',
   id: 0,
   firstName: '',
+  lastName: '',
+  username: '',
   isLogged: false
 };

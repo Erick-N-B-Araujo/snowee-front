@@ -10,7 +10,7 @@
             </div>
 
             <div class="row d-flex justify-content-center">
-                <div class="col-md-3 d-grid mt-2">
+                <div class="col-md-3 d-grid mt-2" *ngIf='auth.isLogged()'>
                     <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#novoPost" data-bs-whatever="@post">Novo post</button>
                 </div>
                 <div class="col-md-3 d-grid mt-2">
@@ -50,20 +50,33 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form>
-            <label class="mt-1">Titulo:</label>
-            <input type="text" class="form-control" formControlName="title" placeholder="Your title"/>
-            <label class="mt-1">URL da Imagem:</label>
-            <input type="text" class="form-control" formControlName="imgUrl" placeholder="Your image URL"/>                   
-            <label class="mt-1">Texto:</label>
-            <textarea class="form-control" name="articleText" id="articleText" rows="3" placeholder="Your article text"></textarea>
-            <label class="mt-2 mb-1 p-0">Escolha um tema ou <button type="button" class="btn btn-link mb-1 p-0" data-bs-dismiss="modal" routerLink="/forum/themes">cadastre um novo:</button></label>
-            <select class="form-control" name="theme" id="theme" placeholder="Temas">Temas</select>
-        </form>
+          <div>
+            <form>
+              <label class="mt-1">Titulo:</label>
+              <input [(ngModel)]='article.title' name="title" type="text" class="form-control"/>
+              <label class="mt-1">URL da Imagem:</label>
+              <input [(ngModel)]='article.imgUrl' type="text" name="imgUrl" class="form-control"/>                   
+              <label class="mt-1">Texto:</label>
+              <textarea [(ngModel)]='article.articleText' class="form-control" name="articleText" id="articleText" rows="3"></textarea>
+              <label class="mt-2 mb-1 p-0">Escolha um tema ou <button type="button" class="btn btn-link mb-1 p-0" data-bs-dismiss="modal" routerLink="/forum/themes">cadastre um novo:</button></label>
+              <div class="row">
+                <div class="col-md-10">
+                  <select class="form-control" name="theme" id="theme" [(ngModel)]="idTheme" (change)="findByIdTheme()">
+                    <option *ngFor="let item of listThemes" value="{{item.id}}">{{item.name}}</option>
+                  </select>
+                </div>
+                <div class="col-md-2">
+                  <button type="button" class="btn btn-success" (click)="addTheme()">+</button>
+                </div>
+              </div>
+              <label class="mt-2 mb-1 p-0">Adicionados:</label>
+              <small *ngFor="let item of listArticleThemes" class="p-1 fw-bold">{{item.name}}</small>
+            </form>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
-          <button type="button" class="btn btn-primary">Publicar</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="publish()">Publicar</button>
         </div>
       </div>
     </div>
