@@ -28,7 +28,7 @@
         <li class="nav-item" role="presentation">
           <button class="nav-link active fw-bold text-secondary" id="todasPostagens-tab" data-bs-toggle="tab" data-bs-target="#todasPostagens-tab-pane" type="button" role="tab" aria-controls="todasPostagens-tab-pane" aria-selected="true">Todas postagens</button>
         </li>
-        <li class="nav-item" role="presentation">
+        <li class="nav-item" role="presentation" *ngIf='auth.isLogged()'>
           <button class="nav-link fw-bold text-secondary" id="minhasPostagens-tab" data-bs-toggle="tab" data-bs-target="#minhasPostagens-tab-pane" type="button" role="tab" aria-controls="minhasPostagens-tab-pane" aria-selected="false">Minhas postagens</button>
         </li>
         <li class="nav-item" role="presentation">
@@ -36,8 +36,62 @@
         </li>
       </ul>
       <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="todasPostagens-tab-pane" role="tabpanel" aria-labelledby="todasPostagens-tab" tabindex="0">...Todas postagens</div>
-        <div class="tab-pane fade" id="minhasPostagens-tab-pane" role="tabpanel" aria-labelledby="minhasPostagens-tab" tabindex="0">...Minhas postagens</div>
+        <div class="tab-pane fade show active" id="todasPostagens-tab-pane" role="tabpanel" aria-labelledby="todasPostagens-tab" tabindex="0">
+
+          <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-1">
+            <div class="col" *ngFor="let item of listArticles">
+              <div class="card h-100">
+                <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{item.title}}</h5>
+                  <hr class="m-0 p-0">
+                  <label class="mt-2 mb-1 p-0  fw-bold">Temas:</label>
+                  <small *ngFor="let theme of item.themes" class="p-1">{{theme.name}}</small>
+                  <p class="card-text">{{item.articleText}}</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <small class="text-muted">Por: {{item.user.firstname}} {{item.user.lastname}} em {{item.createdAt | date: 'dd/MM/yyyy'}} ás {{item.createdAt | date: 'HH:mm'}}</small>
+                    </div>
+                    <div class="col-md-5 text-end">
+                      <a class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
+                    </div>
+                  </div>               
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="tab-pane fade" id="minhasPostagens-tab-pane" role="tabpanel" aria-labelledby="minhasPostagens-tab" tabindex="0">
+
+          <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-1">
+            <div class="col" *ngFor="let item of listUserArticles">
+              <div class="card h-100">
+                <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title fw-bold">{{item.title}}</h5>
+                  <hr class="m-0 p-0">
+                  <label class="mt-2 mb-1 p-0  fw-bold">Temas:</label>
+                  <small *ngFor="let theme of item.themes" class="p-1">{{theme.name}}</small>
+                  <p class="card-text">{{item.articleText}}</p>
+                </div>
+                <div class="card-footer">
+                  <div class="row">
+                    <div class="col-md-7">
+                      <small class="text-muted">Ultima alteração em: {{item.createdAt | date: 'dd/MM/yyyy'}} ás {{item.createdAt | date: 'HH:mm'}}</small>
+                    </div>
+                    <div class="col-md-5 text-end">
+                      <a class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
+                    </div>
+                  </div>               
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
         <div class="tab-pane fade" id="temaPostagem-tab-pane" role="tabpanel" aria-labelledby="temaPostagem-tab" tabindex="0">...Postagens por tema</div>
       </div>  
 </div>

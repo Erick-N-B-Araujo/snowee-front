@@ -45,15 +45,15 @@ export class LoginComponent implements OnInit {
               this.router.navigate(['/auth/signin'])
               alert("User not found! Sign-in first")
             } else {
-              environment.id = userSigned.id
-              environment.firstName = userSigned.firstName
-              environment.lastName = userSigned.lastName
-              environment.username = userSigned.email
               this.authService.getUserLogged(userToSave.username)
                 .subscribe({
                   next: (resp) => {
                     if (resp != null){
                       console.log("User found, has logged:")
+                      environment.id = resp.id
+                      environment.firstName = resp.firstname
+                      environment.lastName = resp.lastname
+                      environment.username = resp.username
                       this.authService.
                         tokenOauth2(this.userLogin.username, this.userLogin.password)
                           .subscribe({
@@ -90,6 +90,8 @@ export class LoginComponent implements OnInit {
                                   next: (resp) => {
                                     environment.token = this.token
                                     environment.firstName = resp.firstName
+                                    environment.lastName = resp.lastName
+                                    environment.username = resp.email
                                     userToSave.firstname = resp.firstName
                                     userToSave.token = this.token
                                     this.authService
@@ -97,6 +99,7 @@ export class LoginComponent implements OnInit {
                                         .subscribe({
                                           next: (resp) => {
                                             environment.isLogged = true
+                                            environment.id = resp.id
                                             this.router.navigate(['/home'])
                                             alert("User Logged-in!")
                                           }
