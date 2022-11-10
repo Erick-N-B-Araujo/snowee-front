@@ -11,10 +11,7 @@ import { MenubarComponent } from './menubar/menubar.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.component';
-import { ForumComponent } from './forum/forum.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { EditThemeComponent } from './edit/edit-theme/edit-theme.component';
-import { DeleteThemeComponent } from './delete/delete-theme/delete-theme.component';
 
 
 @NgModule({
@@ -24,9 +21,7 @@ import { DeleteThemeComponent } from './delete/delete-theme/delete-theme.compone
     NavbarComponent,
     MenubarComponent,
     FooterComponent,
-    NavbarNotloggedComponent,
-    EditThemeComponent,
-    DeleteThemeComponent
+    NavbarNotloggedComponent
   ],
   imports: [
     BrowserModule,

@@ -40,13 +40,13 @@
           <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-1">
             <div class="col" *ngFor="let item of listArticles">
               <div class="card h-100">
-                <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top" alt="...">
+                <img src="{{item.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title fw-bold">{{item.title}}</h5>
                   <hr class="m-0 p-0">
                   <label class="mt-2 mb-1 p-0  fw-bold">Temas:</label>
                   <small *ngFor="let theme of item.themes" class="p-1">{{theme.name}}</small>
-                  <p class="card-text">{{item.articleText}}</p>
+                  <p class="card-text">{{item.descriptionText}}</p>
                 </div>
                 <div class="card-footer">
                   <div class="row">
@@ -54,7 +54,7 @@
                       <small class="text-muted">Por: {{item.user.firstname}} {{item.user.lastname}} em {{item.createdAt | date: 'dd/MM/yyyy'}} ás {{item.createdAt | date: 'HH:mm'}}</small>
                     </div>
                     <div class="col-md-5 text-end">
-                      <a class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
+                      <a [routerLink]="['article-show', item.id]" class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
                     </div>
                   </div>               
                 </div>
@@ -74,13 +74,13 @@
           <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-4">
             <div class="col" *ngFor="let item of listUserArticles">
               <div class="card h-100">
-                <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top" alt="...">
+                <img src="{{item.imgUrl}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title fw-bold">{{item.title}}</h5>
                   <hr class="m-0 p-0">
                   <label class="mt-2 mb-1 p-0  fw-bold">Temas:</label>
                   <small *ngFor="let theme of item.themes" class="p-1">{{theme.name}}</small>
-                  <p class="card-text">{{item.articleText}}</p>
+                  <p class="card-text">{{item.descriptionText}}</p>
                 </div>
                 <div class="card-footer">
                   <div class="row">
@@ -88,9 +88,13 @@
                       <small class="text-muted">Ultima alteração em: {{item.createdAt | date: 'dd/MM/yyyy'}} ás {{item.createdAt | date: 'HH:mm'}}</small>
                     </div>
                     <div class="col-md-5 text-end">
-                      <a class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
+                      <a [routerLink]="['article-show', item.id]" class="btn btn-primary mt-1" (click)="scroll(postagens)">Ver artigo</a>
                     </div>
-                  </div>               
+                  </div>
+                  <div class="row">
+                    <a [routerLink]="['article-edit', item.id]" class="btn btn-warning mt-1" (click)="scroll(postagens)">Editar</a>
+                      <a [routerLink]="['article-delete', item.id]" class="btn btn-danger mt-1" (click)="scroll(postagens)">Apagar</a>  
+                  </div>            
                 </div>
               </div>
             </div>
@@ -98,18 +102,16 @@
         </div>
         <div class="tab-pane fade" id="temaPostagem-tab-pane" role="tabpanel" aria-labelledby="temaPostagem-tab" tabindex="0">
           <div class="container" *ngFor="let item of listThemes">
-            <h1 class="fw-bold text-secondary">{{item.name}}</h1>
+            <h1 class="fw-bold">{{item.name}}</h1>
             <hr>
             <div class="row row-cols-1 row-cols-md-3 g-4 mb-1">
               <div class="col" *ngFor="let article of item.articles">
                 <div class="card h-100">
-                  <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top" alt="...">
+                  <img src="{{article.imgUrl}}" class="card-img-top" alt="...">
                   <div class="card-body">
                     <h5 class="card-title fw-bold">{{article.title}}</h5>
                     <hr class="m-0 p-0">
-                    <label class="mt-2 mb-1 p-0  fw-bold">Temas:</label>
-                    <small *ngFor="let theme of article.themes" class="p-1">{{theme.name}}</small>
-                    <p class="card-text">{{article.articleText}}</p>
+                    <p class="card-text">{{article.descriptionText}}</p>
                   </div>
                   <div class="card-footer">
                     <div class="row">
@@ -143,8 +145,10 @@
               <label class="mt-1">Titulo:</label>
               <input [(ngModel)]='article.title' name="title" type="text" class="form-control"/>
               <label class="mt-1">URL da Imagem:</label>
-              <input [(ngModel)]='article.imgUrl' type="text" name="imgUrl" class="form-control"/>                   
-              <label class="mt-1">Texto:</label>
+              <input [(ngModel)]='article.imgUrl' type="text" name="imgUrl" class="form-control"/>
+              <label class="mt-1">Descrição:</label>
+              <textarea [(ngModel)]='article.descriptionText' class="form-control" name="descriptionText" id="descriptionText" rows="1"></textarea>           
+              <label class="mt-1">Artigo:</label>
               <textarea [(ngModel)]='article.articleText' class="form-control" name="articleText" id="articleText" rows="3"></textarea>
               <label class="mt-2 mb-1 p-0">Escolha um tema ou <button type="button" class="btn btn-link mb-1 p-0" data-bs-dismiss="modal" routerLink="/forum/themes">cadastre um novo:</button></label>
               <div class="row">
@@ -157,8 +161,8 @@
                   <button type="button" class="btn btn-success" (click)="addTheme()">+</button>
                 </div>
               </div>
-              <label class="mt-2 mb-1 p-0">Adicionados:</label>
-              <small *ngFor="let item of listArticleThemes" class="p-1 fw-bold">{{item.name}}</small>
+              <label class="mt-2 mb-1 p-0 fw-bold">Adicionados:</label>
+              <small *ngFor="let item of listArticleThemes" class="p-1">{{item.name}}</small>
             </form>
           </div>
         </div>

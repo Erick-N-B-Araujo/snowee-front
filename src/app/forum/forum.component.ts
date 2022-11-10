@@ -96,6 +96,7 @@ export class ForumComponent implements OnInit {
       this.article = new Article
       this.listArticleThemes = []
       this.getAllArticles()
+      this.getAllThemes()
       this.getAllUserArticles()
     })
   }

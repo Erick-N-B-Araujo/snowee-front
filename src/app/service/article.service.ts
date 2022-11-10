@@ -33,12 +33,12 @@ export class ArticleService {
 
   getById(id: number): Observable<Article>{
     let options = this.setOptions()
-    return this.http.get<Article>(this.apiUrl+`/articles/${id}`, options)
+    return this.http.get<Article>(this.apiUrl+`/articles/${id}`)
   }
 
   getAllList(): Observable<Article[]>{
     let options = this.setOptions()
-    return this.http.get<Article[]>(this.apiUrl+"/articles", options)
+    return this.http.get<Article[]>(this.apiUrl+"/articles")
   }
 
   postArticle(article: Article): Observable<Article>{
