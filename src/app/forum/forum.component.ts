@@ -25,6 +25,7 @@ export class ForumComponent implements OnInit {
   listThemes: Theme[] = []
   listArticles: Article[] = []
   listUserArticles: Article[] = []
+  listThemeArticles: Article[] = []
   listArticleThemes: Theme[] = []
   totalPages: number
   pages: Array<number> = []
@@ -121,6 +122,10 @@ export class ForumComponent implements OnInit {
     .subscribe((resp: UserLogin) =>{
       this.listUserArticles = resp.articles
     })
+  }
+
+  getAllThemeArticle(){
+
   }
 
   setPage(i: number, event: any){
