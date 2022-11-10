@@ -18,10 +18,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(){
     window.scroll(0,0)
-    if(environment.token == ''){
-      alert("Token expired, login to generate another")
-      this.router.navigate(['/auth/login'])
-    }
     this.descSlugan1 = "A narrativa conta a história de um E.T. chamado Slugan, em que acidentalmente cai no planeta terra e é alvo de pesquisa dos humanos. Sendo mal-tratado, Slugan..."
     this.descSlugan2 = "Slugan II continua a contar a história do homônimo ET, que ao final do jogo anterior conseguiu fugir da Terra e esta à caminho de retornar ao seu planeta natal."
     this.descSlugan3 = "Slugan III o personagem jogável viaja pelo espaço com o intuito de chegar ao seu planeta natal, mas até lá se depara com vários problemas, obstáculos e escassez de recursos..."

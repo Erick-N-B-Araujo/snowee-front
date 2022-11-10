@@ -27,9 +27,8 @@ export class ArticleService {
   }
 
   getAllArticles(page: number): Observable<PagedObj>{
-    const url = this.apiUrl+"/articles?page="+page+"&linesPerPage=10&direction=ASC&orderBy=name"
-    let options = this.setOptions()
-    return this.http.get<PagedObj>(url, options)
+    const url = this.apiUrl+"/articles/list-all?page="+page+"&linesPerPage=3&direction=ASC&orderBy=title"
+    return this.http.get<PagedObj>(url)
   }
 
   getById(id: number): Observable<Article>{
@@ -38,7 +37,8 @@ export class ArticleService {
   }
 
   getAllList(): Observable<Article[]>{
-    return this.http.get<Article[]>(this.apiUrl+"/articles/list-all")
+    let options = this.setOptions()
+    return this.http.get<Article[]>(this.apiUrl+"/articles", options)
   }
 
   postArticle(article: Article): Observable<Article>{

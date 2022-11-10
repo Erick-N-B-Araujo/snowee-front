@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Article } from '../model/Article';
+import { PagedObj } from '../model/PagedObj';
 import { Theme } from '../model/Theme';
 import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
@@ -25,6 +26,9 @@ export class ForumComponent implements OnInit {
   listArticles: Article[] = []
   listUserArticles: Article[] = []
   listArticleThemes: Theme[] = []
+  totalPages: number
+  pages: Array<number> = []
+  page: number = 0
 
   idTheme: number
 
@@ -45,9 +49,11 @@ export class ForumComponent implements OnInit {
   ngOnInit(){
     window.scroll(0,0)
     this.setUser()
+    this.firstLoadAllArticles()
     this.getAllThemes()
-    this.getAllArticles()
-    this.getAllUserArticles()
+    if(environment.token != ''){
+      this.getAllUserArticles()
+    }
   }
 
   scroll(el: HTMLElement) {
@@ -84,9 +90,12 @@ export class ForumComponent implements OnInit {
     this.articleService
     .postArticle(this.article)
     .subscribe((resp: Article) => {
+      console.log(resp)
       alert("Artigo publicado com sucesso!")
       this.article = new Article
+      this.listArticleThemes = []
       this.getAllArticles()
+      this.getAllUserArticles()
     })
   }
 
@@ -110,9 +119,68 @@ export class ForumComponent implements OnInit {
     this.auth
     .getUserLogged(this.user.username)
     .subscribe((resp: UserLogin) =>{
-      console.log(resp)
       this.listUserArticles = resp.articles
-      console.log(resp.articles)
+    })
+  }
+
+  setPage(i: number, event: any){
+    event.preventDefault()
+    this.page = i
+    this.refreshArticles()
+  }
+
+  nextPage(){
+    let i = this.pages.length
+    i--
+    if(this.page < i){
+      this.page+=1
+      this.refreshArticles()
+    }
+    else if(this.page == i){
+      alert("Está é a ultima pagina!")
+    } else {
+      alert("Não existem posts nesta pagina!")
+    }
+  }
+
+  prevPage(){
+    let i = this.page
+    if(i == 0){
+      alert("Está é a primeira pagina!")
+      this.refreshArticles()
+    }else if(i < this.pages.length){
+      this.page-=1
+      this.refreshArticles()
+    } else {
+      alert("Não existem posts nesta pagina!")
+    }
+  }
+
+  setPages(totalPages: number){
+    for (let i = 0; i < totalPages; i++) {
+      this.pages.push(i)
+    }
+  }
+
+  refreshArticles(){
+    this.articleService
+    .getAllArticles(this.page)
+    .subscribe((resp: PagedObj) => {
+      this.listArticles = resp.content
+      if(this.totalPages != resp.totalPages){
+        this.totalPages = resp.totalPages
+        this.setPages(resp.totalPages)
+      }
+    })
+  }
+
+  firstLoadAllArticles(){
+    this.articleService
+    .getAllArticles(this.page)
+    .subscribe((resp: PagedObj) => {
+      this.totalPages = resp.totalPages
+      this.listArticles = resp.content
+      this.setPages(resp.totalPages)
     })
   }
 }
