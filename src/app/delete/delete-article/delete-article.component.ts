@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { ArticleService } from 'src/app/service/article.service';
 import { environment } from 'src/environments/environment';
 
@@ -17,12 +18,13 @@ export class DeleteArticleComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit() {
     if(environment.token == ''){
-      alert("Token expired, login to generate another")
+      this.alerts.showAlertInfo("Token expired, login to generate another")
       this.router.navigate(['/auth/login'])
     }
     let id = this.route.snapshot.params['id']
@@ -40,7 +42,7 @@ export class DeleteArticleComponent implements OnInit {
   delete(){
     this.articleService.deleteArticle(this.article.id)
     .subscribe((resp) =>{
-      alert("Artigo deletado com sucesso!")
+      this.alerts.showAlertSuccess("Artigo deletado com sucesso!")
       this.router.navigate(['/forum'])
     })
   }

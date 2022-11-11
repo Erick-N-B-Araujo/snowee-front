@@ -7,6 +7,7 @@ import { PagedObj } from '../model/PagedObj';
 import { Theme } from '../model/Theme';
 import { User } from '../model/User';
 import { UserLogin } from '../model/UserLogin';
+import { AlertsService } from '../service/alerts.service';
 import { ArticleService } from '../service/article.service';
 import { AuthService } from '../service/auth.service';
 import { ThemeService } from '../service/theme.service';
@@ -44,7 +45,8 @@ export class ForumComponent implements OnInit {
     private router: Router,
     private articleService: ArticleService,
     private themeService: ThemeService,
-    public auth: AuthService
+    public auth: AuthService,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
@@ -66,7 +68,6 @@ export class ForumComponent implements OnInit {
     this.user.firstname = environment.firstName
     this.user.lastname = environment.lastName
     this.user.username = environment.username
-    //console.log(this.user)
   }
 
   getAllThemes(){
@@ -92,7 +93,7 @@ export class ForumComponent implements OnInit {
     .postArticle(this.article)
     .subscribe((resp: Article) => {
       console.log(resp)
-      alert("Artigo publicado com sucesso!")
+      this.alerts.showAlertSuccess("Artigo publicado com sucesso!")
       this.article = new Article
       this.listArticleThemes = []
       this.getAllArticles()
@@ -103,7 +104,7 @@ export class ForumComponent implements OnInit {
 
   addTheme(){
     if(this.listArticleThemes.some(e => e.name === this.theme.name)){
-      alert("Tema já adicionado")
+      this.alerts.showAlertInfo("Tema já adicionado")
     }else{
       this.listArticleThemes.push(this.theme)
     }
@@ -143,22 +144,22 @@ export class ForumComponent implements OnInit {
       this.refreshArticles()
     }
     else if(this.page == i){
-      alert("Está é a ultima pagina!")
+      this.alerts.showAlertInfo("Está é a ultima pagina!")
     } else {
-      alert("Não existem posts nesta pagina!")
+      this.alerts.showAlertDanger("Não existem posts nesta pagina!")
     }
   }
 
   prevPage(){
     let i = this.page
     if(i == 0){
-      alert("Está é a primeira pagina!")
+      this.alerts.showAlertInfo("Está é a primeira pagina!")
       this.refreshArticles()
     }else if(i < this.pages.length){
       this.page-=1
       this.refreshArticles()
     } else {
-      alert("Não existem posts nesta pagina!")
+      this.alerts.showAlertDanger("Não existem posts nesta pagina!")
     }
   }
 

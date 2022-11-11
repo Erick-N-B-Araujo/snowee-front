@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Theme } from 'src/app/model/Theme';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { ThemeService } from 'src/app/service/theme.service';
 import { environment } from 'src/environments/environment';
 
@@ -16,12 +17,13 @@ export class DeleteThemeComponent implements OnInit {
   constructor(
     private themeService: ThemeService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
     if(environment.token == ''){
-      alert("Token expired, login to generate another")
+      this.alerts.showAlertInfo("Token expired, login to generate another")
       this.router.navigate(['/auth/login'])
     }
     let id = this.route.snapshot.params['id']
@@ -38,7 +40,7 @@ export class DeleteThemeComponent implements OnInit {
   delete(){
     this.themeService.deleteTheme(this.theme.id)
     .subscribe((resp) =>{
-      alert("Tema deletado com sucesso!")
+      this.alerts.showAlertSuccess("Tema deletado com sucesso!")
       this.router.navigate(['/forum/themes'])
     })
   }

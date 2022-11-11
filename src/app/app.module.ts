@@ -12,6 +12,8 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarNotloggedComponent } from './navbar-notlogged/navbar-notlogged.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { AlertsComponent } from './alerts/alerts.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     NavbarComponent,
     MenubarComponent,
     FooterComponent,
-    NavbarNotloggedComponent
+    NavbarNotloggedComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
     HttpClientModule,
     AppRoutingModule,
     MenubarModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [{
     provide: LocationStrategy,

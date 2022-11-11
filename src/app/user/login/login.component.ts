@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { AlertsService } from 'src/app/service/alerts.service';
 
 @Component({
   selector: 'login',
@@ -27,7 +28,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alerts: AlertsService
     ) { }
 
   ngOnInit(){
@@ -43,7 +45,7 @@ export class LoginComponent implements OnInit {
             if (userSigned == null){
               console.log("User not found!")
               this.router.navigate(['/auth/signin'])
-              alert("User not found! Sign-in first")
+              this.alerts.showAlertDanger("User not found! Sign-in first")
             } else {
               this.authService.getUserLogged(userToSave.username)
                 .subscribe({
@@ -70,7 +72,7 @@ export class LoginComponent implements OnInit {
                                     next: (resp) => {
                                       environment.isLogged = true
                                       this.router.navigate(['/home'])
-                                      alert("User Logged-in!")
+                                      this.alerts.showAlertSuccess("User Logged-in!")
                                       }
                                 })
                             }
@@ -101,7 +103,7 @@ export class LoginComponent implements OnInit {
                                             environment.isLogged = true
                                             environment.id = resp.id
                                             this.router.navigate(['/home'])
-                                            alert("User Logged-in!")
+                                            this.alerts.showAlertSuccess("User Logged-in!")
                                           }
                                         })
                                   }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PagedObj } from 'src/app/model/PagedObj';
 import { Theme } from 'src/app/model/Theme';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { ThemeService } from 'src/app/service/theme.service';
 import { environment } from 'src/environments/environment';
 
@@ -20,13 +21,14 @@ export class ThemeComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private themeService: ThemeService
+    private themeService: ThemeService,
+    private alerts: AlertsService
   ) { }
 
   ngOnInit(){
     window.scroll(0,0)
     if(environment.token == ''){
-      alert("Token expired, login to generate another")
+      this.alerts.showAlertInfo("Token expired, login to generate another")
       this.router.navigate(['/auth/login'])
     }
     this.firstLoadAllThemes()
@@ -67,7 +69,7 @@ export class ThemeComponent implements OnInit {
     .postTheme(this.theme)
     .subscribe((resp: Theme) => {
       this.theme = resp
-      alert("Tema cadastrado com sucesso!")
+      this.alerts.showAlertSuccess("Tema cadastrado com sucesso!")
       this.theme = new Theme
       this.refreshThemes()
     })

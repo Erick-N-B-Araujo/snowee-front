@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/model/User';
+import { AlertsService } from 'src/app/service/alerts.service';
 import { UsersService } from 'src/app/service/users.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class SigninComponent implements OnInit {
 
   constructor(
     private userService: UsersService,
-    private router: Router
+    private router: Router,
+    private alerts: AlertsService
     ) { }
 
   user: User = new User
@@ -38,7 +40,7 @@ export class SigninComponent implements OnInit {
   //POST envia e salva o objeto no BD 
   submit(){
     if (this.user.password != this.confirmPassword){
-      alert("Password don't match!")
+      this.alerts.showAlertDanger("Password don't match!")
     }
     else{
       const userToSave: User = {...this.userForm.value}
@@ -47,7 +49,7 @@ export class SigninComponent implements OnInit {
         .subscribe(savedUser => {
           this.userForm.reset()
           this.router.navigate(['/auth/login'])
-          alert("User created!")
+          this.alerts.showAlertSuccess("User created!")
         })
     }
   }
