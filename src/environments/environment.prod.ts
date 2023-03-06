@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://snowee-api.herokuapp.com',
+  apiUrl: 'http://snoweegamecorp.com:9000',
   token: '',
   id: 0,
   firstName: '',

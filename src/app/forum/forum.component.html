@@ -1,14 +1,13 @@
-<div class="container-fluid">
-    <div class="row bg-secondary d-flex align-items-center">
+<div class="container-fluid bg-secondary">
+    <div class="container">
+      <div class="row d-flex align-items-center">
         <div class="col-md-6">
-            
             <div class="row d-flex justify-content-center text-light mb-2">
                 <div class="col-md-6">
                     <h1 class="fs-54">Seja bem vindo(a)!</h1>
                     <h5 class="fs-18">junte-se a causa do conhecimento descentralizado, compartilhe!</h5>
                 </div>
             </div>
-
             <div class="row d-flex justify-content-center">
                 <div class="col-md-3 d-grid mt-2" *ngIf='auth.isLogged()'>
                     <button class="btn btn-light" type="button" data-bs-toggle="modal" data-bs-target="#novoPost" data-bs-whatever="@post">Novo post</button>
@@ -21,6 +20,7 @@
         <div class="col-md-6 d-flex justify-content-center">
             <img src="https://i.imgur.com/6s5cG47.png" width="500px" height="500px">
         </div>
+    </div>
     </div>
 </div>
 <div #postagens class="container mt-2 mb-2">
