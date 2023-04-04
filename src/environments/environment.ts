@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'https://snoweegamecorp.com:8080',
   token: '',
   id: 0,
   firstName: '',
