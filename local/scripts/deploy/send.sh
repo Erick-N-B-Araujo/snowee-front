@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MAC_WORKSPACE=/Users/erickneves/Documents/Dev/snowee-front
-JENKINS_WORKSPACE=/home/jenkins/snoweegamecorp/jenkins_home/workspace/Frontend
+JENKINS_WORKSPACE=/var/jenkins_home/workspace/Frontend
 
 echo "Sending assets..."
 
