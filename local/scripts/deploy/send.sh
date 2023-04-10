@@ -11,6 +11,6 @@ sshpass -p 'AdcOP1997!' scp $JENKINS_WORKSPACE/local/typescript-app/dist/fronten
 echo "Sending scripts..."
 
 #sshpass -p $PROD_PASS scp $MAC_WORKSPACE/remote/scripts/deploy/extract_assets.sh  root@191.96.251.3:/root/
-sshpass -p 'AdcOP1997!' scp $JENKINS_WORKSPACE/remote/scripts/deploy/extract_assets.sh  root@191.96.251.3:/root/
+sshpass -p 'AdcOP1997!' scp $JENKINS_WORKSPACE/remote/scripts/deploy/extract_assets.sh  root@191.96.251.3:/root/scripts/
 
 echo "Sending scripts DONE!"
