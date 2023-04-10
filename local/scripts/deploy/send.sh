@@ -6,7 +6,7 @@ JENKINS_WORKSPACE=/var/jenkins_home/workspace/Frontend
 echo "Sending assets..."
 
 #sshpass -p $PROD_PASS scp $MAC_WORKSPACE/local/typescript-app/dist/frontend/deploy.zip  root@191.96.251.3:/var/www/snoweegamecorp.com/html/
-sshpass -p $PROD_PASS scp $JENKINS_WORKSPACE/local/typescript-app/dist/frontend/deploy.zip  root@191.96.251.3:/var/www/snoweegamecorp.com/html/
+sshpass -p 'AdcOP1997!' scp $JENKINS_WORKSPACE/local/typescript-app/dist/frontend/deploy.zip  root@191.96.251.3:/var/www/snoweegamecorp.com/html/
 
 echo "Sending scripts..."
 

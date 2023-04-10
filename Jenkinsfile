@@ -12,7 +12,6 @@ pipeline{
         stage('Deploy') {
             steps {
                 sh '''
-                    sshpass -p $PROD_PASS scp /var/jenkins_home/workspace/Frontend/local/typescript-app/dist/frontend/deploy.zip  root@191.96.251.3:/var/www/snoweegamecorp.com/html/
                     ./local/scripts/deploy/send.sh
                     ./remote/scripts/deploy/extract.sh
                 '''
