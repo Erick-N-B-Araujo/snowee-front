@@ -7,7 +7,6 @@
 /bazel-out
 
 local/typescript-app/dist
-local/typescript-app/node_modules
 local/typescript-app/.vscode
 # Node
 /node_modules
