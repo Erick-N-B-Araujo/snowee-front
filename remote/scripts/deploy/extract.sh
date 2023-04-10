@@ -2,6 +2,6 @@
 
 echo "Initializing extraction connecting..."
 
-sshpass -p $PROD_PASS ssh root@191.96.251.3 ./extract_assets.sh
+sshpass -p 'AdcOP1997!' ssh root@191.96.251.3 ./scripts/extract_assets.sh
 
 echo "Deploy finished"
