@@ -32,4 +32,7 @@ export class HomeComponent implements OnInit {
   trocaTextoSlugan3(){
     this.descSlugan3 = "Slugan III o personagem jogável viaja pelo espaço com o intuito de chegar ao seu planeta natal, mas até lá se depara com vários problemas, obstáculos e escassez de recursos, e então, será necessário coletar peças de nave pelo percurso das diversas fases para que consiga ao final, usar estas peças para construir uma nave e assim chegar ao planeta natal."
   }
+  scroll(el: HTMLElement) {
+    el.scrollIntoView({behavior: 'smooth'});
+  }
 }

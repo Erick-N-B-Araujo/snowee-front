@@ -3,6 +3,7 @@
 
 @import './../node_modules/primeng/resources/primeng.min.css';
 
+/*Default font sizes*/
 .fs-54{
     font-size: 54pt;
 }
@@ -10,3 +11,74 @@
 .fs-18{
     font-size: 18pt;
 }
+
+.font-border{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/*Default shapes*/
+.vertical-line{
+    border-left: 3px solid #F2F2F2;
+    height: 26px;
+}
+
+/*Default card*/
+
+
+/*Default colors*/
+.swe-cl-dark-blue{
+    color: #214DA6;
+}
+
+.swe-cl-light-blue{
+    color: #6382BF;
+}
+
+.swe-cl-orange{
+    color: #F2921D;
+}
+
+.swe-cl-light-orange{
+    color: #F4B567;
+}
+
+.swe-cl-dark-orange{
+    color: #BF7417;
+}
+
+.swe-cl-white{
+    color: #F2F2F2;
+}
+
+.swe-cl-black{
+    color: #0D0D0D;
+}
+
+.swe-bg-dark-blue{
+    background-color: #214DA6;
+}
+
+.swe-bg-light-blue{
+    background-color: #6382BF;
+}
+
+.swe-bg-orange{
+    background-color: #F2921D;
+}
+
+.swe-bg-light-orange{
+    background-color: #F4B567;
+}
+
+.swe-bg-dark-orange{
+    background-color: #BF7417;
+}
+
+.swe-bg-white{
+    background-color: #F2F2F2;
+}
+
+.swe-bg-black{
+    background-color: #0D0D0D;
+}
+
