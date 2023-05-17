@@ -54,9 +54,9 @@ export class ForumComponent implements OnInit {
     this.setUser()
     this.firstLoadAllArticles()
     this.getAllThemes()
-    if(environment.token != ''){
+    /*if(environment.token != ''){
       this.getAllUserArticles()
-    }
+    }*/
   }
 
   scroll(el: HTMLElement) {
@@ -86,7 +86,7 @@ export class ForumComponent implements OnInit {
       })
   }
 
-  publish(){
+  publish(){/*
     this.article.themes = this.listArticleThemes
     this.article.user = this.user
     this.articleService
@@ -100,7 +100,7 @@ export class ForumComponent implements OnInit {
       this.getAllThemes()
       this.getAllUserArticles()
     })
-  }
+  */}
 
   addTheme(){
     if(this.listArticleThemes.some(e => e.name === this.theme.name)){
@@ -118,13 +118,13 @@ export class ForumComponent implements OnInit {
     })
   }
 
-  getAllUserArticles(){
+  /*getAllUserArticles(){
     this.auth
     .getUserLogged(this.user.username)
     .subscribe((resp: UserLogin) =>{
       this.listUserArticles = resp.articles
     })
-  }
+  }*/
 
   getAllThemeArticle(){
 

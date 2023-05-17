@@ -24,6 +24,7 @@ export class SigninComponent implements OnInit {
   //Manipulador de formularios para validar campos
   userForm: FormGroup = new FormGroup({
     email : new FormControl('user', [Validators.required]),
+    profileImgUrl : new FormControl('profileImgUrl'),
     password : new FormControl('pass', [Validators.required, Validators.minLength(4), Validators.maxLength(8)]),
     firstName: new FormControl('firstname', [Validators.required]),
     lastName: new FormControl('lastname', [Validators.required]),

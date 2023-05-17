@@ -37,84 +37,38 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    const userToSave: UserLogin = this.userLogin
-    this.authService
-      .getInfoFromUserUsername(this.userLogin.username)
-        .subscribe({
-          next: (userSigned) => {
-            if (userSigned == null){
-              console.log("User not found!")
-              this.router.navigate(['/auth/signin'])
-              this.alerts.showAlertDanger("User not found! Sign-in first")
-            } else {
-              this.authService.getUserLogged(userToSave.username)
-                .subscribe({
-                  next: (resp) => {
-                    if (resp != null){
-                      console.log("User found, has logged:")
-                      environment.id = resp.id
-                      environment.firstName = resp.firstname
-                      environment.lastName = resp.lastname
-                      environment.username = resp.username
-                      this.authService.
-                        tokenOauth2(this.userLogin.username, this.userLogin.password)
-                          .subscribe({
-                            next: (resp) => {
-                              let strJson = JSON.stringify(resp)
-                              let json = JSON.parse(strJson)
-                              this.token = json.access_token
-                              this.userLogin.token = this.token
-                              environment.token = this.token
-                              userToSave.token = this.token
-                              this.authService
-                                .updateUserLogged(environment.id, userToSave)
-                                  .subscribe({
-                                    next: (resp) => {
-                                      environment.isLogged = true
-                                      this.router.navigate(['/home'])
-                                      this.alerts.showAlertSuccess("User Logged-in!")
-                                      }
-                                })
-                            }
-                          })
-                    } else {
-                      console.log("User never logged")
-                      this.authService.
-                        tokenOauth2(this.userLogin.username, this.userLogin.password)
-                          .subscribe({
-                            next: (resp) => {
-                              let strJson = JSON.stringify(resp)
-                              let json = JSON.parse(strJson)
-                              this.token = json.access_token
-                              this.userLogin.token = this.token
-                              this.authService.getInfoFromUserUsername(this.userLogin.username)
-                                .subscribe({
-                                  next: (resp) => {
-                                    environment.token = this.token
-                                    environment.firstName = resp.firstName
-                                    environment.lastName = resp.lastName
-                                    environment.username = resp.email
-                                    userToSave.firstname = resp.firstName
-                                    userToSave.token = this.token
-                                    this.authService
-                                      .salvarLogin(userToSave)
-                                        .subscribe({
-                                          next: (resp) => {
-                                            environment.isLogged = true
-                                            environment.id = resp.id
-                                            this.router.navigate(['/home'])
-                                            this.alerts.showAlertSuccess("User Logged-in!")
-                                          }
-                                        })
-                                  }
-                                })
-                            }
-                          })
-                    }
-                  }
-                })
-            }
-          }
-        })
+
+    const userToLogin: UserLogin = this.userLogin
+    
+    this.authService.
+        tokenOauth2(userToLogin.username,userToLogin.password)
+            .subscribe( (resp) => {
+              let strJson = JSON.stringify(resp)
+              let json = JSON.parse(strJson)
+              
+              //Setting user to login with token
+              environment.token = json.access_token
+              this.token = json.access_token
+              userToLogin.token = json.access_token
+
+              this.authService
+                  .getInfoFromUser(userToLogin)
+                    .subscribe( userLogged => {
+                      if (userLogged == null){
+                        console.log("User not found!")
+                        this.router.navigate(['/auth/signin'])
+                        this.alerts.showAlertDanger("User not found! Sign-in first")
+                      } else {
+                        environment.id = userLogged.id
+                        environment.firstName = userLogged.firstname
+                        environment.lastName = userLogged.lastname
+                        environment.username = userLogged.username
+                        environment.profileImg = userLogged.profileImg
+                        environment.isLogged = true
+                        this.router.navigate(['/home'])
+                        this.alerts.showAlertSuccess("User Logged-in!")
+                      }
+                    })
+          })
   }
 }

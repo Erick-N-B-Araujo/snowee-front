@@ -8,6 +8,8 @@ export class UserLogin{
     username: string;
     password: string;
     token: string;
+    loggedAt: string;
+    profileImg: string;
     permissions: Permission[];
     articles: Article[];
 }
