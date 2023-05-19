@@ -1,0 +1,71 @@
+$dark-pink: #F27272;
+$light-pink: #DB6F5C;
+$dark-orange: #F2A413;
+$light-blue: #41D9D9;
+$blue: #41CAD9;
+$dark-blue: #1E2D59;
+$white: #F2F2F2;
+$black: #0D0D0D;
+$light-gray: #DFE3CD;
+$dark-gray: #CCD0B8;
+
+.bg-dark-pink {
+    background-color: $dark-pink;
+}
+.bg-dark-orange {
+    background-color: $dark-orange;
+}
+.bg-light-blue {
+    background-color: $light-blue;
+}
+.bg-blue {
+    background-color: $blue;
+}
+.bg-dark-blue {
+    background-color: $dark-blue;
+}
+.bg-white {
+    background-color: $white;
+}
+.bg-black {
+    background-color: $black;
+}
+.bg-light-gray {
+    background-color: $light-gray;
+}
+.bg-dark-gray {
+    background-color: $dark-gray;
+}
+.cl-dark-pink {
+    color: $dark-pink;
+}
+.cl-dark-orange {
+    color: $dark-orange;
+}
+.cl-light-blue {
+    color: $light-blue;
+}
+.cl-blue {
+    color: $blue;
+}
+.cl-dark-blue {
+    color: $dark-blue;
+}
+.cl-white {
+    color: $white;
+}
+.cl-black {
+    color: $black;
+}
+.cl-light-gray {
+    color: $light-gray;
+}
+.cl-dark-gray {
+    color: $dark-gray;
+}
+.li-white {
+    color: $white;
+    a:hover {
+        color: $dark-blue;
+      }
+}

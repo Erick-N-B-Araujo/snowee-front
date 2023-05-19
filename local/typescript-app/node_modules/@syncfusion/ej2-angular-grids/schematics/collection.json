@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "ng-add": {
+      "description": "Adds Essential JS 2 specific Angular package to an application",
+      "factory": "./ng-add",
+      "schema": "./ng-add/schema.json"
+    },
+    "grid-default": {
+      "description": "Create an Angular component with EJ2 grid",
+      "factory": "./generators/grid-default",
+      "schema": "./generators/grid-default/schema.json"
+    },
+    "grid-feature": {
+      "description": "Create an Angular component with EJ2 grid with paging, filtering, grouping, sorting feature",
+      "factory": "./generators/grid-feature",
+      "schema": "./generators/grid-feature/schema.json"
+    }
+  }
+}

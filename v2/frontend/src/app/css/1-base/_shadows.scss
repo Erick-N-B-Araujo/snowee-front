@@ -1,0 +1,22 @@
+@use 'colors';
+
+.drop-shadow {
+    filter: drop-shadow(0.3rem 0.3rem #1E2D59);
+}
+
+.drop-shadow-side {
+    filter: drop-shadow(0.3rem 0.0rem #1E2D59);
+}
+
+.drop-shadow-font {
+    filter: drop-shadow(0.15rem 0.15rem #1E2D59);
+}
+
+.drop-shadow-ico {
+    filter: drop-shadow(0.15rem 0.15rem #1E2D59);
+}
+
+.border-pic-rounded {
+    border: 2px solid white;
+    border-radius: 25px;
+}

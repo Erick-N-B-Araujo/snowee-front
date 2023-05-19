@@ -18,6 +18,7 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
+    "@syncfusion/ej2-angular-navigations": "^21.2.5",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.9.1",
     "jquery": "^3.6.4",
@@ -29,7 +30,9 @@
     "primeng": "^14.1.2",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "@syncfusion/ej2-angular-grids": "*",
+    "@syncfusion/ej2-angular-charts": "*"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.11",
