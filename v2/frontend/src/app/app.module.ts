@@ -5,11 +5,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
-import { TopNavComponent } from './top-nav/top-nav.component';
-import { HomeComponent } from './home/home.component';
+import { SideNavComponent } from './components/side-nav/side-nav.component';
+import { TopNavComponent } from './components/top-nav/top-nav.component';
+import { HomeComponent } from './components/home/home.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { FooterComponent } from './footer/footer.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { AlertsComponent } from './components/alerts/alerts.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FooterComponent } from './footer/footer.component';
     SideNavComponent,
     TopNavComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,

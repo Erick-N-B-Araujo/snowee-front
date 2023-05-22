@@ -6,7 +6,7 @@ const routes: Routes = [
   { 
     path: 'home', 
     loadChildren: 
-      () => import('./home/home.module')
+      () => import('./components/home/home.module')
         .then(x => x.HomeModule)
   },
   //Quando o caminho da rota for vazio, redireciona

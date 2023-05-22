@@ -4,6 +4,10 @@
     filter: drop-shadow(0.3rem 0.3rem #1E2D59);
 }
 
+.drop-shadow-inverted {
+    filter: drop-shadow(0.3rem 0.3rem #F2F2F2);
+}
+
 .drop-shadow-side {
     filter: drop-shadow(0.3rem 0.0rem #1E2D59);
 }
