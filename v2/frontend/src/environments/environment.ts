@@ -11,7 +11,8 @@ export const environment = {
   lastName: '',
   username: '',
   profileImg: '',
-  isLogged: false
+  isLogged: false,
+  isAdmin: false
 };
 
 /*

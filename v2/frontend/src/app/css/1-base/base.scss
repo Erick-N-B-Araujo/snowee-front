@@ -11,6 +11,26 @@ h1 {
     color: #1E2D59;
 }
 
+input {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+}
+
+th {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+}
+
+tr {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+}
+
+td {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+}
+
 label {
     font-family: 'Poppins', sans-serif;
     color: #1E2D59;
@@ -19,6 +39,12 @@ label {
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #F2F2F2;
+}
+
+span {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+    font-size: 0.7em;
 }
 
 .fixed {
@@ -81,4 +107,11 @@ span {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+}
+
+.box-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

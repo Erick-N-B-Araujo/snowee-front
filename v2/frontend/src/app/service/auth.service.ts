@@ -34,6 +34,20 @@ export class AuthService {
       .post<Token>(this.apiUrl+"/oauth/token", bodyAuth, options)
   }
 
+  setOptions() {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': 'Basic c25vd2VlYXBpOnNub3dlZWFwaQ=='
+    })
+    let options = { headers: headers};
+    return options;
+  }
+
+  //GET na API sem parametros no endpoint /users
+  adminGetAllUsersLogged() : Observable<UserLogin[]>{
+    return this.http.get<UserLogin[]>(this.apiUrl+"/auth/login", this.setOptions())
+  }
+
   getInfoFromUser(userToLogin: UserLogin){
     return this.http.post<UserLogin>(this.apiUrl+"/auth/login", userToLogin)
   }
@@ -44,5 +58,13 @@ export class AuthService {
       ok = true
     }
     return ok
+  }
+
+  isAdmin(){
+    let ok: boolean = false;
+    if (environment.isAdmin == true && environment.token != '' && environment.isLogged == true){
+      return ok=true;
+    }
+    return ok;
   }
 }
