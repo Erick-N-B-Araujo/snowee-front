@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  public name: string //= "Eriwck" //environment.firstName
+  public name: string="";
   constructor(
     public auth: AuthService,
     private router: Router

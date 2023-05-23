@@ -1,7 +1,7 @@
 import { Article } from "./Article";
 
 export class Theme{
-    id: number;
-    name: string;
-    articles: Article[];
+    id: number=0;
+    name: string="";
+    articles: Article[]=[];
 }

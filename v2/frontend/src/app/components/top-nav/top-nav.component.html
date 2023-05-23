@@ -5,32 +5,59 @@
               <i class="fas fa-align-left cl-dark-blue"></i>
           </div>  
         </button>
-        <button class="btn d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <div class="container box">
-                <img src="https://i.imgur.com/LGGL7VJ.png" class="mr-3 border-pic-rounded" height="29">
-                <i class="fas fa-align-justify"></i>
-            </div>        
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="nav navbar-nav ml-auto li-white">
-                <li class="nav-item active">
-                    <a class="nav-link cl-white f-bold" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cl-white f-bold" href="#">Fórum</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cl-white f-bold" href="#">Portifólio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cl-white f-bold" href="#">Sobre</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link cl-white f-bold" href="#">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
-                    </a>
-                </li>
-            </ul>
+        <div *ngIf='auth.isLogged() == false'>
+            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="container box">
+                    <i class="fa fa-user-circle mr-2 mt-1 mb-1" aria-hidden="true"></i>
+                    <i class="fas fa-align-justify"></i>
+                </div>     
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto li-white">
+                    <li class="nav-item active">
+                        <a class="nav-link cl-white f-bold" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Fórum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Portifólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" routerLink="users/login">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div *ngIf='auth.isLogged()'>
+            {{setUserName()}}
+            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div class="container box-row">
+                    <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
+                    <p class="mt-0 mb-0 mr-2">Olá, {{name}}</p>
+                    <i class="fas fa-align-justify"></i>
+                </div>      
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="nav navbar-nav ml-auto li-white">
+                    <li class="nav-item active">
+                        <a class="nav-link cl-white f-bold" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Fórum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Portifólio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white f-bold" href="#">Sobre</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>

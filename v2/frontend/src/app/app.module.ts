@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { TopNavComponent } from './components/top-nav/top-nav.component';
-import { HomeComponent } from './components/home/home.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
@@ -17,9 +16,8 @@ import { AlertsComponent } from './components/alerts/alerts.component';
     AppComponent,
     SideNavComponent,
     TopNavComponent,
-    HomeComponent,
     FooterComponent,
-    AlertsComponent
+    AlertsComponent,
   ],
   imports: [
     BrowserModule,

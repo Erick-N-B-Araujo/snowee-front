@@ -6,9 +6,9 @@
 /out-tsc
 /bazel-out
 
-local/typescript-app/dist
-local/typescript-app/.vscode
-local/typescript-app/.angular
+/dist
+/.vscode
+/.angular
 # Node
 /node_modules
 npm-debug.log

@@ -8,7 +8,12 @@
 
 h1 {
     font-family: 'Poppins', sans-serif;
-    background-color: aqua;
+    color: #1E2D59;
+}
+
+label {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
 }
 
 body {
@@ -24,9 +29,18 @@ body {
 p {
     font-family: 'Poppins', sans-serif;
     font-size: 1.1em;
+    font-weight: 200;
+    line-height: 1.2em;
+    color: #1E2D59;
+    a {
+        color: #F2A413;
+    }
+}
+
+.p-btn {
+    font-size: 0.9em;
     font-weight: 300;
     line-height: 1.7em;
-    color: #999;
 }
 
 a,
@@ -54,4 +68,17 @@ span {
     padding: 20px;
     min-height: 100vh;
     transition: all 0.3s;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
 }

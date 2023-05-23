@@ -1,0 +1,14 @@
+<div class="container d-flex justify-content-center">
+    <div class="row d-flex align-items-center">
+        <div class="col-md-12 mb-3 card-rd-15 drop-shadow">
+            <h1 class="text-center mb-3 mt-3">Usuários</h1>
+            <div class="row box-row" *ngFor="let user of users">
+                <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
+                <h4>{{name}}</h4>
+                <h3>{{username}}</h3>
+            </div>
+            <hr class="mt-5 mb-5">
+            
+        </div>
+    </div>
+</div>
