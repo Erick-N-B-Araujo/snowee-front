@@ -60,9 +60,14 @@ export class UsersService {
     return this.http.delete<void>(url)
   }
 
+  //PATCH na API utilizando ID no endpoint /users/{ID}, e observavel da classe modelo
+  updateUser(updatedUser: User) : Observable<User>{
+    const url = `${this.apiUrl}/users/${updatedUser.id}`
+    return this.http.patch<User>(url, updatedUser, this.setOptionsBearer());
+  }
+
   //PATCH na API utilizando ID no endpoint /users/{ID}/admin, e observavel da classe modelo
   elevarPermission(id: number) : Observable<User>{
-    //Logica de elevar esta no backend
     const url = `${this.apiUrl}${id}/admin`
     return this.http.patch<User>(url, {});
   }

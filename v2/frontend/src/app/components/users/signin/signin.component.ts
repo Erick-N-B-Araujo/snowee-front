@@ -40,8 +40,10 @@ export class SigninComponent implements OnInit {
 
   //POST envia e salva o objeto no BD 
   submit(){
-    if (this.user.password != this.confirmPassword){
-      this.alerts.showAlertDanger("Password don't match!")
+    if (this.user.password == ""){
+      this.alerts.showAlertDanger("Senha em branco!")
+    } else if (this.user.password != this.confirmPassword) {
+      this.alerts.showAlertDanger("Senhas não conferem!")
     }
     else{
       const userToSave: User = {...this.userForm.value}

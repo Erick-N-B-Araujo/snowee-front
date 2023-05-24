@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { UserLogin } from 'src/app/model/UserLogin';
 import { environment } from 'src/environments/environment';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertsService } from 'src/app/service/alerts.service';
 
 @Component({
   selector: 'users',
@@ -16,12 +17,16 @@ export class UsersComponent implements OnInit{
   users: User[] = [];
   user: User = new User();
   userToFind: User = new User();
+  userToEdit: User = new User();
   loggins: UserLogin[] = [];
+  hideDefaultUser: boolean = true;
+  
   constructor(
     private userService: UsersService,
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private alerts: AlertsService
     ) { }
 
   ngOnInit(): void {
@@ -40,6 +45,12 @@ export class UsersComponent implements OnInit{
     findUsername: new FormControl('', [Validators.required])
   })
 
+  editUserForm: FormGroup = new FormGroup({
+    editFirstname: new FormControl(),
+    editLastname: new FormControl(),
+    editProfileImgUrl: new FormControl()
+  })
+
   resetPage(){
     this.router.navigate(['./'], {
       relativeTo: this.route
@@ -54,12 +65,46 @@ export class UsersComponent implements OnInit{
     this.user.profileImgUrl = environment.profileImg;
   }
 
+  setFoundedUser(foundedUser: User){
+    this.user.id = foundedUser.id;
+    this.user.firstName = foundedUser.firstName;
+    this.user.lastName = foundedUser.lastName;
+    this.user.email = foundedUser.email;
+    this.user.profileImgUrl = foundedUser.profileImgUrl;
+  }
+
+  setEditUser(username: string){
+    this.userService
+      .adminGetUserByUsername(username)
+      .subscribe(
+        respUser => {
+          this.userToEdit.id = respUser.id;
+          this.userToEdit.firstName = respUser.firstName;
+          this.userToEdit.lastName = respUser.lastName;
+          this.userToEdit.email = respUser.email;
+          this.userToEdit.profileImgUrl = respUser.profileImgUrl;
+        }
+      )
+  }
+
+  updateEditedUser(){
+    this.userService.updateUser(this.userToEdit)
+      .subscribe(
+        respUser => {
+          this.setFoundedUser(respUser)
+          if (respUser.id == environment.id){
+            environment.firstName=respUser.firstName
+            environment.lastName=respUser.lastName
+            environment.profileImg=respUser.profileImgUrl
+          }
+          this.hideDefaultUser=true;
+          this.resetPage()
+          this.alerts.showAlertSuccess("Usuario atualizado!")
+        }
+      )
+  }
+
   findUser(){
-    let findUsername: string = {...this.findUserForm.value}
-    console.log(findUsername)
-    console.log(findUsername[0])
-    console.log(findUsername.valueOf())
-    console.log(this.userToFind.email)
     this.userService
       .adminGetUserByUsername(this.userToFind.email)
       .subscribe(
@@ -70,8 +115,18 @@ export class UsersComponent implements OnInit{
           this.user.lastName = respUser.lastName;
           this.user.email = respUser.email;
           this.user.profileImgUrl = respUser.profileImgUrl;
+          this.hideDefaultUser=false;
         }
       )
+  }
+
+  isDefaultUserHided(){
+    let ok:boolean = false
+    if (this.hideDefaultUser == true){
+      return ok=false
+    } else {
+      return ok=true
+    }
   }
 
   //GET traz todos os registros

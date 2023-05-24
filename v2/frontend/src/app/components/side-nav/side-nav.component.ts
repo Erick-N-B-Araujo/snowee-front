@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'side-nav',
@@ -6,4 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['../../css/app.component.scss']
 })
 export class SideNavComponent {
+
+  constructor(
+    public auth: AuthService
+  ){}
 }

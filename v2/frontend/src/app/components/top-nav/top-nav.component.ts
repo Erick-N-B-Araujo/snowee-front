@@ -23,7 +23,6 @@ export class TopNavComponent implements OnInit {
 
   setUserName(){
     if (this.cont==0) {
-      console.log("User logged: " + environment.firstName)
       this.name = environment.firstName
       this.profileImg = environment.profileImg
       this.cont = this.cont + 1

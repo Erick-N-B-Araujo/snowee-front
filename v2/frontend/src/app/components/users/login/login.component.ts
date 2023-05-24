@@ -57,16 +57,19 @@ export class LoginComponent implements OnInit {
               environment.token = json.access_token
               this.token = json.access_token
               userToLogin.token = json.access_token
+              if (json.scope == "read write"){
+                environment.isAdmin=true
+              }
+              environment.id = json.id
 
               this.authService
                   .getInfoFromUser(userToLogin)
                     .subscribe( userLogged => {
                       if (userLogged == null){
                         console.log("User not found!")
-                        this.router.navigate(['/auth/signin'])
+                        this.router.navigate(['/users/signin'])
                         this.alerts.showAlertDanger("User not found! Sign-in first")
                       } else {
-                        environment.id = userLogged.id
                         environment.firstName = userLogged.firstname
                         environment.lastName = userLogged.lastname
                         environment.username = userLogged.username
@@ -74,7 +77,6 @@ export class LoginComponent implements OnInit {
                         environment.isLogged = true
                         this.router.navigate(['/home'])
                         this.alerts.showAlertSuccess("User Logged-in!")
-                        this.resetPage()
                       }
                     })
           })

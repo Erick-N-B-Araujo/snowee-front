@@ -1,30 +1,46 @@
 @use 'colors';
 
 .drop-shadow {
-    filter: drop-shadow(0.3rem 0.3rem #1E2D59);
+    filter: drop-shadow(0.3rem 0.3rem colors.$dark-blue);
 }
 
 .drop-shadow-inverted {
-    filter: drop-shadow(0.3rem 0.3rem #F2F2F2);
+    filter: drop-shadow(0.3rem 0.3rem colors.$white);
 }
 
 .drop-shadow-side {
-    filter: drop-shadow(0.3rem 0.0rem #1E2D59);
+    filter: drop-shadow(0.3rem 0.0rem colors.$dark-blue);
 }
 
 .drop-shadow-font {
-    filter: drop-shadow(0.15rem 0.15rem #1E2D59);
+    filter: drop-shadow(0.15rem 0.15rem colors.$dark-blue);
+}
+
+.drop-shadow-sidenav {
+    filter: drop-shadow(0.08rem 0.08rem colors.$dark-blue);
+}
+
+.drop-shadow-sidenav-header {
+    filter: drop-shadow(0.3rem 0.3rem colors.$dark-blue);
 }
 
 .drop-shadow-font-next {
-    filter: drop-shadow(0.04rem 0.04rem #1E2D59);
+    filter: drop-shadow(0.04rem 0.04rem colors.$dark-blue);
 }
 
 .drop-shadow-ico {
-    filter: drop-shadow(0.15rem 0.15rem #1E2D59);
+    filter: drop-shadow(0.15rem 0.15rem colors.$dark-blue);
 }
 
 .border-pic-rounded {
-    border: 2px solid white;
+    border: 2px solid colors.$white;
     border-radius: 25px;
+}
+
+.border-font {
+    text-shadow:
+    -1px -1px 0 colors.$dark-blue,
+    1px -1px 0 colors.$dark-blue,
+    -1px 1px 0 colors.$dark-blue,
+    1px 1px 0 colors.$dark-blue;
 }

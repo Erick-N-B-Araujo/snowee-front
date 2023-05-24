@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand-lg navbar-secondary drop-shadow">
     <div class="container-fluid">
-        <button type="button" id="sidebarCollapse" class="btn bg-white drop-shadow">
+        <button type="button" id="sidebarCollapse" class="btn bg-white drop-shadow otl-dark-blue">
           <div class="container box mt-1 mb-1">
               <i class="fas fa-align-left cl-dark-blue"></i>
           </div>  
         </button>
         <div *ngIf='auth.isLogged() == false'>
-            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white otl-dark-blue drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="container box">
                     <i class="fa fa-user-circle mr-2 mt-1 mb-1" aria-hidden="true"></i>
                     <i class="fas fa-align-justify"></i>
@@ -37,9 +37,8 @@
             {{setUserName()}}
             <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="container box-row">
-                    <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
                     <p class="mt-0 mb-0 mr-2">Olá, {{name}}</p>
-                    <i class="fas fa-align-justify"></i>
+                    <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
                 </div>      
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -57,13 +56,7 @@
                         <a class="nav-link cl-white f-bold" href="#">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold">
-                            <div class="container box-row">
-                                <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
-                                <p class="mt-0 mb-0 cl-white">Olá, {{name}}</p>
-                                <i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
-                            </div>  
-                        </a>
+                        <a class="nav-link cl-white f-bold">Editar Perfil<img src="{{profileImg}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
                     </li>
                 </ul>
             </div>

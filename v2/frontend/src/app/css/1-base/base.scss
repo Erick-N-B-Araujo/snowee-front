@@ -5,8 +5,15 @@
 @use 'icons';
 @use 'images';
 @use 'filters';
+@use 'outliners';
+@use 'zindex';
 
 h1 {
+    font-family: 'Poppins', sans-serif;
+    color: #1E2D59;
+}
+
+a {
     font-family: 'Poppins', sans-serif;
     color: #1E2D59;
 }
@@ -114,4 +121,17 @@ span {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+}
+
+.box-column-l {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.box-row-l {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
 }

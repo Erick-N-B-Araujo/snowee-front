@@ -1,3 +1,5 @@
+@use '../1-base/colors';
+
 .wrapper {
     display: flex;
     align-items: stretch;
@@ -7,8 +9,8 @@
     min-width: 250px;
     max-width: 250px;
     height: 100%;
-    background: #F27272;
-    color: #F2F2F2;
+    background: colors.$dark-pink;
+    color: colors.$white;
     transition: all 0.3s;
 }
 
@@ -59,7 +61,7 @@
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #1E2D59;
+    background: colors.$dark-pink;
 }
 
 #sidebar .sidebar-header strong {
@@ -69,7 +71,7 @@
 
 #sidebar ul.components {
     padding: 20px 0;
-    border-bottom: 1px solid #1E2D59;
+    border-bottom: 1px solid colors.$dark-blue;
 }
 
 #sidebar ul li a {
@@ -79,7 +81,7 @@
 }
 
 #sidebar ul li a:hover {
-    color: #1E2D59;
+    color: colors.$dark-blue;
     background: #fff;
 }
 
@@ -89,8 +91,8 @@
 
 #sidebar ul li.active>a,
 a[aria-expanded="true"] {
-    color: #1E2D59;
-    background: #F2F2F2;
+    color: colors.$dark-blue;
+    background: colors.$white;
 }
 
 a[data-toggle="collapse"] {
@@ -108,7 +110,7 @@ a[data-toggle="collapse"] {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #1E2D59;
+    background: colors.$dark-blue;
 }
 
 ul.CTAs {

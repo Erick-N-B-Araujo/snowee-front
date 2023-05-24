@@ -12,7 +12,9 @@ export const environment = {
   username: '',
   profileImg: '',
   isLogged: false,
-  isAdmin: false
+  isAdmin: false,
+  isBlocked: false,
+  isDeleted: false
 };
 
 /*

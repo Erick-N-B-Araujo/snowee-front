@@ -64,7 +64,8 @@ export class AuthService {
     let ok: boolean = false;
     if (environment.isAdmin == true && environment.token != '' && environment.isLogged == true){
       return ok=true;
+    } else{
+      return ok;
     }
-    return ok;
   }
 }
