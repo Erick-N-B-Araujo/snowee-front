@@ -17,7 +17,7 @@ import { AlertsComponent } from './components/alerts/alerts.component';
     SideNavComponent,
     TopNavComponent,
     FooterComponent,
-    AlertsComponent,
+    AlertsComponent
   ],
   imports: [
     BrowserModule,

@@ -11,7 +11,7 @@
     height: 100%;
     background: colors.$dark-pink;
     color: colors.$white;
-    transition: all 0.3s;
+    transition: all 0.4s;
 }
 
 #sidebar.active {
@@ -76,7 +76,7 @@
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 0.85em;
     display: block;
 }
 
@@ -181,6 +181,9 @@ a.article:hover {
         margin-left: 0;
     }
     #sidebarCollapse span {
+        display: none;
+    }
+    #sidebarCollapse1 {
         display: none;
     }
 }

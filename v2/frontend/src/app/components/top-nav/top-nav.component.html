@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-secondary drop-shadow">
     <div class="container-fluid">
-        <button type="button" id="sidebarCollapse" class="btn bg-white drop-shadow otl-dark-blue">
+        <button  id="sidebarCollapse" class="btn bg-white drop-shadow otl-dark-blue">
           <div class="container box mt-1 mb-1">
               <i class="fas fa-align-left cl-dark-blue"></i>
           </div>  
@@ -15,7 +15,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto li-white">
                     <li class="nav-item active">
-                        <a class="nav-link cl-white f-bold" href="#">Home</a>
+                        <a class="nav-link cl-white f-bold" routerLink="home">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cl-white f-bold" href="#">Fórum</a>
@@ -34,11 +34,10 @@
             </div>
         </div>
         <div *ngIf='auth.isLogged()'>
-            {{setUserName()}}
             <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="container box-row">
-                    <p class="mt-0 mb-0 mr-2">Olá, {{name}}</p>
-                    <img src="{{profileImg}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
+                    <p class="mt-0 mb-0 mr-2">Olá, {{user.firstName}}</p>
+                    <img src="{{user.profileImgUrl}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
                 </div>      
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -56,10 +55,61 @@
                         <a class="nav-link cl-white f-bold" href="#">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold">Editar Perfil<img src="{{profileImg}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
+                        <a class="nav-link cl-white f-bold" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </nav>
+
+<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark-pink">
+          <h1 class="modal-title fs-5 cl-white" id="novoPostLabel">Editar Usuário</h1>
+          <button id="close-modal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="cl-dark-blue box-column">
+                <img src="{{user.profileImgUrl}}" class="profile-pic-list" alt="">
+                <p class="m-0">{{user.firstName}} {{user.lastName}}</p>
+                <p class="m-0 text-secondary">Email: {{user.email}}</p>
+                <div class="container">
+                    <form [formGroup]="editUserForm" (ngSubmit)="updateEditedUser()">
+                        <label for="email" class="m-0">Nome:</label>
+                        <input [(ngModel)]="userToEdit.firstName"  type="text" class="form-control" formControlName="editFirstname"/>
+                        <label for="email" class="m-0">Sobrenome:</label>
+                        <input [(ngModel)]="userToEdit.lastName"  type="text" class="form-control" formControlName="editLastname"/>
+                        <label for="email" class="m-0">URL da imagem:</label>
+                        <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
+                        <div class="d-grid drop-shadow mt-2 mb-3">
+                            <button class="btn btn-primary bg-light-blue cl-white d-grid" type="submit">Alterar</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container">
+            <div class="row d-flex drop-shadow">
+                <div class="col-md-6">
+                    <div class="container m-1">
+                        <div class="d-grid">
+                            <button class="btn btn-warning bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="container m-1">
+                        <div class="d-grid">
+                            <button class="btn btn-danger bg-dark-pink cl-white d-grid" type="button">Desativar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

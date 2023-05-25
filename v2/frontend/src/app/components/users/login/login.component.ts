@@ -37,12 +37,6 @@ export class LoginComponent implements OnInit {
     window.scroll(0,0)
   }
 
-  resetPage(){
-    this.router.navigate(['./'], {
-      relativeTo: this.route
-    })
-  }
-
   login(){
 
     const userToLogin: UserLogin = this.userLogin
@@ -60,7 +54,8 @@ export class LoginComponent implements OnInit {
               if (json.scope == "read write"){
                 environment.isAdmin=true
               }
-              environment.id = json.id
+              console.log("token id: "+json.userId)
+              environment.id = json.userId
 
               this.authService
                   .getInfoFromUser(userToLogin)
@@ -75,6 +70,7 @@ export class LoginComponent implements OnInit {
                         environment.username = userLogged.username
                         environment.profileImg = userLogged.profileImg
                         environment.isLogged = true
+                        this.authService.sendClickEvent();
                         this.router.navigate(['/home'])
                         this.alerts.showAlertSuccess("User Logged-in!")
                       }

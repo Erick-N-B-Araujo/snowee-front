@@ -2,8 +2,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserLogin } from '../model/UserLogin';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
 import { Token } from '../model/Token';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +12,20 @@ export class AuthService {
 
   //Varia de acordo com o ambiente
   apiUrl: string = environment.apiUrl
+  private loggedUser: string = "Erick"
+  private subject = new Subject<any>();
 
   constructor(
     private http: HttpClient
   ) { }
+
+  sendClickEvent() {
+    this.subject.next(this.loggedUser);
+  }
+  
+  getClickEvent(): Observable<any>{ 
+    return this.subject.asObservable();
+  }
 
   tokenOauth2(username: string, password: string): Observable<Token>{
     let bodyAuth = new URLSearchParams();
