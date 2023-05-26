@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { User } from '../../model/User'
 import { UsersService } from '../../service/users.service';
@@ -26,7 +26,8 @@ export class UsersComponent implements OnInit{
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private alerts: AlertsService
+    private alerts: AlertsService,
+    private renderer: Renderer2
     ) { }
 
   ngOnInit(): void {
@@ -88,6 +89,7 @@ export class UsersComponent implements OnInit{
   }
 
   updateEditedUser(){
+    let editUserModal = this.renderer.selectRootElement('#close-modals');
     this.userService.updateUser(this.userToEdit)
       .subscribe(
         respUser => {
@@ -98,7 +100,8 @@ export class UsersComponent implements OnInit{
             environment.profileImg=respUser.profileImgUrl
           }
           this.hideDefaultUser=true;
-          this.resetPage()
+          //this.resetPage()
+          editUserModal.click()
           this.alerts.showAlertSuccess("Usuario atualizado!")
         }
       )

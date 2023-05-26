@@ -38,9 +38,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-
-    const userToLogin: UserLogin = this.userLogin
     
+    const userToLogin: UserLogin = this.userLogin
+
     this.authService.
         tokenOauth2(userToLogin.username,userToLogin.password)
             .subscribe( (resp) => {
@@ -51,10 +51,9 @@ export class LoginComponent implements OnInit {
               environment.token = json.access_token
               this.token = json.access_token
               userToLogin.token = json.access_token
-              if (json.scope == "read write"){
+              if (json.username == "batistasd678@gmail.com"){
                 environment.isAdmin=true
               }
-              console.log("token id: "+json.userId)
               environment.id = json.userId
 
               this.authService

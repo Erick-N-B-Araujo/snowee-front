@@ -12,7 +12,7 @@ export class AuthService {
 
   //Varia de acordo com o ambiente
   apiUrl: string = environment.apiUrl
-  private loggedUser: string = "Erick"
+  private loggedUser: string = ""
   private subject = new Subject<any>();
 
   constructor(

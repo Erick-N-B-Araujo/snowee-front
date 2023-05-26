@@ -38,7 +38,7 @@ export class SigninComponent implements OnInit {
     this.confirmPassword = event.target.value
   }
 
-  //POST envia e salva o objeto no BD 
+  //POST envia e salva o objeto no BD
   submit(){
     if (this.user.password == ""){
       this.alerts.showAlertDanger("Senha em branco!")

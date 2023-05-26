@@ -15,47 +15,50 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto li-white">
                     <li class="nav-item active">
-                        <a class="nav-link cl-white f-bold" routerLink="home">Home</a>
+                        <a class="nav-link cl-white" routerLink="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Fórum</a>
+                        <a class="nav-link cl-white" href="#">Fórum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Portifólio</a>
+                        <a class="nav-link cl-white" href="#">Portfólio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Sobre</a>
+                        <a class="nav-link cl-white" href="#">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" routerLink="users/login">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
+                        <a class="nav-link cl-white" routerLink="users/login">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
         <div *ngIf='auth.isLogged()'>
-            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="btn btn-primary otl-dark-blue d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="container box-row">
                     <p class="mt-0 mb-0 mr-2">Olá, {{user.firstName}}</p>
-                    <img src="{{user.profileImgUrl}}" class="mr-1 border-pic-rounded btn-nav-image"alt="">
+                    <img src="{{user.profileImgUrl}}" class="mr-1 rd-25 otl-dark-blue btn-nav-image"alt="">
                 </div>      
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto li-white">
                     <li class="nav-item active">
-                        <a class="nav-link cl-white f-bold" href="#">Home</a>
+                        <a class="nav-link cl-white" routerLink="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Fórum</a>
+                        <a class="nav-link cl-white" href="#">Fórum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Portifólio</a>
+                        <a class="nav-link cl-white" href="#">Portfólio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" href="#">Sobre</a>
+                        <a class="nav-link cl-white" href="#">Sobre</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white f-bold" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
+                        <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cl-white" (click)="refresh()">Sair</a>
                     </li>
                 </ul>
             </div>
@@ -63,12 +66,12 @@
     </div>
 </nav>
 
-<div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
+<div class="modal fade" #editUser id="editUser" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
       <div class="modal-content">
         <div class="modal-header bg-dark-pink">
           <h1 class="modal-title fs-5 cl-white" id="novoPostLabel">Editar Usuário</h1>
-          <button id="close-modal" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button id="close-modal" #closeModal type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="cl-dark-blue box-column">
