@@ -32,9 +32,14 @@ export class UsersComponent implements OnInit{
 
   ngOnInit(): void {
     window.scroll(0,0)
-    this.setDefaultUser()
-    this.listAllUsersLogged()
-    this.listAllUsers()
+    if (this.authService.isAdmin()){
+      this.setDefaultUser()
+      this.listAllUsersLogged()
+      this.listAllUsers()
+    } else {
+      this.alerts.showAlertDanger("Você não ter acesso a este recurso!")
+      this.router.navigate(["/home"])
+    }
   }
   //Manipulador de formularios para validar campos
   userForm: FormGroup = new FormGroup({

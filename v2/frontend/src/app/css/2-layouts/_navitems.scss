@@ -1,9 +1,14 @@
+@use '../1-base/colors';
+
 li {
     button{
         background-color: #F2A413;   
     }
     button.active {
         background-color: #41D9D9;
+        outline-style: solid;
+        outline-color: colors.$dark-blue;
+        outline-width: 0.11em;
     }
 }
 

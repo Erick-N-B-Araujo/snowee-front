@@ -5,14 +5,14 @@
             <div class="container mt-2 mb-4">
                 <ul class="nav nav-pills nav-justified drop-shadow mb-2" id="myTab" role="tablist">
                     <li class="nav-item  m-1" role="presentation">
-                        <button class="nav-link fw-bold bg-dark-orange cl-white" id="findUser-tab" data-bs-toggle="tab" data-bs-target="#findUser-tab-pane" type="button" role="tab" aria-controls="findUser-tab-pane" aria-selected="false"><i class="fa fa-search" aria-hidden="true"></i>
+                        <button class="nav-link fw-bold bg-dark-orange cl-white otl-dark-blue" id="findUser-tab" data-bs-toggle="tab" data-bs-target="#findUser-tab-pane" type="button" role="tab" aria-controls="findUser-tab-pane" aria-selected="false"><i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </li>
                     <li class="nav-item  m-1" role="presentation">
-                      <button class="nav-link active fw-bold bg-dark-orange cl-white" id="usersLogged-tab" data-bs-toggle="tab" data-bs-target="#usersLogged-tab-pane" type="button" role="tab" aria-controls="usersLogged-tab-pane" aria-selected="true">Logados</button>
+                      <button class="nav-link active fw-bold bg-dark-orange cl-white otl-dark-blue" id="usersLogged-tab" data-bs-toggle="tab" data-bs-target="#usersLogged-tab-pane" type="button" role="tab" aria-controls="usersLogged-tab-pane" aria-selected="true">Logados</button>
                     </li>
                     <li class="nav-item  m-1" role="presentation">
-                      <button class="nav-link fw-bold bg-dark-orange cl-white" id="allUsers-tab" data-bs-toggle="tab" data-bs-target="#allUsers-tab-pane" type="button" role="tab" aria-controls="allUsers-tab-pane" aria-selected="false">Todos</button>
+                      <button class="nav-link fw-bold bg-dark-orange cl-white otl-dark-blue" id="allUsers-tab" data-bs-toggle="tab" data-bs-target="#allUsers-tab-pane" type="button" role="tab" aria-controls="allUsers-tab-pane" aria-selected="false">Todos</button>
                     </li>
                 </ul>
                 <div class="tab-content mt-3" id="findUser">
@@ -21,7 +21,7 @@
                             <label for="email" class="mt-3">Email:</label>
                             <input [(ngModel)]="userToFind.email"  type="text" class="form-control" formControlName="findUsername"/>
                             <div class="d-grid">
-                                <button type="submit" class="btn btn-warning bg-dark-orange drop-shadow cl-white mt-3 f-bold">Procurar</button>
+                                <button type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white mt-3 f-bold otl-dark-blue">Procurar</button>
                             </div>
                         </form>
                         <table class="table mt-4" *ngIf="isDefaultUserHided()">
@@ -52,7 +52,7 @@
                                     </td>
                                     <td>
                                         <div class="mt-3">
-                                            <button  data-bs-toggle="modal" data-bs-target="#editUsers" data-bs-whatever="@post" class="btn bg-dark-pink cl-white drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
+                                            <button  data-bs-toggle="modal" data-bs-target="#editUsers" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink otl-dark-blue cl-white drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -122,7 +122,7 @@
                                     </td>
                                     <td>
                                         <div class="mt-3">
-                                            <button  data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post" class="btn bg-dark-pink cl-white drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
+                                            <button  data-bs-toggle="modal" data-bs-target="#editUsers2" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink cl-white otl-dark-blue drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
                                         </div>
                                     </td>
                                 </tr>
@@ -156,7 +156,7 @@
                         <label for="email" class="m-0">URL da imagem:</label>
                         <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
                         <div class="d-grid drop-shadow mt-2 mb-3">
-                            <button class="btn btn-primary bg-light-blue cl-white d-grid" type="submit">Alterar</button>
+                            <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit">Alterar</button>
                         </div>
                     </form>
                 </div>
@@ -167,14 +167,65 @@
                 <div class="col-md-6">
                     <div class="container m-1">
                         <div class="d-grid">
-                            <button class="btn btn-warning bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
+                            <button class="btn btn-primary otl-dark-blue bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="container m-1">
                         <div class="d-grid">
-                            <button class="btn btn-danger bg-dark-pink cl-white d-grid" type="button">Desativar</button>
+                            <button class="btn btn-primary otl-dark-blue bg-dark-pink cl-white d-grid" type="button">Desativar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editUsers2" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header bg-dark-pink">
+          <h1 class="modal-title fs-5 cl-white" id="novoPostLabel">Editar Usuário</h1>
+          <button id="close-modals" #closeModals type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="cl-dark-blue box-column">
+                <img src="{{userToEdit.profileImgUrl}}" class="profile-pic-list" alt="">
+                <p class="m-0">{{userToEdit.firstName}} {{userToEdit.lastName}}</p>
+                <p class="m-0 text-secondary">Email: {{userToEdit.email}}</p>
+                <div class="container">
+                    <form [formGroup]="editUserForm" (ngSubmit)="updateEditedUser()">
+                        <label for="email" class="m-0">Nome:</label>
+                        <input [(ngModel)]="userToEdit.firstName"  type="text" class="form-control" formControlName="editFirstname"/>
+                        <label for="email" class="m-0">Sobrenome:</label>
+                        <input [(ngModel)]="userToEdit.lastName"  type="text" class="form-control" formControlName="editLastname"/>
+                        <label for="email" class="m-0">URL da imagem:</label>
+                        <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
+                        <div class="d-grid drop-shadow mt-2 mb-3">
+                            <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit">Alterar</button>
+                        </div>
+                    </form>
+                </div>
+        </div>
+        <div class="modal-footer">
+          <div class="container">
+            <div class="row d-flex drop-shadow">
+                <div class="col-md-6">
+                    <div class="container m-1">
+                        <div class="d-grid">
+                            <button class="btn btn-primary otl-dark-blue bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="container m-1">
+                        <div class="d-grid">
+                            <button class="btn btn-primary otl-dark-blue bg-dark-pink cl-white d-grid" type="button">Desativar</button>
                         </div>
                     </div>
                 </div>

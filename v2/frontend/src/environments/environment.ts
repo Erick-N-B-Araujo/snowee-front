@@ -14,7 +14,12 @@ export const environment = {
   isLogged: false,
   isAdmin: false,
   isBlocked: false,
-  isDeleted: false
+  isDeleted: false,
+  isHomeActive: false,
+  isForumActive: false,
+  isPortfolioActive: false,
+  isSobreActive: false,
+  isLoginActive: false
 };
 
 /*

@@ -1,20 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TopNavComponent } from './components/top-nav/top-nav.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { HomeComponent } from './components/home/home.component';
 
 //Declaração de rotas
 const routes: Routes = [
   { 
     path: 'home', 
-    loadChildren: 
-      () => import('./components/home/home.module')
-        .then(x => x.HomeModule)
+    component: HomeComponent
   },
   { 
     path: 'users', 
     loadChildren: 
       () => import('./components/users/users.module')
         .then(x => x.UsersModule)
+  },
+  { 
+    path: 'portfolio', 
+    component: PortfolioComponent
   },
   //Quando o caminho da rota for vazio, redireciona
   { 

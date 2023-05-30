@@ -1,6 +1,8 @@
+@use '../1-base/colors';
+
 .navbar {
     padding: 15px 10px;
-    background: #F27272;
+    background: colors.$dark-pink;
     ;
     border: none;
     border-radius: 15px;
@@ -13,3 +15,12 @@
     outline: none !important;
     border: none;
 }
+
+nav {
+    li {
+        a.active{
+            color: colors.$dark-blue;
+        }
+    }
+}
+

@@ -10,6 +10,7 @@ import { AlertsService } from 'src/app/service/alerts.service';
 import { Subscription } from 'rxjs';
 
 import * as $ from 'jquery';
+import { CpControllerService } from 'src/app/service/cp-controller.service';
 
 //declare var $ : any;
 
@@ -20,6 +21,12 @@ import * as $ from 'jquery';
 })
 
 export class TopNavComponent implements OnInit {
+
+  public statusHome: string = "active"
+  public statusForum: string = ""
+  public statusPortfolio: string = ""
+  public statusSobre: string = ""
+  public statusLogin: string = ""
 
   public name: string=environment.firstName;
   public profileImg: string=environment.profileImg;
@@ -33,9 +40,10 @@ export class TopNavComponent implements OnInit {
     editLastname: new FormControl(),
     editProfileImgUrl: new FormControl()
   })
-
+  
   constructor(
     private userService: UsersService,
+    public cpController: CpControllerService,
     private router: Router,
     private route: ActivatedRoute,
     private alerts: AlertsService,
@@ -54,6 +62,14 @@ export class TopNavComponent implements OnInit {
     this.user.lastName = environment.lastName
     this.user.profileImgUrl = environment.profileImg
     this.user.email = environment.username
+  }
+
+  resetCpStatus(){
+    environment.isHomeActive = false
+    environment.isForumActive = false
+    environment.isPortfolioActive = false
+    environment.isSobreActive = false
+    environment.isLoginActive = false
   }
 
   setLoggedUser(){
@@ -79,8 +95,7 @@ export class TopNavComponent implements OnInit {
 
   updateEditedUser(){
     let editUserModal = this.renderer.selectRootElement('#close-modal');
-    if (environment.isAdmin){
-      this.userService.updateUser(this.userToEdit)
+    this.userService.updateUser(this.userToEdit)
       .subscribe(
         respUser => {
           environment.firstName=respUser.firstName;
@@ -91,8 +106,5 @@ export class TopNavComponent implements OnInit {
           this.alerts.showAlertSuccess("Usuario atualizado!")
         }
       )
-    } else {
-      this.alerts.showAlertDanger("Você não pode editar este recurso!")
-    }
   }
 }

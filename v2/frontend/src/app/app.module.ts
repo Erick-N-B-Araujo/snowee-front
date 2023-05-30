@@ -10,6 +10,7 @@ import { TopNavComponent } from './components/top-nav/top-nav.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
+import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AlertsComponent } from './components/alerts/alerts.component';
     SideNavComponent,
     TopNavComponent,
     FooterComponent,
-    AlertsComponent
+    AlertsComponent,
+    PortfolioComponent
   ],
   imports: [
     BrowserModule,

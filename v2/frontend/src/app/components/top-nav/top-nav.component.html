@@ -14,21 +14,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto li-white">
-                    <li class="nav-item active">
-                        <a class="nav-link cl-white" routerLink="home">Home</a>
+                    <li class="nav-item" *ngIf='!cpController.isHomeActive()'>
+                        <a class="nav-link cl-white" routerLink="home" (click)="resetCpStatus()">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Fórum</a>
+                    <li class="nav-item" *ngIf='cpController.isHomeActive()'>
+                        <a class="nav-link cl-white active" routerLink="home" (click)="resetCpStatus()">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Portfólio</a>
+                    <li class="nav-item" *ngIf='!cpController.isForumActive()'>
+                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Sobre</a>
+                    <li class="nav-item" *ngIf='cpController.isForumActive()'>
+                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" routerLink="users/login">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i>
-                        </a>
+                    <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
+                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                    </li>
+                    <li class="nav-item" *ngIf='cpController.isPortfolioActive()'>
+                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                    </li>
+                    <li class="nav-item" *ngIf='!cpController.isSobreActive()'>
+                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Sobre</a>
+                    </li>
+                    <li class="nav-item" *ngIf='cpController.isSobreActive()'>
+                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Sobre</a>
+                    </li>
+                    <li class="nav-item" *ngIf='!cpController.isLoginActive()'>
+                        <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="nav-item" *ngIf='cpController.isLoginActive()'>
+                        <a class="nav-link cl-white active" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
                     </li>
                 </ul>
             </div>
@@ -43,16 +57,16 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="nav navbar-nav ml-auto li-white">
                     <li class="nav-item active">
-                        <a class="nav-link cl-white" routerLink="home">Home</a>
+                        <a class="nav-link cl-white {{statusHome}}" routerLink="home">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Fórum</a>
+                        <a class="nav-link cl-white {{statusForum}}" routerLink="portfolio">Fórum</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Portfólio</a>
+                        <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white" href="#">Sobre</a>
+                        <a class="nav-link cl-white {{statusSobre}}" routerLink="portfolio">Sobre</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
@@ -87,7 +101,7 @@
                         <label for="email" class="m-0">URL da imagem:</label>
                         <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
                         <div class="d-grid drop-shadow mt-2 mb-3">
-                            <button class="btn btn-primary bg-light-blue cl-white d-grid" type="submit">Alterar</button>
+                            <button class="btn btn-primary otl-dark-blue bg-light-blue cl-white d-grid" type="submit">Alterar</button>
                         </div>
                     </form>
                 </div>
@@ -98,14 +112,14 @@
                 <div class="col-md-6">
                     <div class="container m-1">
                         <div class="d-grid">
-                            <button class="btn btn-warning bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
+                            <button class="btn btn-primary otl-dark-blue bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="container m-1">
                         <div class="d-grid">
-                            <button class="btn btn-danger bg-dark-pink cl-white d-grid" type="button">Desativar</button>
+                            <button class="btn btn-primary otl-dark-blue bg-dark-pink cl-white d-grid" type="button">Desativar</button>
                         </div>
                     </div>
                 </div>
