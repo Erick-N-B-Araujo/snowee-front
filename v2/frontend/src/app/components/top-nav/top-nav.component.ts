@@ -27,7 +27,7 @@ export class TopNavComponent implements OnInit {
   public statusPortfolio: string = ""
   public statusSobre: string = ""
   public statusLogin: string = ""
-
+  public isDeveloping: boolean=true
   public name: string=environment.firstName;
   public profileImg: string=environment.profileImg;
   userToEdit: User = new User();

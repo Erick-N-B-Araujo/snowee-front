@@ -9,3 +9,11 @@
 .icon-social:hover {
     filter: invert(13%) sepia(29%) saturate(3075%) hue-rotate(204deg) brightness(96%) contrast(90%);
 }
+
+.icon-p{
+    width: 20px;
+    height: 20px;
+    &:hover {
+        color: #1E2D59;
+    }
+}

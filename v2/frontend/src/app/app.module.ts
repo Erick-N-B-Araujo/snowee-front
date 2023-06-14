@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertsComponent } from './components/alerts/alerts.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     TopNavComponent,
     FooterComponent,
     AlertsComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -20,10 +20,10 @@
                     <li class="nav-item" *ngIf='cpController.isHomeActive()'>
                         <a class="nav-link cl-white active" routerLink="home" (click)="resetCpStatus()">Home</a>
                     </li>
-                    <li class="nav-item" *ngIf='!cpController.isForumActive()'>
+                    <li  class="nav-item" *ngIf='!cpController.isForumActive() && isDeveloping==false'>
                         <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
                     </li>
-                    <li class="nav-item" *ngIf='cpController.isForumActive()'>
+                    <li class="nav-item" *ngIf='cpController.isForumActive() && isDeveloping==false'>
                         <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
                     </li>
                     <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
@@ -33,10 +33,10 @@
                         <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
                     </li>
                     <li class="nav-item" *ngIf='!cpController.isSobreActive()'>
-                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Sobre</a>
+                        <a class="nav-link cl-white" routerLink="about" (click)="resetCpStatus()">Sobre</a>
                     </li>
                     <li class="nav-item" *ngIf='cpController.isSobreActive()'>
-                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Sobre</a>
+                        <a class="nav-link cl-white active" routerLink="about" (click)="resetCpStatus()">Sobre</a>
                     </li>
                     <li class="nav-item" *ngIf='!cpController.isLoginActive()'>
                         <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
@@ -66,7 +66,7 @@
                         <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link cl-white {{statusSobre}}" routerLink="portfolio">Sobre</a>
+                        <a class="nav-link cl-white {{statusSobre}}" routerLink="about">Sobre</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>

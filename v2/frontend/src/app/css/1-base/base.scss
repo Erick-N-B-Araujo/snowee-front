@@ -10,37 +10,62 @@
 
 h1 {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    color: colors.$dark-blue;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    color: colors.$dark-blue;
+}
+
+h4 {
+    font-family: 'Poppins', sans-serif;
+    color: colors.$dark-blue;
+}
+
+h5 {
+    font-family: 'Poppins', sans-serif;
+    color: colors.$dark-blue;
+}
+
+h6 {
+    font-family: 'Poppins', sans-serif;
+    color: colors.$dark-blue;
 }
 
 a {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 input {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 th {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 tr {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 td {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 label {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
 }
 
 body {
@@ -50,7 +75,7 @@ body {
 
 span {
     font-family: 'Poppins', sans-serif;
-    color: #1E2D59;
+    color: colors.$dark-blue;
     font-size: 0.7em;
 }
 
@@ -64,7 +89,7 @@ p {
     font-size: 1.1em;
     font-weight: 200;
     line-height: 1.2em;
-    color: #1E2D59;
+    color: colors.$dark-blue;
     a {
         color: #F2A413;
     }
@@ -133,5 +158,11 @@ span {
 .box-row-l {
     display: flex;
     align-items: flex-start;
+    flex-direction: row;
+}
+
+.box-row-r {
+    display: flex;
+    align-items: flex-end;
     flex-direction: row;
 }

@@ -1,0 +1,21 @@
+@use '../1-base/colors';
+
+.vl-15 {
+    border-left: 2px solid colors.$dark-blue;
+    height: 15px;
+}
+
+.vl-30 {
+    border-left: 2px solid colors.$dark-blue;
+    height: 30px;
+}
+
+.vl-45 {
+    border-left: 2px solid colors.$dark-blue;
+    height: 45px;
+}
+
+.vl-60 {
+    border-left: 2px solid colors.$dark-blue;
+    height: 60px;
+}

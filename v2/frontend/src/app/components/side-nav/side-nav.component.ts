@@ -8,6 +8,8 @@ import { AuthService } from '../../service/auth.service';
 })
 export class SideNavComponent {
 
+  public isDeveloping: boolean=true
+
   constructor(
     public auth: AuthService
   ){}
