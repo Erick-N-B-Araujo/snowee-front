@@ -25,7 +25,7 @@ export class TopNavComponent implements OnInit {
   public statusHome: string = "active"
   public statusForum: string = ""
   public statusPortfolio: string = ""
-  public statusSobre: string = ""
+  public statusAbout: string = ""
   public statusLogin: string = ""
   public isDeveloping: boolean=true
   public name: string=environment.firstName;
@@ -68,7 +68,7 @@ export class TopNavComponent implements OnInit {
     environment.isHomeActive = false
     environment.isForumActive = false
     environment.isPortfolioActive = false
-    environment.isSobreActive = false
+    environment.isAboutActive = false
     environment.isLoginActive = false
   }
 

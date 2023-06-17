@@ -35,9 +35,9 @@ export class CpControllerService {
     }
   }
 
-  isSobreActive(){
+  isAboutActive(){
     let ok: boolean
-    if (environment.isSobreActive){
+    if (environment.isAboutActive){
       return ok=true
     } else {
       return ok=false

@@ -18,8 +18,8 @@ export const environment = {
   isHomeActive: false,
   isForumActive: false,
   isPortfolioActive: false,
-  isSobreActive: false,
-  isLoginActive: false
+  isAboutActive: false,
+  isLoginActive: false,
 };
 
 /*
