@@ -1,47 +1,41 @@
-<div class="container-fluid">
+<div #GOTOPORTIFOLIO class="container-fluid">
   <div class="container">
-    <div class="row d-flex align-items-center mt-5 mb-5">
+    <div class="row align-items-center mt-5 mb-5" >
       <div class="col-md-6">
-        <div class="row d-flex justify-content-center text-light mb-3">
-          <div class="col-md-6">
-            <h1 class="fs-54">Desbravando portifólio!</h1>
-            <h5 class="fs-18 cl-dark-blue">explore os trabalhos desenvolvidos e fique por dentro das novidades</h5>
-            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver projetos</a>
-          </div>
-        </div>
+        <h1 class="fs-54">Desbravando portifólio!</h1>
+        <h5 class="fs-18 cl-dark-blue">explore os trabalhos desenvolvidos e fique por dentro das novidades</h5>
+        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver projetos</a>
       </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <img class="p-3" src="https://i.imgur.com/iFFene6.png" width="400px" height="400px">
+      <div class="col-md-6">
+        <img src="https://i.imgur.com/DNOFBhH.png" width="300px" height="300px">
       </div>
-      <hr>
     </div>
-    <div *ngIf="isDeveloping==false" class="row d-flex align-items-center mt-5 mb-5">
+  </div>
+</div>
+<div #GOTOFORUM class="container-fluid" *ngIf="isDeveloping==false">
+  <div class="container">
+    <div class="row align-items-center mt-5 mb-5" >
       <div class="col-md-6">
-        <div class="row d-flex justify-content-center text-light mb-3">
-          <div class="col-md-6">
-            <h1 class="fs-54">Faça parte da comunidade!</h1>
-            <h5 class="fs-18 cl-dark-blue">descubra dicas valiosas que podem melhorar a sua produtividade</h5>
-            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver fórum</a>
-          </div>
-        </div>
+        <h1 class="fs-54">Faça parte da comunidade!</h1>
+        <h5 class="fs-18 cl-dark-blue">descubra dicas valiosas que podem melhorar a sua produtividade</h5>
+        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver fórum</a>
       </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <img class="p-3" src="https://i.imgur.com/ywV5fXv.png" width="400px" height="400px">
+      <div class="col-md-6">
+        <img src="https://i.imgur.com/ywV5fXv.png" width="280px" height="280px">
       </div>
-      <hr>
     </div>
-    <div class="row d-flex align-items-center mt-5 mb-5">
+  </div>
+</div>
+<div #GOTOSOBRE class="container-fluid">
+  <div class="container">
+    <div class="row align-items-center mt-5 mb-5" >
       <div class="col-md-6">
-        <div class="row d-flex justify-content-center text-light mb-3">
-          <div class="col-md-6">
-            <h1 class="fs-54">Ainda não nos conhece?</h1>
-            <h5 class="fs-18 cl-dark-blue">entre em contato com os criadores do site</h5>
-            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver sobre</a>
-          </div>
-        </div>
+        <h1 class="fs-54">Ainda não nos conhece?</h1>
+        <h5 class="fs-18 cl-dark-blue">entre em contato com os criadores do site</h5>
+        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToSobre()">Ver sobre</a>
       </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <img class="p-3" src="https://i.imgur.com/YhTHMeK.png" width="400px" height="400px">
+      <div class="col-md-6">
+        <img src="https://i.imgur.com/YhTHMeK.png" width="300px" height="300px">
       </div>
     </div>
   </div>

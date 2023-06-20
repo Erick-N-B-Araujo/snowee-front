@@ -1,40 +1,37 @@
 <div class="container-fluid">
   <div class="container">
-    <div class="row align-items-center mt-5 mb-5">
+    <div #PORTIFOLIO class="row align-items-center mt-5 mb-5" >
       <div class="col-md-6">
-        <div class="row justify-content-center text-light mb-3">
-          <div class="col-md-8">
-            <h1 class="fs-54">Desbravando portifólio!</h1>
-            <h5 class="fs-18 cl-dark-blue">escolha um seguimento e explore os trabalhos desenvolvidos: </h5>
-            <ul class="nav nav-pills mb-2">
-              <li *ngIf="isDeveloping==false" class="nav-item mt-1 mb-1">
-                <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow"
-                  (click)="scroll(AUTOMACAO)">Automação</a>
-              </li>
-              <li *ngIf="isDeveloping==false" class="nav-item mt-1 mb-1 ml-3">
-                <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow"
-                  (click)="scroll(FULLSTACK)">Fullstack</a>
-              </li>
-              <li class="nav-item mt-1 mb-1 ml-3">
-                <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="scroll(JOGOS)">Jogos</a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        <h1 class="fs-54">Seja bem-vindo(a) ao portifólio!</h1>
+        <h5 class="fs-18 cl-dark-blue">escolha um seguimento e explore os trabalhos desenvolvidos: </h5>
+        <ul class="nav nav-pills mb-2">
+          <li #LinkAUTOMACAO class="nav-item mt-1 mb-1">
+            <a *ngIf="isDeveloping==false" class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow"
+            (click)="scroll(AUTOMACAO)">Automação</a>
+          </li>
+          <li *ngIf="isDeveloping==false" #LinkFULLSTACK class="nav-item mt-1 mb-1 ml-2 mr-2">
+            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow"
+            (click)="scroll(FULLSTACK)">Fullstack</a>
+          </li>
+          <li #LinkJOGOS class="nav-item mt-1 mb-1">
+            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow"
+            (click)="scroll(JOGOS)">Jogos</a>
+          </li>
+        </ul>
       </div>
-      <div class="col-md-6 d-flex justify-content-center">
-        <img class="p-3" src="https://i.imgur.com/iFFene6.png" width="400px" height="400px">
+      <div class="col-md-6">
+        <img src="https://i.imgur.com/iFFene6.png" width="300px" height="300px">
       </div>
     </div>
   </div>
 </div>
-<div class="container-fluid" #AUTOMACAO>
+<div #AUTOMACAO class="container-fluid">
   <div *ngIf="isDeveloping==false"  class="container card-rd-15 drop-shadow">
     <h2 class="pt-3 pb-2">Automação</h2>
     <hr>
   </div>
 </div>
-<div class="container-fluid" #FULLSTACK>
+<div #FULLSTACK class="container-fluid">
   <div  *ngIf="isDeveloping==false" class="container card-rd-15 drop-shadow">
     <h2 class="pt-3 pb-2">Fullstack</h2>
     <hr>
@@ -44,7 +41,7 @@
   <div class="container card-rd-15 drop-shadow">
     <h2 class="pt-3 pb-2">Jogos</h2>
     <div class="row">
-      <div id="carouselPortifolio" class="carousel slide carousel-fade" data-bs-ride="true">
+      <div #CAROUSEL id="carouselPortifolio" class="carousel slide carousel-fade" data-bs-ride="true">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselPortifolio" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
@@ -75,81 +72,102 @@
         </button>
       </div>
     </div>
-    <div class="row row-cols-1 row-cols-md-3 g-4 pb-3 pt-3">
-      <div class="col" #SLUG3>
-        <div class="text-center">
-          <img src="https://i.imgur.com/sugC2W5.png" class="card-img-top rd-15" alt="Capa Slugan 1">
-          <div class="card-body">
-            <div class="container">
-              <div class="row">
-                <h5 class="txt-al-l mt-1">Slugan 3: Space Craft</h5>
-                <div class="col-8">
-                  <p class="txt-al-l mb-0"><strong class="">Gênero: </strong>Side Scroller</p>
-                  <p class="txt-al-l mb-0"><strong class="">Preço: </strong>Grátis</p>
-                  <p class="txt-al-l mb-0">
-                    <strong class="">Plataformas: </strong>
-                    <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue">
-                    <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1">
-                    <img src="https://i.imgur.com/3bwledN.png" alt="Android icon" class="icon-p filter-dark-blue ml-1">
-                  </p>
-                </div>
-                <div class="col-4 box">
-                  <div class="vl-60 mr-3"></div>
-                  <a href="https://sijoga.itch.io/slugan3" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
-                </div>
-              </div>
-            </div>
+    <div class="row row-cols-1 row-cols-md-2 g-6 pt-3">
+      <div class="col mb-3" #SLUG3>
+        <img src="https://i.imgur.com/sugC2W5.png" class="card-img-top rd-15" alt="Capa Slugan 1">
+        <h5 class="txt-al-c mt-1 f-bold">Slugan 3: Space Craft</h5>
+        <div class="row container align-items-center">
+          <div class="col-md-8">
+            <table>
+              <tbody>
+                <tr>
+                  <td><strong class="">Gênero: </strong></td>
+                  <td>Side Scroller</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Preço: </strong></td>
+                  <td>Grátis</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Plataformas: </strong></td>
+                  <td>
+                    <div class="box-row">
+                      <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue ml-0 mr-1">
+                      <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1 mr-1">
+                      <img src="https://i.imgur.com/3bwledN.png" alt="Android icon" class="icon-p filter-dark-blue mb-0 mt-0 ml-0 mr-0">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4 txt-al-c">
+            <a href="https://sijoga.itch.io/slugan3" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
           </div>
         </div>
       </div>
-      <div class="col" #SLUG2>
-        <div class="text-center">
-          <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top rd-15" alt="Capa Slugan 1">
-          <div class="card-body">
-            <div class="container">
-              <div class="row">
-                <h5 class="txt-al-l mt-1">Slugan 2: Nebula Pirates</h5>
-                <div class="col-8">
-                  <p class="txt-al-l mb-0"><strong class="">Gênero: </strong>Space Shooter</p>
-                  <p class="txt-al-l mb-0"><strong class="">Preço: </strong>Grátis</p>
-                  <p class="txt-al-l mb-0">
-                    <strong class="">Plataformas: </strong>
-                    <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue">
-                    <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1">
-                  </p>
-                </div>
-                <div class="col-4 box">
-                  <div class="vl-60 mr-3"></div>
-                  <a href="https://sijoga.itch.io/smaugslugan-ii" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
-                </div>
-              </div>
-            </div>
+      <div class="col mb-3" #SLUG2>
+        <img src="https://i.imgur.com/S9gvNYf.png" class="card-img-top rd-15" alt="Capa Slugan 1">
+        <h5 class="txt-al-c mt-1 f-bold">Slugan 2: Nebula Pirates</h5>
+        <div class="row container align-items-center">
+          <div class="col-md-8">
+            <table>
+              <tbody>
+                <tr>
+                  <td><strong class="">Gênero: </strong></td>
+                  <td>Space Shooter</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Preço: </strong></td>
+                  <td>Grátis</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Plataformas: </strong></td>
+                  <td>
+                    <div class="box-row">
+                      <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue ml-0 mr-1">
+                      <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1 mr-1">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4 txt-al-c">
+            <a href="https://sijoga.itch.io/smaugslugan-ii" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
           </div>
         </div>
       </div>
-      <div class="col" #SLUG1>
-        <div class="text-center">
-          <img src="https://i.imgur.com/1sY3f85.png" class="card-img-top rd-15" alt="Capa Slugan 1">
-          <div class="card-body">
-            <div class="container">
-              <div class="row">
-                <h5 class="txt-al-l mt-1">Slugan 1: The Great Scape</h5>
-                <div class="col-8">
-                  <p class="txt-al-l mb-0"><strong class="">Gênero: </strong>Platform</p>
-                  <p class="txt-al-l mb-0"><strong class="">Preço: </strong>Grátis</p>
-                  <p class="txt-al-l mb-0">
-                    <strong class="">Plataformas: </strong>
-                    <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue">
-                    <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1">
-                    <img src="https://i.imgur.com/RktpRI0.png" alt="Mac icon" class="icon-p filter-dark-blue ml-1">
-                  </p>
-                </div>
-                <div class="col-4 box">
-                  <div class="vl-60 mr-3"></div>
-                  <a href="https://sijoga.itch.io/smaug-slugan" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
-                </div>
-              </div>
-            </div>
+      <div class="col mb-3" #SLUG1>
+        <img src="https://i.imgur.com/1sY3f85.png" class="card-img-top rd-15" alt="Capa Slugan 1">
+        <h5 class="txt-al-c mt-1 f-bold">Slugan 1: The Great Scape</h5>
+        <div class="row container align-items-center">
+          <div class="col-md-8">
+            <table>
+              <tbody>
+                <tr>
+                  <td><strong class="">Gênero: </strong></td>
+                  <td>Platform</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Preço: </strong></td>
+                  <td>Grátis</td>
+                </tr>
+                <tr>
+                  <td><strong class="">Plataformas: </strong></td>
+                  <td>
+                    <div class="box-row">
+                      <img src="https://i.imgur.com/OSjhlfV.png" alt="Windows icon" class="icon-p filter-dark-blue ml-0 mr-1">
+                      <img src="https://i.imgur.com/dB517FD.png" alt="Linux icon" class="icon-p filter-dark-blue ml-1 mr-1">
+                      <img src="https://i.imgur.com/RktpRI0.png" alt="Mac icon" class="icon-p filter-dark-blue">
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-md-4 txt-al-c">
+            <a href="https://sijoga.itch.io/smaug-slugan" class="btn btn-primary otl-dark-blue bg-dark-orange drop-shadow">Ver mais</a>
           </div>
         </div>
       </div>

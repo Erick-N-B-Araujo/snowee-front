@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'about',
+  selector: 'sobre',
   templateUrl: './about.component.html',
   styleUrls: ['../../css/app.component.scss']
 })

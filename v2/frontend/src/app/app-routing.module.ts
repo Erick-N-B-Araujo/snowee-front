@@ -21,7 +21,7 @@ const routes: Routes = [
     component: PortfolioComponent
   },
   { 
-    path: 'about', 
+    path: 'sobre', 
     component: AboutComponent
   },
   //Quando o caminho da rota for vazio, redireciona

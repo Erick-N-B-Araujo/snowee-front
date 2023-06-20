@@ -33,10 +33,10 @@
                         <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
                     </li>
                     <li class="nav-item" *ngIf='!cpController.isAboutActive()'>
-                        <a class="nav-link cl-white" routerLink="about" (click)="resetCpStatus()">Sobre</a>
+                        <a class="nav-link cl-white" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
                     </li>
                     <li class="nav-item" *ngIf='cpController.isAboutActive()'>
-                        <a class="nav-link cl-white active" routerLink="about" (click)="resetCpStatus()">Sobre</a>
+                        <a class="nav-link cl-white active" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
                     </li>
                     <li class="nav-item" *ngIf='!cpController.isLoginActive() && isDeveloping==false'>
                         <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
