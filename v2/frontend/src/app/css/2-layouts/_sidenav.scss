@@ -5,6 +5,21 @@
     align-items: stretch;
 }
 
+#content {
+    width: 100%;
+    //padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+#content2 {
+    padding: 20px;
+}
+
+.content {
+    padding: 20px;
+}
+
 #sidebar {
     min-width: 250px;
     max-width: 250px;

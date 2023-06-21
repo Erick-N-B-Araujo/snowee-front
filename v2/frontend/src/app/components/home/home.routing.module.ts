@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { PortfolioComponent } from '../portfolio/portfolio.component';
 
 //Declaração de rotas
 const routes: Routes = [

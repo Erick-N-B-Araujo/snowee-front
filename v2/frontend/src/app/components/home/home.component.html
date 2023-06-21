@@ -1,41 +1,49 @@
 <div #GOTOPORTIFOLIO class="container-fluid">
-  <div class="container">
-    <div class="row align-items-center mt-5 mb-5" >
-      <div class="col-md-6">
-        <h1 class="fs-54">Descubra o portifólio!</h1>
-        <h5 class="fs-18 cl-dark-blue">explore os trabalhos desenvolvidos e fique por dentro das novidades</h5>
-        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver projetos</a>
+  <div class="sw-divider-nav-dk-orange">
+    <div class="container">
+      <div class="row align-items-center mt-5 mb-5" >
+        <div class="col-md-6">
+          <h1>Desbrave o portifólio!</h1>
+          <h5>explore os trabalhos desenvolvidos e fique por dentro das novidades</h5>
+          <a class="btn btn-primary" (click)="goToPortfolio()">Ver projetos</a>
+        </div>
+        <div class="col-md-6 rs-img">
+          <img src="https://i.imgur.com/DNOFBhH.png">
+        </div>
       </div>
-      <div class="col-md-6">
-        <img src="https://i.imgur.com/DNOFBhH.png" width="300px" height="300px">
-      </div>
+      <hr>
     </div>
   </div>
 </div>
-<div #GOTOFORUM class="container-fluid" *ngIf="isDeveloping==false">
-  <div class="container">
-    <div class="row align-items-center mt-5 mb-5" >
-      <div class="col-md-6">
-        <h1 class="fs-54">Faça parte da comunidade!</h1>
-        <h5 class="fs-18 cl-dark-blue">descubra dicas valiosas que podem melhorar a sua produtividade</h5>
-        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToPortfolio()">Ver fórum</a>
-      </div>
-      <div class="col-md-6">
-        <img src="https://i.imgur.com/ywV5fXv.png" width="280px" height="280px">
+<div #GOTOFORUM class="container-fluid" *ngIf='isDeveloping==false'>
+  <div class="sw-divider-nav-dk-orange">
+    <div class="container">
+      <div class="row align-items-center mt-5 mb-5" >
+        <div class="col-md-6">
+          <h1>Faça parte da comunidade!</h1>
+          <h5>descubra dicas valiosas que podem melhorar a sua produtividade</h5>
+          <a class="btn btn-primary" (click)="goToPortfolio()">Ver fórum</a>
+        </div>
+        <div class="col-md-6 rs-img">
+          <img src="https://i.imgur.com/ywV5fXv.png">
+        </div>
       </div>
     </div>
   </div>
+  <hr>
 </div>
 <div #GOTOSOBRE class="container-fluid">
-  <div class="container">
-    <div class="row align-items-center mt-5 mb-5" >
-      <div class="col-md-6">
-        <h1 class="fs-54">Ainda não nos conhece?</h1>
-        <h5 class="fs-18 cl-dark-blue">entre em contato com os criadores do site</h5>
-        <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToSobre()">Ver sobre</a>
-      </div>
-      <div class="col-md-6">
-        <img src="https://i.imgur.com/YhTHMeK.png" width="300px" height="300px">
+  <div class="sw-divider-nav-dk-orange">
+    <div class="container">
+      <div class="row align-items-center mt-5 mb-5" >
+        <div class="col-md-6">
+          <h1 class="fs-54">Ainda não nos conhece?</h1>
+          <h5 class="fs-18 cl-dark-blue">entre em contato com os criadores do site</h5>
+          <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="goToSobre()">Ver sobre</a>
+        </div>
+        <div class="col-md-6">
+          <img src="https://i.imgur.com/YhTHMeK.png" width="300px" height="300px">
+        </div>
       </div>
     </div>
   </div>

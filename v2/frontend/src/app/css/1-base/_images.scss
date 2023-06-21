@@ -23,3 +23,36 @@ img {
     height: 60px;
     border-radius: 50px;
 }
+
+.about-pic {
+    max-width:300px;
+    max-height:300px;
+    width: auto;
+    height: auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-img {
+    width: 100%;
+}
+
+.flex-img-about {
+    max-width:300px;
+    max-height:300px;
+    width: 100%;
+}
+
+.flex-img-300 {
+    max-width:300px;
+    max-height:300px;
+    width: 100%;
+}
+
+.flex-img-250 {
+    max-width:250px;
+    max-height:250px;
+    width: 100%;
+}

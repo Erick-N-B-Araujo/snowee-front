@@ -1,84 +1,86 @@
-<nav class="navbar navbar-expand-lg navbar-secondary drop-shadow">
-    <div class="container-fluid">
-        <button  id="sidebarCollapse" class="btn bg-white drop-shadow otl-dark-blue">
-          <div class="container box mt-1 mb-1">
-              <i class="fas fa-align-left cl-dark-blue"></i>
-          </div>  
-        </button>
-        <div *ngIf='auth.isLogged() == false'>
-            <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white otl-dark-blue drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="container box">
-                    <i class="fa fa-user-circle mr-2 mt-1 mb-1" aria-hidden="true"></i>
-                    <i class="fas fa-align-justify"></i>
-                </div>     
+<div class="p-3 mt-1">
+    <nav class="navbar navbar-expand-lg navbar-secondary drop-shadow mb-0">
+        <div class="container-fluid">
+            <button  id="sidebarCollapse" class="btn bg-white drop-shadow otl-dark-blue">
+              <div class="container box mt-1 mb-1">
+                  <i class="fas fa-align-left cl-dark-blue"></i>
+              </div>  
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav ml-auto li-white">
-                    <li class="nav-item" *ngIf='!cpController.isHomeActive()'>
-                        <a class="nav-link cl-white" routerLink="home" (click)="resetCpStatus()">Home</a>
-                    </li>
-                    <li class="nav-item" *ngIf='cpController.isHomeActive()'>
-                        <a class="nav-link cl-white active" routerLink="home" (click)="resetCpStatus()">Home</a>
-                    </li>
-                    <li  class="nav-item" *ngIf='!cpController.isForumActive() && isDeveloping==false'>
-                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
-                    </li>
-                    <li class="nav-item" *ngIf='cpController.isForumActive() && isDeveloping==false'>
-                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
-                    </li>
-                    <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
-                        <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
-                    </li>
-                    <li class="nav-item" *ngIf='cpController.isPortfolioActive()'>
-                        <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
-                    </li>
-                    <li class="nav-item" *ngIf='!cpController.isAboutActive()'>
-                        <a class="nav-link cl-white" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
-                    </li>
-                    <li class="nav-item" *ngIf='cpController.isAboutActive()'>
-                        <a class="nav-link cl-white active" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
-                    </li>
-                    <li class="nav-item" *ngIf='!cpController.isLoginActive() && isDeveloping==false'>
-                        <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="nav-item" *ngIf='cpController.isLoginActive() && isDeveloping==false'>
-                        <a class="nav-link cl-white active" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
+            <div *ngIf='auth.isLogged() == false'>
+                <button class="btn btn-primary d-inline-block d-lg-none ml-auto bg-light-blue cl-white otl-dark-blue drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="container box">
+                        <i class="fa fa-user-circle mr-2 mt-1 mb-1" aria-hidden="true"></i>
+                        <i class="fas fa-align-justify"></i>
+                    </div>     
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto li-white">
+                        <li class="nav-item" *ngIf='!cpController.isHomeActive()'>
+                            <a class="nav-link cl-white" routerLink="home" (click)="resetCpStatus()">Home</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isHomeActive()'>
+                            <a class="nav-link cl-white active" routerLink="home" (click)="resetCpStatus()">Home</a>
+                        </li>
+                        <li  class="nav-item" *ngIf='!cpController.isForumActive() && isDeveloping==false'>
+                            <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isForumActive() && isDeveloping==false'>
+                            <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
+                            <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isPortfolioActive()'>
+                            <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!cpController.isAboutActive()'>
+                            <a class="nav-link cl-white" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isAboutActive()'>
+                            <a class="nav-link cl-white active" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!cpController.isLoginActive() && isDeveloping==false'>
+                            <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isLoginActive() && isDeveloping==false'>
+                            <a class="nav-link cl-white active" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div *ngIf='auth.isLogged()'>
+                <button class="btn btn-primary otl-dark-blue d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="container box-row">
+                        <p class="mt-0 mb-0 mr-2">Olá, {{user.firstName}}</p>
+                        <img src="{{user.profileImgUrl}}" class="mr-1 rd-25 otl-dark-blue btn-nav-image"alt="">
+                    </div>      
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto li-white">
+                        <li class="nav-item active">
+                            <a class="nav-link cl-white {{statusHome}}" routerLink="home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cl-white {{statusForum}}" routerLink="portfolio">Fórum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cl-white {{statusAbout}}" routerLink="about">Sobre</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link cl-white" (click)="refresh()">Sair</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-        <div *ngIf='auth.isLogged()'>
-            <button class="btn btn-primary otl-dark-blue d-inline-block d-lg-none ml-auto bg-light-blue cl-white drop-shadow" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="container box-row">
-                    <p class="mt-0 mb-0 mr-2">Olá, {{user.firstName}}</p>
-                    <img src="{{user.profileImgUrl}}" class="mr-1 rd-25 otl-dark-blue btn-nav-image"alt="">
-                </div>      
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="nav navbar-nav ml-auto li-white">
-                    <li class="nav-item active">
-                        <a class="nav-link cl-white {{statusHome}}" routerLink="home">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white {{statusForum}}" routerLink="portfolio">Fórum</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white {{statusAbout}}" routerLink="about">Sobre</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link cl-white" (click)="refresh()">Sair</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
+    </nav>
+</div>
 
 <div class="modal fade" #editUser id="editUser" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
