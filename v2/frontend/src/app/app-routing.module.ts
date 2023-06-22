@@ -7,7 +7,7 @@ import { AboutComponent } from './components/about/about.component';
 //Declaração de rotas
 const routes: Routes = [
   { 
-    path: 'home', 
+    path: 'inicio', 
     component: HomeComponent
   },
   { 
@@ -28,7 +28,7 @@ const routes: Routes = [
   { 
     path: '', 
     pathMatch:'full', 
-    redirectTo:'home'
+    redirectTo:'inicio'
   }
 ];
 
