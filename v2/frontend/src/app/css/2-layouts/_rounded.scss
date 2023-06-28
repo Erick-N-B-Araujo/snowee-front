@@ -1,3 +1,5 @@
+@use '../1-base/colors';
+
 .rd-25 {
     border-radius: 10px;
 }
@@ -24,4 +26,21 @@
 
 .no-rd {
     border-radius: 0px 0px 0px 0px;
+}
+
+.make-snippet {
+    border-radius: 15px;
+    background: colors.$dark-blue;
+    
+    p {
+        color: colors.$white;
+    }
+}
+
+make-snippet {
+    p {
+        background-color: colors.$dark-blue;
+        color: colors.$white;
+        border-radius: 15px;   
+    }
 }

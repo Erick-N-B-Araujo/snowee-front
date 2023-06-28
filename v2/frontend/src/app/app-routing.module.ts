@@ -17,6 +17,12 @@ const routes: Routes = [
         .then(x => x.UsersModule)
   },
   { 
+    path: 'forum', 
+    loadChildren: 
+      () => import('./components/forum/forum.module')
+        .then(x => x.ForumModule)
+  },
+  { 
     path: 'portfolio', 
     component: PortfolioComponent
   },

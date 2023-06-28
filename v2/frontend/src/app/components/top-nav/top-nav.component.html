@@ -21,11 +21,11 @@
                         <li class="nav-item" *ngIf='cpController.isHomeActive()'>
                             <a class="nav-link cl-white active" routerLink="inicio" (click)="resetCpStatus()">Inicio</a>
                         </li>
-                        <li  class="nav-item" *ngIf='!cpController.isForumActive() && isDeveloping==false'>
-                            <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
+                        <li  class="nav-item" *ngIf='!cpController.isForumActive()'>
+                            <a class="nav-link cl-white" routerLink="forum" (click)="resetCpStatus()">Fórum</a>
                         </li>
-                        <li class="nav-item" *ngIf='cpController.isForumActive() && isDeveloping==false'>
-                            <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Fórum</a>
+                        <li class="nav-item" *ngIf='cpController.isForumActive()'>
+                            <a class="nav-link cl-white active" routerLink="forum" (click)="resetCpStatus()">Fórum</a>
                         </li>
                         <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
                             <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
@@ -39,10 +39,10 @@
                         <li class="nav-item" *ngIf='cpController.isAboutActive()'>
                             <a class="nav-link cl-white active" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
                         </li>
-                        <li class="nav-item" *ngIf='!cpController.isLoginActive() && isDeveloping==false'>
+                        <li class="nav-item" *ngIf='!cpController.isLoginActive()'>
                             <a class="nav-link cl-white" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
                         </li>
-                        <li class="nav-item" *ngIf='cpController.isLoginActive() && isDeveloping==false'>
+                        <li class="nav-item" *ngIf='cpController.isLoginActive()'>
                             <a class="nav-link cl-white active" routerLink="users/login" (click)="resetCpStatus()">Login<i class="fa fa-user-circle ml-1" aria-hidden="true"></i></a>
                         </li>
                     </ul>
@@ -58,16 +58,16 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto li-white">
                         <li class="nav-item active">
-                            <a class="nav-link cl-white {{statusHome}}" routerLink="home">Home</a>
+                            <a class="nav-link cl-white {{statusHome}}" routerLink="inicio">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cl-white {{statusForum}}" routerLink="portfolio">Fórum</a>
+                            <a class="nav-link cl-white {{statusForum}}" routerLink="forum">Fórum</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cl-white {{statusAbout}}" routerLink="about">Sobre</a>
+                            <a class="nav-link cl-white {{statusAbout}}" routerLink="sobre">Sobre</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>

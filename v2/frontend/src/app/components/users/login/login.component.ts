@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
                         environment.profileImg = userLogged.profileImg
                         environment.isLogged = true
                         this.authService.sendClickEvent();
-                        this.router.navigate(['/home'])
+                        this.router.navigate(['/inicio'])
                         this.alerts.showAlertSuccess("User Logged-in!")
                       }
                     })

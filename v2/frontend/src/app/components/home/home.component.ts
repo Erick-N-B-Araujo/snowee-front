@@ -9,7 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class HomeComponent implements OnInit {
 
-  public isDeveloping: boolean=true
+  public isDeveloping: boolean=false
 
   constructor(
     private router: Router,

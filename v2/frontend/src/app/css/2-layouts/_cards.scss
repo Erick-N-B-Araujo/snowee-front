@@ -49,3 +49,43 @@ sw-card-dk-orange {
         }
     }
 }
+
+sw-card-nav-white {
+    filter: drop-shadow(0.3rem 0.3rem colors.$dark-blue);
+
+    div.sw-header {
+        background: colors.$white;
+        border-radius: 15px 15px 0px 0px;
+        text-align: center;
+    }
+
+    div.sw-body {
+        border-radius: 0px 0px 15px 15px;
+        background: colors.$white;
+    }
+
+    li {
+        button{
+            background-color: colors.$dark-orange;
+            color: colors.$white;
+            font-weight: bold;
+            outline-style: solid;
+            outline-color: colors.$dark-blue;
+            outline-width: 0.11em;
+        }
+        button.active {
+            background-color: colors.$light-blue;
+        }
+    }
+    div.d-grid{
+        button{
+            background-color: colors.$dark-pink;
+            color: colors.$white;
+            font-weight: bold;
+            outline-style: solid;
+            outline-color: colors.$dark-blue;
+            outline-width: 0.11em;
+            filter: drop-shadow(0.3rem 0.3rem colors.$dark-blue);
+        }
+    }
+}

@@ -8,23 +8,17 @@
         <strong><img src="https://i.imgur.com/LGGL7VJ.png" class="drop-shadow mt-1" height="60"></strong>
     </div>
     <ul class="list-unstyled">
-        <li *ngIf="isDeveloping==false" class="">
+        <li class="">
             <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                <i class="fas fa-home"></i> Home
+                <i class="fas fa-home"></i> Fórum
             </a>
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
-                    <a routerLink="home">Home</a>
-                </li>
-                <li>
-                    <a href="#">Home 2</a>
-                </li>
-                <li>
-                    <a href="#">Home 3</a>
+                    <a routerLink="forum/temas">Temas</a>
                 </li>
             </ul>
         </li>
-        <li *ngIf='auth.isAdmin()'>
+        <li>
             <a routerLink="users">
                 <i class="fas fa-briefcase"></i>
                 Usuários

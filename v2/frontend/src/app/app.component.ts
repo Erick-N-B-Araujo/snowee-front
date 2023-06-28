@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './service/auth.service';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,6 @@ export class AppComponent implements OnInit{
   public profileImg: string="";
   constructor(
     public auth: AuthService,
-    private router: Router
   ){}
 
   ngOnInit() {

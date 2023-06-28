@@ -38,7 +38,7 @@ export class UsersComponent implements OnInit{
       this.listAllUsers()
     } else {
       this.alerts.showAlertDanger("Você não ter acesso a este recurso!")
-      this.router.navigate(["/home"])
+      this.router.navigate(["/inicio"])
     }
   }
   //Manipulador de formularios para validar campos
@@ -117,7 +117,6 @@ export class UsersComponent implements OnInit{
       .adminGetUserByUsername(this.userToFind.email)
       .subscribe(
         respUser => {
-          console.log(respUser)
           this.user.id = respUser.id;
           this.user.firstName = respUser.firstName;
           this.user.lastName = respUser.lastName;
