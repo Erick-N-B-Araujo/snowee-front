@@ -181,3 +181,19 @@ span {
 .m-auto {
     margin: auto;
 }
+
+.v-al {
+    td {
+        height: 50px;
+        vertical-align: middle;
+        text-align: center;
+    }
+}
+
+.al-l {
+    align-items: flex-start;
+}
+
+.al-r {
+    align-items: flex-end;
+}

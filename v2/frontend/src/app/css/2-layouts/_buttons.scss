@@ -1,3 +1,23 @@
+@use '../1-base/colors';
+
 .btn-primary {
     border: 0
+}
+
+.minus{
+    background-color: colors.$dark-pink;
+    color: colors.$white;
+    font-weight: bold;
+    outline-style: solid;
+    outline-color: colors.$dark-blue;
+    outline-width: 0.11em;
+}
+
+.plus{
+    background-color: colors.$light-blue;
+    color: colors.$white;
+    font-weight: bold;
+    outline-style: solid;
+    outline-color: colors.$dark-blue;
+    outline-width: 0.11em;
 }

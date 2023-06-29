@@ -13,6 +13,12 @@ const routes: Routes = [
         .then(x => x.ThemesModule)
   },
   { 
+    path: 'artigos', 
+    loadChildren: 
+      () => import('./articles/articles.module')
+        .then(x => x.ArticlesModule)
+  },
+  { 
     path: '', 
     component: ForumComponent
   }

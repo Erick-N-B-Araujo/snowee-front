@@ -27,5 +27,8 @@ export class AlertsService {
 
   showAlertInfo(message: string){
     this.showAlert(message, 'info')
+  }
+  showAlertWarning(message: string){
+    this.showAlert(message, 'warning')
   }  
 }

@@ -18,6 +18,7 @@ export class ThemesComponent implements OnInit{
   themeToEdit: Theme = new Theme();
   themeToInsert: Theme = new Theme();
   hideDefaultTheme: boolean = true;
+  margin_fill: string = "find";
 
   constructor(
     private alerts: AlertsService,
@@ -69,6 +70,7 @@ export class ThemesComponent implements OnInit{
             this.themeFounded.name = respTheme.name;
             this.themeFounded.articles = respTheme.articles;
             this.hideDefaultTheme=false;
+            this.margin_fill="found"
           }else{
             this.alerts.showAlertDanger("Tema não encontrado!")
           }

@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div #INSERTTHEME class="tab-content mt-3 txt-al-c container" id="insert-theme">
-                                <div class="tab-pane fade show" id="insert-theme-tab-pane" role="tabpanel" aria-labelledby="insert-theme" tabindex="1">          
+                                <div class="tab-pane fade show vh-513" id="insert-theme-tab-pane" role="tabpanel" aria-labelledby="insert-theme" tabindex="1">          
                                     <form class="mb-3" [formGroup]="themeForm" (ngSubmit)="insertTheme()">
                                         <input [(ngModel)]="themeToInsert.name"  type="text" class="form-control" formControlName="name"/>
                                         <div class="d-grid">
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div #FINDTHEME class="tab-content mt-3 txt-al-c container" id="find-theme">
-                                <div class="tab-pane fade show" id="find-theme-tab-pane" role="tabpanel" aria-labelledby="find-theme" tabindex="1">          
+                                <div class="tab-pane fade show vh-529" id="find-theme-tab-pane" role="tabpanel" aria-labelledby="find-theme" tabindex="1">          
                                     <form class="mb-3" [formGroup]="themeForm" (ngSubmit)="findTheme()">
                                         <input [(ngModel)]="themeToFind.name"  type="text" class="form-control" formControlName="name"/>
                                         <div class="d-grid">
