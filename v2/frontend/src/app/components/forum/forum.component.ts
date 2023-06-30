@@ -20,34 +20,4 @@ export class ForumComponent {
 
   constructor(private renderer:Renderer2) {}
 
-  @ViewChild('instructions', { static: false }) instructions: ElementRef;
-
-  ngAfterViewInit() {
-    for (let i=0; i < this.instructionsList.length; i++) {
-      this.addSteps(this.instructionsList[i]);
-      this.addSnippet(this.codesList[i]);
-    }
-  }
-
-  public addSnippet(snippetText:string){
-    const snippet = this.renderer.createElement('make-snippet');
-    this.renderer.addClass(snippet, "p-0")
-    const p = this.renderer.createElement('p')
-    this.renderer.addClass(p, "p-2")
-    this.renderer.addClass(p, "m-0")
-    const text = this.renderer.createText(snippetText)
-    this.renderer.appendChild(p, text);
-    this.renderer.appendChild(snippet, p)
-    this.renderer.appendChild(this.instructions.nativeElement, snippet);
-  }
-
-  public addSteps(stepText:string){
-    const p = this.renderer.createElement('p')
-    this.renderer.addClass(p, "p-1")
-    this.renderer.addClass(p, "mt-2")
-    this.renderer.addClass(p, "mb-2")
-    const text = this.renderer.createText(stepText)
-    this.renderer.appendChild(p, text);
-    this.renderer.appendChild(this.instructions.nativeElement, p);
-  }
 }

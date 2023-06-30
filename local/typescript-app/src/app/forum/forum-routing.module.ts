@@ -14,8 +14,8 @@ const routes: Routes = [
     component:ThemeComponent
   },
   {
-    path: 'theme-edit/:id',
-    component:EditThemeComponent
+    path: 'theme-edit/:id ',
+    component: EditThemeComponent
   },
   {
     path: 'theme-delete/:id',

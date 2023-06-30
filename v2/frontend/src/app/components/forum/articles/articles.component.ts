@@ -1,9 +1,11 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Article } from 'src/app/model/Article';
 import { Theme } from 'src/app/model/Theme';
 import { AlertsService } from 'src/app/service/alerts.service';
 import { ArticlesService } from 'src/app/service/articles.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { ThemesService } from 'src/app/service/themes.service';
 import { environment } from 'src/environments/environment';
 
@@ -14,65 +16,51 @@ import { environment } from 'src/environments/environment';
 })
 export class ArticlesComponent implements OnInit {
 
+  articleTitle: string;
   articleList: Article[]=[];
+  userArticleList: Article[]=[];
+  foundArticleList: Article[]=[];
+  listArticleThemes: Theme[]=[];
   articleToFind: Article = new Article();
   articleFounded: Article = new Article();
   articleToEdit: Article = new Article();
   articleToInsert: Article = new Article();
   theme: Theme = new Theme();
   themeSelected: Theme = null;
-  idTheme: number
-  //listArticleThemes: Theme[]=[];
+  
   themeList: Theme[]=[];
-  themeToFind: Theme = new Theme();
-  themeFounded: Theme = new Theme();
-  themeToEdit: Theme = new Theme();
-  themeToInsert: Theme = new Theme();
-  hideDefaultTheme: boolean = true;
+  
+  hideDefaultArticle: boolean = true;
   margin_fill: string = "find";
 
   instructions: string[][] = [];
   steps: string[] = [];
   codes: string[] = [];
 
-  articlesForm: FormGroup;
   insertArticleForm: FormGroup;
+  editArticleForm: FormGroup;
   articleThemes:FormGroup;
-  contactForm:FormGroup;
- 
-  countries = [
-    { id: 1, name: "United States" },
-    { id: 2, name: "Australia" },
-    { id: 3, name: "Canada" },
-    { id: 4, name: "Brazil" },
-    { id: 5, name: "England" }
-  ];
-
-  listArticleThemes: Theme[]=[];
+  articleTitleForm:FormGroup;
 
   constructor(
     private alerts: AlertsService,
     private themeService: ThemesService,
     private articleService: ArticlesService,
-    private renderer: Renderer2,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public auth: AuthService
     ) { }
 
   ngOnInit(): void {
-    this.articleToInsert.title = "Python: Calculadora doida frenetica";
-    this.articleToInsert.subTitle = "Aprenda como criar uma calculadora simples em python";
-    this.articleToInsert.description = "Este passo a passo esplanatorio se deu em meio ao desenrolar de um curso de python que comprei recentemente. Vamos as instruções: ";
-    this.articleToInsert.instructionList = this.steps;
-    this.articleToInsert.codeList = this.codes;
-    this.articleToInsert.ending = "Se você seguiu os passos a risca, agora deve ter uma calculadora simples e funcional.";
-    this.articleToInsert.imgUrl = "https://i.imgur.com/1sY3f85.png";
-    this.articleToInsert.themes = this.listArticleThemes;
-    this.articleToInsert.user.id = environment.id;
-    this.articleToInsert.step = "1- Testes ssss";
-    this.articleToInsert.code = "python install tttt";
     window.scroll(0,0);
     this.listAllThemes();
     this.listAllArticles();
+    this.listUserArticles();
+    this.initializeVariables();
+    this.initializeForms();
+  }
+
+  initializeForms(){
     this.insertArticleForm = this.formBuilder.group({
       title: String,
       subtitle: String,
@@ -83,54 +71,117 @@ export class ArticlesComponent implements OnInit {
       code: String,
       theme: [null]
     });
-    this.articlesForm = this.formBuilder.group({
+    this.editArticleForm = this.formBuilder.group({
+      title: String,
+      subtitle: String,
+      description: String,
+      ending: String,
+      imgUrl: String,
+      step: String,
+      code: String,
       theme: [null]
+    });
+    this.articleTitleForm = this.formBuilder.group({
+      title: String
     });
   }
 
-  submit() {
-    let add = this.articlesForm.value;
-    console.log(this.articlesForm.value)
-    if(this.listArticleThemes.some(e => e.name === add.theme.name)){
-      this.alerts.showAlertInfo("Tema já adicionado")
-    }else{
-      this.listArticleThemes.push(add.theme)
-      console.log(this.listArticleThemes);
+  initializeVariables(){
+    this.articleToInsert.title = "Python: Calculadora doida frenetica";
+    this.articleToInsert.subTitle = "Aprenda como criar uma calculadora simples em python";
+    this.articleToInsert.description = "Este passo a passo esplanatorio se deu em meio ao desenrolar de um curso de python que comprei recentemente. Vamos as instruções: ";
+    this.articleToInsert.instructionList = this.steps;
+    this.articleToInsert.codeList = this.codes;
+    this.articleToInsert.ending = "Se você seguiu os passos a risca, agora deve ter uma calculadora simples e funcional.";
+    this.articleToInsert.imgUrl = "https://i.imgur.com/1sY3f85.png";
+    this.articleToInsert.themes = this.listArticleThemes;
+    this.articleToInsert.user.id = environment.id;
+    this.articleToEdit.user.id = environment.id;
+    this.articleToInsert.step = "1- Testes ssss";
+    this.articleToInsert.code = "python install tttt";
+  }
+
+  addTheme(themeToAdd: Theme, typeId: number){
+    switch(typeId){
+      case 0:{
+        //Inserting
+        if(this.listArticleThemes.some(theme => theme === themeToAdd)){
+          this.alerts.showAlertInfo("Tema já adicionado!");
+        }else{
+          this.listArticleThemes.push(themeToAdd);
+        }
+      } break;
+      case 1:{
+        //Editing
+        if(this.articleToEdit.themes.some(theme => theme.name === themeToAdd.name)){
+          this.alerts.showAlertInfo("Tema já adicionado!");
+        }else{
+          this.articleToEdit.themes.push(themeToAdd);
+        }
+      } break;
     }
   }
 
-  addTheme(themeToAdd: Theme){
-    if(this.listArticleThemes.some(theme => theme === themeToAdd)){
-      this.alerts.showAlertInfo("Tema já adicionado!");
-    }else{
-      this.listArticleThemes.push(themeToAdd);
-      this.alerts.showAlertSuccess("Tema adicionado!");
+  removeTheme(themeToRemove: Theme, typeId: number) {
+    switch(typeId){
+      case 0:{
+        //Inserting
+        if(this.listArticleThemes.some(theme => theme === themeToRemove)){
+          this.listArticleThemes = this.listArticleThemes.filter(theme => theme != themeToRemove);
+          this.alerts.showAlertSuccess("Tema removido!");
+        } else {
+          this.alerts.showAlertInfo("Tema já removido!");
+        }
+      } break;
+      case 1:{
+        //Editing
+        if(this.articleToEdit.themes.some(theme => theme.name === themeToRemove.name)){
+          this.articleToEdit.themes = this.articleToEdit.themes.filter(theme => theme.name != themeToRemove.name);
+          this.alerts.showAlertSuccess("Tema removido!");
+        } else {
+          this.alerts.showAlertInfo("Tema já removido!");
+        }
+      } break;
     }
   }
 
-  removeTheme(themeToRemove: Theme) {
-    if(this.listArticleThemes.some(theme => theme === themeToRemove)){
-      this.listArticleThemes = this.listArticleThemes.filter(theme => theme != themeToRemove);
-      this.alerts.showAlertSuccess("Tema removido!");
-    } else {
-      this.alerts.showAlertInfo("Tema já removido!");
+  addInstructions(step: string, code: string, typeId: number){
+    switch(typeId){
+      case 0:{
+        //Inserting
+        this.steps.push(step);
+        this.codes.push(code);
+      } break;
+      case 1:{
+        //Editing
+        this.articleToEdit.instructionList.push(step);
+        this.articleToEdit.codeList.push(code);
+      } break;
     }
   }
 
-  addInstructions(step: string, code: string){
-    this.steps.push(step);
-    this.codes.push(code);
-    console.log(this.steps);
-    console.log(this.codes);
-  }
-
-  removeInstruction(stepToRemove: string, codeToRemove: string){
-    for(let i=0; i < this.steps.length; i++){
-      if(this.steps[i] == stepToRemove && this.codes[i] == codeToRemove){
-        this.steps = this.steps.filter(step => step != stepToRemove);
-        this.codes = this.codes.filter(code => code != codeToRemove);
-        this.alerts.showAlertSuccess("Instrução removida!"); 
-      }
+  removeInstruction(stepToRemove: string, codeToRemove: string, typeId: number){
+    switch(typeId){
+      case 0:{
+        //Inserting
+        for(let i=0; i < this.steps.length; i++){
+          if(this.steps[i] == stepToRemove && this.codes[i] == codeToRemove){
+            this.steps = this.steps.filter(step => step != stepToRemove);
+            this.codes = this.codes.filter(code => code != codeToRemove);
+            this.alerts.showAlertSuccess("Instrução removida!"); 
+          }
+        }
+      } break;
+      case 1:{
+        //Editing
+        for(let i=0; i < this.articleToEdit.instructionList.length; i++){
+          if(this.articleToEdit.instructionList[i] == stepToRemove && this.articleToEdit.codeList[i] == codeToRemove){
+            this.articleToEdit.instructionList = this.articleToEdit.instructionList.filter(step => step != stepToRemove);
+            this.articleToEdit.codeList = this.articleToEdit.codeList.filter(code => code != codeToRemove);
+            this.alerts.showAlertSuccess("Instrução removida!"); 
+          }
+        }
+      } break;
     }
   }
 
@@ -143,8 +194,7 @@ export class ArticlesComponent implements OnInit {
       this.articleService
       .insertArticle(this.articleToInsert)
         .subscribe(
-          articleResp => {
-            console.log(articleResp);
+          respArticle => {
             this.listAllArticles();
             this.alerts.showAlertSuccess("Artigo inserido com sucesso!"); 
           }
@@ -152,20 +202,57 @@ export class ArticlesComponent implements OnInit {
     }
   }
 
-  //Manipulador de formularios para validar campos
-  themeForm: FormGroup = new FormGroup({
-    name : new FormControl('Nome do tema', [Validators.required])
-  })
+  setArticleToEdit(articleToEdit: Article){
+    this.articleToEdit = articleToEdit;
+  }
 
-  /*articleForm: FormGroup = new FormGroup({
-    title : new FormControl('Titulo', [Validators.required]),
-    subtitle : new FormControl('Subtitulo', [Validators.required]),
-    description: new FormControl('Descrição', [Validators.required]),
-    instructionList: new FormControl('Lista de instruções', [Validators.required]),
-    codeList: new FormControl('Lista de codigos', [Validators.required]),
-    ending: new FormControl('Conclusão', [Validators.required]),
-    imgUrl: new FormControl('Imagem de Banner', [Validators.required]),
-  })*/
+  editArticle(){
+    let articleEdited: Article = new Article();
+    if (this.articleToEdit.themes.length == 0){
+      this.alerts.showAlertWarning("Adicione ao menos um tema!"); 
+    } else if (this.articleToEdit.instructionList.length == 0 && this.articleToEdit.codeList.length == 0){
+      this.alerts.showAlertWarning("Adicione ao menos uma instrução!"); 
+    } else if(this.articleToEdit.user.id == environment.id){
+      articleEdited = this.editArticleForm.value;
+      articleEdited.id = this.articleToEdit.id
+      articleEdited.themes = this.articleToEdit.themes;
+      articleEdited.instructionList = this.articleToEdit.instructionList;
+      articleEdited.codeList = this.articleToEdit.codeList;
+      articleEdited.user = this.articleToEdit.user;
+      this.articleService
+      .editArticle(articleEdited)
+        .subscribe(
+          respArticle => {
+            this.articleList = [];
+            this.listAllArticles();
+            this.alerts.showAlertSuccess("Artigo atualizado com sucesso!"); 
+          }
+        );
+    } else {
+      this.alerts.showAlertWarning("Você não pode editar o artigo de outra pessoa! "); 
+    }
+  }
+
+  findArticle(){
+    if (this.articleTitle == ""){
+      this.hideDefaultArticle=true;
+      this.margin_fill="";
+    } else {
+      this.articleService
+      .findByTitleLike(this.articleTitle)
+        .subscribe(
+          respArticles => {
+            if (this.articleTitle == ""){
+              this.foundArticleList = [];
+            } else {
+              this.foundArticleList = respArticles;
+              this.hideDefaultArticle=false;
+              this.margin_fill="found"
+            }
+          }
+        );
+    }
+  }
 
   listAllThemes(){
     this.themeService
@@ -173,22 +260,8 @@ export class ArticlesComponent implements OnInit {
         .subscribe(
           themeList => {
             this.themeList = themeList;
-            console.log(this.themeList)
           }
         )
-  }
-
-  findByIdTheme(){
-    this.themeService
-    .getThemeById(this.idTheme)
-      .subscribe((resp: Theme) => {
-        this.theme = resp
-      })
-  }
-
-  setFocus(){
-    let inputTitle = this.renderer.selectRootElement('#title');
-    inputTitle.click();
   }
 
   listAllArticles(){
@@ -201,76 +274,24 @@ export class ArticlesComponent implements OnInit {
               addArticle = article
               this.articleList.push(addArticle);
             });
-            //this.articleList = articleList;
-            console.log(this.articleList)
           }
         )
   }
 
-  setEditArticle(articleToEdit: Article){
-
-  }
-
-  insertTheme(){
-    this.themeService
-      .insertTheme(this.themeToInsert)
-      .subscribe(
-        respTheme => {
-          if ( respTheme != null && respTheme.id != null){
-            console.log(respTheme);
-            this.alerts.showAlertSuccess("Tema cadastrado com sucesso!");
-            this.listAllThemes();
-          }else{
-            this.alerts.showAlertDanger("Tema não cadastrado!")
-          }
+  listUserArticles(){
+    setTimeout(() => { 
+      this.articleList.forEach(article => {
+        if(article.user.id == environment.id){
+          let addArticle = new Article();
+          addArticle = article
+          this.userArticleList.push(addArticle);
         }
-      )
+      });
+     }, 500);
   }
 
-  findTheme(){
-    this.themeService
-      .getThemeByName(this.themeToFind.name)
-      .subscribe(
-        respTheme => {
-          if ( respTheme != null && respTheme.id != null){
-            this.themeFounded.id = respTheme.id;
-            this.themeFounded.name = respTheme.name;
-            this.themeFounded.articles = respTheme.articles;
-            this.hideDefaultTheme=false;
-            this.margin_fill="found"
-          }else{
-            this.alerts.showAlertDanger("Tema não encontrado!")
-          }
-        }
-      )
+  showArticle(id: number){
+    let showRoute = `/forum/artigos/show/${id}`;
+    this.router.navigate([showRoute])
   }
-
-  setEditTheme(themeToEdit: Theme){
-    this.themeToEdit = themeToEdit
-  }
-
-  updateEditedTheme(themeEdited: Theme){
-    let editThemeModal = this.renderer.selectRootElement('#close-modals');
-    this.themeService
-      .updateTheme(themeEdited)
-      .subscribe(
-        respTheme => {
-          console.log(respTheme)
-          this.listAllThemes();
-          //editThemeModal.click();
-        }
-      )
-  }
-
-  deleteTheme(id: number){
-    this.themeService
-      .deleteTheme(id)
-      .subscribe(
-        respTheme => {
-          console.log(respTheme)
-          this.listAllThemes();
-        }
-      )
-  }
-
 }

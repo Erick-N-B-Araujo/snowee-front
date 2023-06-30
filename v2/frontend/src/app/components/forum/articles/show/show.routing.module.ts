@@ -1,19 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ArticlesComponent } from './articles.component';
-import { ShowComponent } from './show/show.component';
+import { ShowComponent } from './show.component';
 
 //Declaração de rotas
 const routes: Routes = [
   { 
-    path: 'show', 
-    loadChildren: 
-      () => import('./show/show.module')
-        .then(x => x.ShowModule)
-  },
-  { 
-    path: '', 
-    component: ArticlesComponent
+    path: ':id', 
+    component: ShowComponent
   }
 ];
 
@@ -28,4 +21,4 @@ const routes: Routes = [
 })
 
 //Classe para importar e definir as rotas da SPA
-export class ArticlesRoutingModule { }
+export class ShowRoutingModule { }

@@ -24,4 +24,19 @@ export class ArticlesService {
   insertArticle(articleToInsert: Article) : Observable<Article>{
     return this.http.post<Article>(this.apiUrl, articleToInsert, this.httpService.setOptionsBearer())
   }
+
+  editArticle(articleToUpdate: Article) : Observable<Article>{
+    const url = `${this.apiUrl}/${articleToUpdate.id}`;
+    return this.http.put<Article>(url, articleToUpdate, this.httpService.setOptionsBearer())
+  }
+
+  findById(id: number){
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Article>(url, this.httpService.setOptions())
+  }
+
+  findByTitleLike(title: string){
+    const url = `${this.apiUrl}/title/${title}`;
+    return this.http.get<Article[]>(url, this.httpService.setOptions())
+  }
 }

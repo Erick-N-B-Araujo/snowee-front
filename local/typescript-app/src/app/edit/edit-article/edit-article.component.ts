@@ -15,7 +15,7 @@ export class EditArticleComponent implements OnInit {
 
   article: Article = new Article
   userArticle: UserLogin = new UserLogin
-  articleName: string
+  articleName:  string
 
 
   constructor(
