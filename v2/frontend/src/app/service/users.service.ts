@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { User } from '../model/User';
-import { Observable } from 'rxjs';
-import { HttpClient, HttpHeaders  } from '@angular/common/http'
+import { Observable, first } from 'rxjs';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http'
 import { environment } from 'src/environments/environment';
+import { error } from 'jquery';
 
 //Recebe o objeto, 
 @Injectable({
@@ -46,6 +47,10 @@ export class UsersService {
   //GET na API sem parametros no endpoint /users
   adminGetUserByUsername(username: string) : Observable<User>{
     return this.http.get<User>(this.apiUrl+"/users/find/"+username, this.setOptionsBearer())
+  }
+
+  noAuthGetUserByUsername(username: string){
+    return this.http.get<User>(this.apiUrl+"/users/find/"+username)
   }
 
   //GET na API sem parametros no endpoint /users

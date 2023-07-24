@@ -5,10 +5,23 @@ li {
         background-color: #F2A413;   
     }
     button.active {
-        background-color: #41D9D9;
+        background-color: colors.$blue;
         outline-style: solid;
         outline-color: colors.$dark-blue;
         outline-width: 0.11em;
+    }
+}
+
+nav {
+    a.page-link{
+        background-color: colors.$white;
+        border-color: colors.$dark-blue;
+    }
+    a.page-link.select{
+        background-color: colors.$dark-orange;
+    }
+    a.page-link.active{
+        background-color: colors.$blue;
     }
 }
 

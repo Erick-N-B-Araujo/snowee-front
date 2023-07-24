@@ -8,6 +8,7 @@ $white: #F2F2F2;
 $black: #0D0D0D;
 $light-gray: #DFE3CD;
 $dark-gray: #CCD0B8;
+$green: green;
 
 .bg-dark-pink {
     background-color: $dark-pink;
@@ -63,6 +64,11 @@ $dark-gray: #CCD0B8;
 .cl-dark-gray {
     color: $dark-gray;
 }
+
+.cl-green {
+    color: $green;
+}
+
 .li-white {
     color: $white;
     a:hover {

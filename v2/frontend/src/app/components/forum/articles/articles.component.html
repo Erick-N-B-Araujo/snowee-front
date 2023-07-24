@@ -16,67 +16,71 @@
                                 <li class="nav-item  m-1" role="presentation">
                                   <button class="nav-link active" id="all-articles" data-bs-toggle="tab" data-bs-target="#all-articles-tab-pane" type="button" role="tab" aria-controls="all-articles-tab-pane" aria-selected="true">Todos</button>
                                 </li>
-                                <li class="nav-item  m-1" role="presentation" *ngIf='auth.isLogged()'>
+                                <li class="nav-item  m-1" role="presentation">
                                     <button class="nav-link" id="user-articles" data-bs-toggle="tab" data-bs-target="#user-articles-tab-pane" type="button" role="tab" aria-controls="user-articles-tab-pane" aria-selected="false">Meus</button>
                                 </li>
-                                <li class="nav-item  m-1" role="presentation" *ngIf='auth.isLogged()'>
+                                <li class="nav-item  m-1" role="presentation">
                                   <button class="nav-link" id="insert-article-tab" data-bs-toggle="tab" data-bs-target="#insert-article-tab-pane" type="button" role="tab" aria-controls="insert-article-tab-pane" aria-selected="false">Criar</button>
                                 </li>
                             </ul>
-                            <div #ALLARTICLES class="tab-content mt-1 container align-items-center justify-content-center" id="all-articles">
+                            <div #ALLARTICLES class="tab-content mt-1 align-items-center justify-content-center" id="all-articles">
                                 <div class="tab-pane fade show active" id="all-articles-tab-pane" role="tabpanel" aria-labelledby="all-articles" tabindex="1">          
-                                    <table class="table v-al ">
-                                        <thead class="txt-al-c">
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Título</th>
-                                            <th scope="col">Ações</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let article of articleList" class="v-al">
-                                                <td scope="row">
-                                                    <p class="cl-dark-blue m-0">{{article.id}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="m-0">{{article.title}}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="mb-1 d-grid">
-                                                        <button  class="btn btn-primary" (click)="showArticle(article.id)">Abrir</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-all-scroll container">
+                                        <table class="table v-al">
+                                            <thead class="txt-al-c">
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Título</th>
+                                                <th scope="col">Ações</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let article of articleList" class="v-al">
+                                                    <td scope="row">
+                                                        <p class="cl-dark-blue m-0">{{article.id}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="m-0">{{article.title}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mb-1 d-grid">
+                                                            <button  class="btn btn-primary" (click)="showArticle(article.id)">Abrir</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>                                    
                                 </div>
                             </div>
                             <div #USERARTICLES class="tab-content mt-1 container align-items-center justify-content-center" id="user-articles">
                                 <div class="tab-pane fade show" id="user-articles-tab-pane" role="tabpanel" aria-labelledby="user-articles" tabindex="1">          
-                                    <table class="table v-al ">
-                                        <thead class="txt-al-c">
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Título</th>
-                                            <th scope="col">Ações</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let article of userArticleList" class="v-al">
-                                                <td scope="row">
-                                                    <p class="cl-dark-blue m-0">{{article.id}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="m-0">{{article.title}}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="mb-1 d-grid">
-                                                        <button  data-bs-toggle="modal" data-bs-target="#editArticle" data-bs-whatever="@pos t" class="btn btn-primary" (click)="setArticleToEdit(article)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-all-scroll container">
+                                        <table class="table v-al ">
+                                            <thead class="txt-al-c">
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Título</th>
+                                                <th scope="col">Ações</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let article of userArticleList" class="v-al">
+                                                    <td scope="row">
+                                                        <p class="cl-dark-blue m-0">{{article.id}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="m-0">{{article.title}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mb-1 d-grid">
+                                                            <button  data-bs-toggle="modal" data-bs-target="#editArticle" data-bs-whatever="@pos t" class="btn btn-primary" (click)="setArticleToEdit(article)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div #INSERARTICLE class="tab-content mt-3 txt-al-l container" id="insert-article">
@@ -143,35 +147,37 @@
                                     </form>
                                 </div>
                             </div>
-                            <div #FINDARTICLE class="tab-content mt-3 txt-al-c container" id="find-article">
-                                <div class="tab-pane fade show vh-529" id="find-article-tab-pane" role="tabpanel" aria-labelledby="find-article" tabindex="1">          
+                            <div #FINDARTICLE class="tab-content mt-3 txt-al-c" id="find-article">
+                                <div class="tab-pane fade show" id="find-article-tab-pane" role="tabpanel" aria-labelledby="find-article" tabindex="1">          
                                     <form class="mb-3" [formGroup]="articleTitleForm">
                                         <input [(ngModel)]="articleTitle" (keyup)="findArticle()"  type="text" class="form-control" formControlName="title"/>
                                     </form>
-                                    <table class="table v-al ">
-                                        <thead class="txt-al-c">
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Título</th>
-                                            <th scope="col">Ações</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let article of foundArticleList" class="v-al">
-                                                <td scope="row">
-                                                    <p class="cl-dark-blue m-0">{{article.id}}</p>
-                                                </td>
-                                                <td>
-                                                    <p class="m-0">{{article.title}}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="mb-1 d-grid">
-                                                        <button  class="btn btn-primary" (click)="showArticle(article.id)">Abrir</button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-find-scroll container {{margin_fill}}">
+                                        <table class="table v-al">
+                                            <thead class="txt-al-c">
+                                              <tr class="">
+                                                <th scope="col">#</th>
+                                                <th scope="col">Título</th>
+                                                <th scope="col">Ações</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let article of foundArticleList" class="v-al">
+                                                    <td scope="row">
+                                                        <p class="cl-dark-blue m-0">{{article.id}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <p class="m-0">{{article.title}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mb-1 d-grid">
+                                                            <button  class="btn btn-primary" (click)="showArticle(article.id)">Abrir</button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -20,32 +20,34 @@
                                   <button class="nav-link" id="allUsers-tab" data-bs-toggle="tab" data-bs-target="#insert-theme-tab-pane" type="button" role="tab" aria-controls="insert-theme-tab-pane" aria-selected="false">Cadastrar</button>
                                 </li>
                             </ul>
-                            <div #ALLTHEMES class="tab-content mt-1 txt-al-c container" id="all-themes">
+                            <div #ALLTHEMES class="tab-content mt-1 " id="all-themes">
                                 <div class="tab-pane fade show active" id="all-themes-tab-pane" role="tabpanel" aria-labelledby="all-themes" tabindex="1">          
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nome</th>
-                                            <th scope="col">Ações</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let theme of themeList" class="">
-                                                <th scope="row">
-                                                    <p class="mt-4">{{theme.id}}</p>
-                                                </th>
-                                                <td>
-                                                    <p class="mt-4">{{theme.name}}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="mb-1 d-grid">
-                                                        <button  data-bs-toggle="modal" data-bs-target="#editTheme" data-bs-whatever="@post" class="btn btn-primary" (click)="setEditTheme(theme)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-all-scroll container">
+                                        <table class="table v-al">
+                                            <thead class="txt-al-c">
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Ações</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor="let theme of themeList" class="">
+                                                    <th scope="row">
+                                                        <p class="mt-4">{{theme.id}}</p>
+                                                    </th>
+                                                    <td>
+                                                        <p class="mt-4">{{theme.name}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mb-1 d-grid">
+                                                            <button  data-bs-toggle="modal" data-bs-target="#editTheme" data-bs-whatever="@post" class="btn btn-primary" (click)="setEditTheme(theme)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                             <div #INSERTTHEME class="tab-content mt-3 txt-al-c container" id="insert-theme">
@@ -58,38 +60,37 @@
                                     </form>
                                 </div>
                             </div>
-                            <div #FINDTHEME class="tab-content mt-3 txt-al-c container" id="find-theme">
-                                <div class="tab-pane fade show vh-529" id="find-theme-tab-pane" role="tabpanel" aria-labelledby="find-theme" tabindex="1">          
-                                    <form class="mb-3" [formGroup]="themeForm" (ngSubmit)="findTheme()">
-                                        <input [(ngModel)]="themeToFind.name"  type="text" class="form-control" formControlName="name"/>
-                                        <div class="d-grid">
-                                            <button type="submit" class="btn btn-primary mt-3">Procurar</button>
-                                        </div>
+                            <div #FINDTHEME class="tab-content mt-3 txt-al-c" id="find-theme">
+                                <div class="tab-pane fade show" id="find-theme-tab-pane" role="tabpanel" aria-labelledby="find-theme" tabindex="1">          
+                                    <form class="mb-3" [formGroup]="findThemeForm">
+                                        <input [(ngModel)]="themeName" (keyup)="findThemes()" type="text" class="form-control" formControlName="name"/>
                                     </form>
-                                    <table class="table">
-                                        <thead>
-                                          <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Nome</th>
-                                            <th scope="col">Ações</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody class="align-items-center">
-                                            <tr *ngIf="hideDefaultTheme==false">
-                                                <th scope="row">
-                                                    <p class="mt-4">{{themeFounded.id}}</p>
-                                                </th>
-                                                <td>
-                                                    <p class="mt-4">{{themeFounded.name}}</p>
-                                                </td>
-                                                <td>
-                                                    <div class="mb-1 d-grid">
-                                                        <button  data-bs-toggle="modal" data-bs-target="#editTheme" data-bs-whatever="@post" class="btn btn-primary" (click)="setEditTheme(themeFounded)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-find-scroll container {{margin_fill}}">
+                                        <table class="table v-al">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">Nome</th>
+                                                <th scope="col">Ações</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody class="align-items-center">
+                                                <tr *ngFor="let theme of themesFounded" class="v-al">
+                                                    <th scope="row">
+                                                        <p class="mt-4">{{theme.id}}</p>
+                                                    </th>
+                                                    <td>
+                                                        <p class="mt-4">{{theme.name}}</p>
+                                                    </td>
+                                                    <td>
+                                                        <div class="mb-1 d-grid">
+                                                            <button  data-bs-toggle="modal" data-bs-target="#editTheme" data-bs-whatever="@post" class="btn btn-primary" (click)="setEditTheme(theme)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico filter-white"></button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -110,23 +111,23 @@
         <div class="modal-body">
             <div class="box-column">
                 <div class="container">
-                    <form [formGroup]="themeForm" (ngSubmit)="updateEditedTheme(themeToEdit)">
+                    <form [formGroup]="editThemeForm">
                         <label for="email" class="m-0">Nome:</label>
                         <input [(ngModel)]="themeToEdit.name"  type="text" class="form-control" formControlName="name"/>
                         <div class="drop-shadow container mt-2 mb-3">
                             <div class="row">
                                 <div class="col-md-6 d-grid p-1 ">
-                                    <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit" data-bs-dismiss="modal">Alterar</button>
+                                    <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit" data-bs-dismiss="modal" (click)="updateEditedTheme(themeToEdit)">Alterar</button>
                                 </div>
                                 <div class="col-md-6 d-grid p-1">
-                                    <button class="btn btn-primary bg-dark-pink cl-white d-grid otl-dark-blue" (click)="deleteTheme(themeToEdit.id)">Excluir</button>
+                                    <button class="btn btn-primary bg-dark-pink cl-white d-grid otl-dark-blue" data-bs-dismiss="modal" (click)="deleteTheme(themeToEdit.id)">Excluir</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            </div>
+        </div>
       </div>
     </div>
 </div>

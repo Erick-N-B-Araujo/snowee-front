@@ -30,8 +30,8 @@ export class ThemesService {
   getAllThemes() : Observable<Theme[]>{
     return this.http.get<Theme[]>(this.apiUrl+"/themes/list-all", this.setOptions())
   }
-  getThemeByName(themeName: string) : Observable<Theme>{
-    return this.http.get<Theme>(this.apiUrl+"/themes/name/"+themeName, this.setOptions())
+  getThemesByName(themeName: string) : Observable<Theme[]>{
+    return this.http.get<Theme[]>(this.apiUrl+"/themes/name/"+themeName, this.setOptions())
   }
   getThemeById(themeId: number) : Observable<Theme>{
     return this.http.get<Theme>(this.apiUrl+"/themes/"+themeId, this.setOptions())

@@ -1,25 +1,36 @@
-<div class="container">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-6 mb-5 card-rd-15 drop-shadow">
-            <div class="d-grid container-fluid">
-                <h1 class="text-center mb-3 mt-3">Cadastrar</h1>
-                <form [formGroup]="userForm" (ngSubmit)="submit()">
-                    <label class="m-0">Nome:</label>
-                    <input type="text" class="form-control mb-1" formControlName="firstName"/>
-                    <label class="m-0">Sobrenome:</label>
-                    <input type="text" class="form-control mb-1" formControlName="lastName"/>                          
-                    <label class="m-0">Email:</label>
-                    <input type="text" class="form-control mb-1" formControlName="email"/>
-                    <label class="m-0">URL da imagem de perfil:</label>
-                    <input type="text" class="form-control mb-1" formControlName="profileImgUrl"/>
-                    <label class="m-0">Password:</label>
-                    <input type="password" class="form-control mb-1" (input)="confirmPass($event)"/>
-                    <label class="m-0">Confirmar senha:</label>
-                    <input [(ngModel)]='user.password' type="password" class="form-control mb-1" formControlName="password"/>
-                    <div class="d-grid mt-3 mb-4">
-                        <button type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white otl-dark-blue">Salvar</button>
+<div class="container-fluid">
+    <div class="row mt-1 justify-content-center">
+        <div class="col-md-6">
+            <div class="container">
+                <div class="container  card-rd-15 drop-shadow vh-x box-center">
+                    <div class="d-grid container-fluid">
+                        <h1 class="text-center mb-3 mt-3">Cadastrar</h1>
+                        <form [formGroup]="userForm" (ngSubmit)="validateFields()">
+                            <label class="m-0">Nome:</label>
+                            <input [(ngModel)]="user.firstName"  type="text" class="form-control mb-1" formControlName="firstName"/>
+                            <label class="m-0">Sobrenome:</label>
+                            <input [(ngModel)]="user.lastName"type="text" class="form-control mb-1" formControlName="lastName"/>                          
+                            <label class="m-0">Email:</label>
+                            <input [(ngModel)]="user.email"type="text" class="form-control mb-1" (keyup)="checkEmail()" formControlName="email"/>
+                            <span  class="{{colorEmail}}">{{emailMessage}}</span>
+                            <br>
+                            <label class="m-0">URL da imagem de perfil:</label>
+                            <input [(ngModel)]="user.profileImgUrl"type="text" class="form-control mb-1" formControlName="profileImgUrl"/>
+                            <label class="m-0">Password:</label>
+                            <input [(ngModel)]="user.password"type="password" class="form-control mb-1" formControlName="password"/>
+                            <span>A senha deve conter entre 4 a 8 caracteres</span>
+                            <br>
+                            <label class="m-0">Confirmar senha:</label>
+                            <input [(ngModel)]="confirmPassword"type="password" class="form-control mb-1" (keyup)="checkPassword()" formControlName="confirmPassword"/>
+                            <span *ngIf="isConfirmedPass==false" class="cl-dark-pink">As senhas não conferem</span>
+                            <span *ngIf="isConfirmedPass" class="cl-green">As senhas conferem</span>
+                            <div class="d-grid mt-3 mb-4">
+                                <button *ngIf="!readyToSave()" type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white otl-dark-blue disabled">Salvar</button>
+                                <button *ngIf="readyToSave()" type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white otl-dark-blue" (click)="saveUser(user)">Salvar</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>

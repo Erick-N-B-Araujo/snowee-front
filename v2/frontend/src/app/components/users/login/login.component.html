@@ -1,23 +1,28 @@
-<div class="container">
-    <div class="row align-items-center justify-content-center">
-        <div class="col-md-6 mb-5 card-rd-15 drop-shadow">
-            <h1 class="text-center mb-3 mt-3">Login</h1>
-            <form [formGroup]="loginForm" (ngSubmit)="login()">
-                <div class="d-grid container-fluid">
-                    <label for="username" class="mt-3">Email:</label>
-                    <input [(ngModel)]='userLogin.username' type="text" class="form-control" formControlName="email"/>
-                    <label for="password" class="mt-1">Senha:</label>
-                    <input [(ngModel)]='userLogin.password' type="password" class="form-control" formControlName="password"/>
-                    <div class="d-grid mt-3 mb-3">
-                        <button type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white otl-dark-blue">Entrar</button>
+<div class="container-fluid">
+    <div class="row mt-1 justify-content-center">
+        <div class="col-md-6">
+            <div class="container">
+                <div class="container card-rd-15 drop-shadow vh-x box-center">
+                    <div class="d-grid container-fluid">
+                        <h1 class="text-center mb-3 mt-3">Login</h1>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
+                            <div class="d-grid container-fluid p-0">
+                                <label for="username" class="mt-3">Email:</label>
+                                <input [(ngModel)]='userLogin.username' type="text" class="form-control" formControlName="email"/>
+                                <label for="password" class="mt-1">Senha:</label>
+                                <input [(ngModel)]='userLogin.password' type="password" class="form-control" formControlName="password"/>
+                                <div class="d-grid mt-3 mb-3">
+                                    <button type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white otl-dark-blue">Entrar</button>
+                                </div>
+                                <hr>
+                            </div>
+                        </form>
+                        <p class="text-center mb-3">
+                            Não tem uma conta? <a routerLink="/users/signin" class="drop-shadow-font-next">Cadastre-se</a>
+                        </p>
                     </div>
-                    <hr>
                 </div>
-            </form>
-
-            <p class="text-center mb-3">
-                Não tem uma conta ainda? <a routerLink="/users/signin" class="drop-shadow-font-next">Cadastre-se</a>
-            </p>
+            </div>
         </div>
     </div>
 </div>

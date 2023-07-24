@@ -57,20 +57,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto li-white">
-                        <li class="nav-item active">
-                            <a class="nav-link cl-white {{statusHome}}" routerLink="inicio">Home</a>
+                        <li class="nav-item" *ngIf='!cpController.isHomeActive()'>
+                            <a class="nav-link cl-white" routerLink="inicio" (click)="resetCpStatus()">Inicio</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isHomeActive()'>
+                            <a class="nav-link cl-white active" routerLink="inicio" (click)="resetCpStatus()">Inicio</a>
+                        </li>
+                        <li  class="nav-item" *ngIf='!cpController.isForumActive()'>
+                            <a class="nav-link cl-white" routerLink="forum" (click)="resetCpStatus()">Fórum</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isForumActive()'>
+                            <a class="nav-link cl-white active" routerLink="forum" (click)="resetCpStatus()">Fórum</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!cpController.isPortfolioActive()'>
+                            <a class="nav-link cl-white" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isPortfolioActive()'>
+                            <a class="nav-link cl-white active" routerLink="portfolio" (click)="resetCpStatus()">Portfólio</a>
+                        </li>
+                        <li class="nav-item" *ngIf='!cpController.isAboutActive()'>
+                            <a class="nav-link cl-white" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
+                        </li>
+                        <li class="nav-item" *ngIf='cpController.isAboutActive()'>
+                            <a class="nav-link cl-white active" routerLink="sobre" (click)="resetCpStatus()">Sobre</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link cl-white {{statusForum}}" routerLink="forum">Fórum</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link cl-white {{statusPortfolio}}" routerLink="portfolio">Portfólio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link cl-white {{statusAbout}}" routerLink="sobre">Sobre</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil<img src="{{user.profileImgUrl}}" class="border-pic-rounded btn-nav-image ml-2 p-0"alt=""></a>
+                            <a class="nav-link cl-white" data-bs-toggle="modal" data-bs-target="#editUser" data-bs-whatever="@post">Editar Perfil</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link cl-white" (click)="refresh()">Sair</a>
@@ -102,32 +114,11 @@
                         <input [(ngModel)]="userToEdit.lastName"  type="text" class="form-control" formControlName="editLastname"/>
                         <label for="email" class="m-0">URL da imagem:</label>
                         <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
-                        <div class="d-grid drop-shadow mt-2 mb-3">
+                        <div class="d-grid drop-shadow mt-4 mb-3">
                             <button class="btn btn-primary otl-dark-blue bg-light-blue cl-white d-grid" type="submit">Alterar</button>
                         </div>
                     </form>
                 </div>
-        </div>
-        <div class="modal-footer">
-          <div class="container">
-            <div class="row d-flex drop-shadow">
-                <div class="col-md-6">
-                    <div class="container m-1">
-                        <div class="d-grid">
-                            <button class="btn btn-primary otl-dark-blue bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="container m-1">
-                        <div class="d-grid">
-                            <button class="btn btn-primary otl-dark-blue bg-dark-pink cl-white d-grid" type="button">Desativar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           </div>
-          </div>
         </div>
       </div>
     </div>

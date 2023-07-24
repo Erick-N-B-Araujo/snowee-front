@@ -4,21 +4,7 @@
       <div class="row align-items-center mt-2 mb-5" >
         <div class="col-md-6">
           <h1>Seja bem-vindo(a) a comunidade!</h1>
-          <h5>sinta-se a vontade para compartilhar</h5>
-          <ul class="nav nav-pills mb-2">
-            <li #LinkAUTOMACAO class="nav-item mt-1 mb-1">
-              <a  class="btn btn-primary"
-              >Automação</a>
-            </li>
-            <li #LinkFULLSTACK class="nav-item mt-1 mb-1 ml-2 mr-2">
-              <a class="btn btn-primary"
-              >Fullstack</a>
-            </li>
-            <li #LinkJOGOS class="nav-item mt-1 mb-1">
-              <a class="btn btn-primary"
-              >Jogos</a>
-            </li>
-          </ul>
+          <h5>junte-se a causa do conhecimento descentralizado, compartilhe!</h5>
         </div>
         <div class="col-md-6">
           <img src="https://i.imgur.com/6s5cG47.png">
@@ -26,4 +12,129 @@
       </div>
     </div>
   </sw-divider-nav-dk-orange>
+  <div class="container">
+    <sw-card-nav-white>
+        <div class="sw-header">
+            <h1 class="p-2 m-0">Artigos</h1>
+        </div>
+        <div class="sw-body">
+            <div class="container">
+                <div class="row pt-2">
+                    <div class="col-md-12">
+                        <ul class="nav nav-pills nav-justified drop-shadow mb-2" id="myTab" role="tablist">
+                            <li class="nav-item  m-1" d>
+                                <button class="nav-link" id="find-article-tab" data-bs-toggle="tab" data-bs-target="#find-article-tab-pane" type="button" role="tab" aria-controls="find-article-tab-pane" aria-selected="false"><i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </li>
+                            <li class="nav-item  m-1" role="presentation">
+                              <button class="nav-link active" id="all-articles" data-bs-toggle="tab" data-bs-target="#all-articles-tab-pane" type="button" role="tab" aria-controls="all-articles-tab-pane" aria-selected="true">Todos</button>
+                            </li>
+                            <li class="nav-item  m-1" role="presentation">
+                                <button class="nav-link" id="user-articles" data-bs-toggle="tab" data-bs-target="#user-articles-tab-pane" type="button" role="tab" aria-controls="user-articles-tab-pane" aria-selected="false">Temas</button>
+                            </li>
+                        </ul>
+                        <div class="container">
+                          <div #ALLARTICLES class="tab-content mt-1 align-items-center justify-content-center" id="all-articles">
+                            <div class="tab-pane fade show active" id="all-articles-tab-pane" role="tabpanel" aria-labelledby="all-articles" tabindex="1">          
+                              
+                              <div class="row row-cols-1 row-cols-md-3 g-4 mt-1 mb-1">
+                                <div class="col" *ngFor="let article of pagedArticleList">
+                                  <div class="card h-100">
+                                    <img src="{{article.imgUrl}}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title fw-bold m-0">{{article.title}}</h5>
+                                      <hr class="mt-1 mb-2">
+                                      <p class="card-text">{{article.subTitle}}</p>
+                                    </div>
+                                    <div class="card-footer">
+                                      <div class="row">
+                                        <div class="container">
+                                          <div class="d-grid mt-1 mb-2">
+                                            <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="showArticle(article.id)">Ver artigo</a>
+                                          </div>
+                                        </div>
+                                      </div>               
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <hr>
+                              <nav aria-label="Paginação todos os posts">
+                                <ul class="pagination justify-content-center drop-shadow cl-dark-blue">
+                                  <li class="page-item"><a class="page-link select" (click)="prevPage()">Anterior</a></li>
+                                  <li class="page-item" *ngFor="let p of pages; let i=index">
+                                    <a *ngIf="i == page" class="page-link active" (click)="setPage(i, $event)">{{i+1}}</a>
+                                    <a *ngIf="i != page" class="page-link" (click)="setPage(i, $event)">{{i+1}}</a>
+                                  </li>
+                                  <li class="page-item"><a class="page-link select" (click)="nextPage()">Próxima</a></li>
+                                </ul>
+                              </nav>                                  
+                            </div>
+                          </div>
+                          <div #THEMEARTICLES class="tab-content mt-1 align-items-center justify-content-center" id="user-articles">
+                              <div class="tab-pane fade show" id="user-articles-tab-pane" role="tabpanel" aria-labelledby="user-articles" tabindex="1">
+                                <div class="d-grid" *ngFor="let theme of themeList">
+                                  <a class="btn btn-primary bg-dark-pink otl-dark-blue drop-shadow mb-2 text-white" (click)="setThemeArticles(theme)">{{theme.name}}</a>
+                                  <div class="table-all-scroll container mb-1">
+                                    <table *ngIf="themeShowing == theme.name" class="table v-al mt-3">
+                                        <tbody>
+                                            <tr *ngFor="let article of themeArticleList" class="v-al">
+                                                <td scope="row">
+                                                    <p class="cl-dark-blue m-0">{{article.id}}</p>
+                                                </td>
+                                                <td>
+                                                    <p class="m-0">{{article.title}}</p>
+                                                </td>
+                                                <td>
+                                                  <div class="d-grid mt-1 mb-2">
+                                                    <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="showArticle(article.id)">Ver artigo</a>
+                                                  </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                          <div #FINDARTICLE class="tab-content mt-3 txt-al-c" id="find-article">
+                              <div class="tab-pane fade show" id="find-article-tab-pane" role="tabpanel" aria-labelledby="find-article" tabindex="1">          
+                                  <form class="mb-3" [formGroup]="articleTitleForm">
+                                      <input [(ngModel)]="articleTitle" (keyup)="findArticle()"  type="text" class="form-control" formControlName="title"/>
+                                  </form>
+                                  <div class="table-find-scroll container {{margin_fill}}">
+                                      <table class="table v-al">
+                                          <thead class="txt-al-c">
+                                            <tr class="">
+                                              <th scope="col">#</th>
+                                              <th scope="col">Título</th>
+                                              <th scope="col">Ações</th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                              <tr *ngFor="let article of foundArticleList" class="v-al">
+                                                  <td scope="row">
+                                                      <p class="cl-dark-blue m-0">{{article.id}}</p>
+                                                  </td>
+                                                  <td>
+                                                      <p class="m-0">{{article.title}}</p>
+                                                  </td>
+                                                  <td>
+                                                    <div class="d-grid mt-1 mb-2">
+                                                      <a class="btn btn-primary bg-dark-orange otl-dark-blue drop-shadow" (click)="showArticle(article.id)">Ver artigo</a>
+                                                    </div>
+                                                  </td>
+                                              </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </sw-card-nav-white>
+  </div>
 </div>

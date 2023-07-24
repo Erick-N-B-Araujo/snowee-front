@@ -1,0 +1,20 @@
+@use '../1-base/colors';
+
+.table-all-scroll{
+    overflow-y: auto;
+    max-height: 521px;
+}
+
+.table-insert-scroll{
+    overflow-y: auto;
+    max-height: 510px;
+}
+
+.table-find-scroll{
+    overflow-y: auto;
+    max-height: 474px;
+}
+
+.table-header{
+    position: fixed;
+}

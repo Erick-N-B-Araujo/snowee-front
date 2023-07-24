@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
               environment.token = json.access_token
               this.token = json.access_token
               userToLogin.token = json.access_token
-              if (json.username == "batistasd678@gmail.com"){
+              if (json.username == "batistasd678@gmail.com" || json.username == "admin@snowee.com"){
                 environment.isAdmin=true
               }
               environment.id = json.userId
@@ -72,9 +72,18 @@ export class LoginComponent implements OnInit {
                         environment.isLogged = true
                         this.authService.sendClickEvent();
                         this.router.navigate(['/inicio'])
-                        this.alerts.showAlertSuccess("User Logged-in!")
+                        this.alerts.showAlertSuccess("Login bem sucedido!")
                       }
                     })
-          })
+          },
+          error => {
+            switch(error.status){
+              case 400: {
+                this.alerts.showAlertDanger("Email/Senha incorretos!")
+                break;
+              }
+            }
+          }
+          )
   }
 }

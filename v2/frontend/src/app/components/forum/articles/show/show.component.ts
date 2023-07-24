@@ -19,6 +19,7 @@ export class ShowComponent implements OnInit {
   ){}
 
   ngOnInit() {
+    window.scroll(0,0);
     let id = this.route.snapshot.params['id'];
     this.setArticle(id);
   }

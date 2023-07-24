@@ -37,7 +37,7 @@ export class UsersComponent implements OnInit{
       this.listAllUsersLogged()
       this.listAllUsers()
     } else {
-      this.alerts.showAlertDanger("Você não ter acesso a este recurso!")
+      this.alerts.showAlertDanger("Somente administradores tem acesso a este recurso!")
       this.router.navigate(["/inicio"])
     }
   }

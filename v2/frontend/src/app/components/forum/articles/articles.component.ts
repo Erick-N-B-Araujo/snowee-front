@@ -31,7 +31,7 @@ export class ArticlesComponent implements OnInit {
   themeList: Theme[]=[];
   
   hideDefaultArticle: boolean = true;
-  margin_fill: string = "find";
+  margin_fill: string = "vh-513";
 
   instructions: string[][] = [];
   steps: string[] = [];
@@ -58,6 +58,10 @@ export class ArticlesComponent implements OnInit {
     this.listUserArticles();
     this.initializeVariables();
     this.initializeForms();
+    if (!this.auth.isAdmin()){
+      this.alerts.showAlertDanger("Somente administradores tem acesso a este recurso!")
+      this.router.navigate(["/inicio"])
+    }
   }
 
   initializeForms(){
@@ -235,8 +239,7 @@ export class ArticlesComponent implements OnInit {
 
   findArticle(){
     if (this.articleTitle == ""){
-      this.hideDefaultArticle=true;
-      this.margin_fill="";
+      this.margin_fill="vh-513";
     } else {
       this.articleService
       .findByTitleLike(this.articleTitle)
@@ -246,8 +249,7 @@ export class ArticlesComponent implements OnInit {
               this.foundArticleList = [];
             } else {
               this.foundArticleList = respArticles;
-              this.hideDefaultArticle=false;
-              this.margin_fill="found"
+              this.margin_fill=""
             }
           }
         );

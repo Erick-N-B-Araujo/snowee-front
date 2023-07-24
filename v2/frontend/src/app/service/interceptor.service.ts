@@ -9,6 +9,7 @@ from '@angular/common/http';
 import { Observable, finalize, tap } from 'rxjs';
 import { map } from 'jquery';
 import { AlertsService } from './alerts.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
@@ -17,7 +18,8 @@ import { AlertsService } from './alerts.service';
 export class InterceptorService implements HttpInterceptor{
 
   constructor(
-    private alerts: AlertsService
+    private alerts: AlertsService,
+    private router: Router,
   ) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler) {
@@ -33,8 +35,13 @@ export class InterceptorService implements HttpInterceptor{
           // Operation failed; error is an HttpErrorResponse
           error: (error) => {
             if(error.status == 401){
-              this.alerts.showAlertDanger("Você não tem permissão para alterar este recurso!")
-            } 
+              this.router.navigate(['/users/login'])
+              this.alerts.showAlertDanger("Você não tem permissão para acessar este recurso!")
+            }
+            else if(error.status == 403){
+              this.router.navigate(['/inicio'])
+              this.alerts.showAlertDanger("Nivel de permissão insulficiente para alterar este recurso!")
+            }
             else if(error.status == 404){
               this.alerts.showAlertDanger("Item não encontrado!")
             }

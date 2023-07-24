@@ -6,6 +6,7 @@
 @use 'buttons';
 @use 'lines';
 @use 'dividers';
+@use 'scrolls';
 
 .mb-fill-450{
     margin: 0px 0px 450px 0px;
@@ -29,4 +30,8 @@
 
 .vh-529{
     height: 529px;
+}
+
+.vh-x{
+    height: 664px;
 }

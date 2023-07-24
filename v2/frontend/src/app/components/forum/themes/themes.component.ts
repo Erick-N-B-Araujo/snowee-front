@@ -1,7 +1,9 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Theme } from 'src/app/model/Theme';
 import { AlertsService } from 'src/app/service/alerts.service';
+import { AuthService } from 'src/app/service/auth.service';
 import { ThemesService } from 'src/app/service/themes.service';
 
 
@@ -15,26 +17,45 @@ export class ThemesComponent implements OnInit{
   themeList: Theme[] = [];
   themeToFind: Theme = new Theme();
   themeFounded: Theme = new Theme();
+  themesFounded: Theme[] = [];
   themeToEdit: Theme = new Theme();
   themeToInsert: Theme = new Theme();
   hideDefaultTheme: boolean = true;
-  margin_fill: string = "find";
+  margin_fill: string = "vh-513";
+  themeForm:FormGroup;
+  themeNameForm:FormGroup;
+  editThemeForm:FormGroup;
+  findThemeForm:FormGroup;
+  themeName: string;
 
   constructor(
     private alerts: AlertsService,
     private themeService: ThemesService,
-    private renderer: Renderer2
+    private formBuilder: FormBuilder,
+    private auth: AuthService,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
     window.scroll(0,0);
     this.listAllThemes();
+    this.themeNameForm = this.formBuilder.group({
+      name: String
+    });
+    this.editThemeForm = this.formBuilder.group({
+      name: String
+    });
+    this.findThemeForm = this.formBuilder.group({
+      name: String
+    });
+    this.themeForm = this.formBuilder.group({
+      name: String
+    });
+    if (!this.auth.isAdmin()){
+      this.alerts.showAlertDanger("Somente administradores tem acesso a este recurso!")
+      this.router.navigate(["/inicio"])
+    }
   }
-
-  //Manipulador de formularios para validar campos
-  themeForm: FormGroup = new FormGroup({
-    name : new FormControl('Nome do tema', [Validators.required])
-  })
 
   listAllThemes(){
     this.themeService.getAllThemes().subscribe(
@@ -50,8 +71,8 @@ export class ThemesComponent implements OnInit{
       .subscribe(
         respTheme => {
           if ( respTheme != null && respTheme.id != null){
-            console.log(respTheme);
             this.alerts.showAlertSuccess("Tema cadastrado com sucesso!");
+            this.themeToInsert = new Theme();
             this.listAllThemes();
           }else{
             this.alerts.showAlertDanger("Tema não cadastrado!")
@@ -60,17 +81,13 @@ export class ThemesComponent implements OnInit{
       )
   }
 
-  findTheme(){
+  findThemes(){
     this.themeService
-      .getThemeByName(this.themeToFind.name)
+      .getThemesByName(this.themeName)
       .subscribe(
-        respTheme => {
-          if ( respTheme != null && respTheme.id != null){
-            this.themeFounded.id = respTheme.id;
-            this.themeFounded.name = respTheme.name;
-            this.themeFounded.articles = respTheme.articles;
-            this.hideDefaultTheme=false;
-            this.margin_fill="found"
+        respThemes => {
+          if ( respThemes != null){
+            this.themesFounded = respThemes;
           }else{
             this.alerts.showAlertDanger("Tema não encontrado!")
           }
@@ -82,15 +99,12 @@ export class ThemesComponent implements OnInit{
     this.themeToEdit = themeToEdit
   }
 
-  updateEditedTheme(themeEdited: Theme){
-    let editThemeModal = this.renderer.selectRootElement('#close-modals');
+  updateEditedTheme(themeEdited: Theme){    
     this.themeService
       .updateTheme(themeEdited)
       .subscribe(
         respTheme => {
-          console.log(respTheme)
           this.listAllThemes();
-          //editThemeModal.click();
         }
       )
   }
@@ -100,8 +114,9 @@ export class ThemesComponent implements OnInit{
       .deleteTheme(id)
       .subscribe(
         respTheme => {
-          console.log(respTheme)
-          this.listAllThemes();
+          setTimeout(() => { 
+            this.listAllThemes();
+           }, 100);
         }
       )
   }

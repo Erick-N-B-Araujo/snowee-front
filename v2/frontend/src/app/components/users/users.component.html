@@ -16,7 +16,7 @@
                     </li>
                 </ul>
                 <div class="tab-content mt-3" id="findUser">
-                    <div class="tab-pane fade show" id="findUser-tab-pane" role="tabpanel" aria-labelledby="findUser-tab" tabindex="0">
+                    <div class="tab-pane vh-529 fade show" id="findUser-tab-pane" role="tabpanel" aria-labelledby="findUser-tab" tabindex="0">
                         <form [formGroup]="findUserForm" (ngSubmit)="findUser()">
                             <label for="email" class="mt-3">Email:</label>
                             <input [(ngModel)]="userToFind.email"  type="text" class="form-control" formControlName="findUsername"/>
@@ -24,110 +24,113 @@
                                 <button type="submit" class="btn btn-primary bg-dark-orange drop-shadow cl-white mt-3 f-bold otl-dark-blue">Procurar</button>
                             </div>
                         </form>
-                        <table class="table mt-4" *ngIf="isDefaultUserHided()">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Usuário</th>
-                                <th scope="col">Ações</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">
-                                        <p class="mt-4">{{user.id}}</p>
-                                    </th>
-                                    <td>
-                                        <img src="{{user.profileImgUrl}}" class="profile-pic-list mt-1"alt="">
-                                    </td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <p class="mb-0 f-bold mr-2">{{user.firstName}} {{user.lastName}}</p>
-                                                <p class="mb-0 mr-2">{{user.email}}</p>
-                                                <span>Ultima busca</span>
+                        <div class="table-all-scroll container">
+                            <table class="table v-al mt-4" *ngIf="isDefaultUserHided()">
+                                <thead class="txt-al-c">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Usuário</th>
+                                    <th scope="col">Ações</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">
+                                            <p class="mt-4">{{user.id}}</p>
+                                        </th>
+                                        <td>
+                                            <img src="{{user.profileImgUrl}}" class="profile-pic-list mt-1"alt="">
+                                        </td>
+                                        <td>
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-10">
+                                                    <p class="mb-0 f-bold mr-2">{{user.firstName}} {{user.lastName}}</p>
+                                                    <span>Ultima busca</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="mt-3">
-                                            <button  data-bs-toggle="modal" data-bs-target="#editUsers" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink otl-dark-blue cl-white drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td>
+                                            <div class="">
+                                                <button  data-bs-toggle="modal" data-bs-target="#editUsers" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink otl-dark-blue cl-white drop-shadow" (click)="setEditUser(user.email)">Editar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-content mt-3" id="usersLogged">
                     <div class="tab-pane fade show active" id="usersLogged-tab-pane" role="tabpanel" aria-labelledby="usersLogged-tab" tabindex="1">          
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Usuário</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let loggedUser of loggins" class="">
-                                    <th scope="row">
-                                        <p class="mt-4">{{loggedUser.id}}</p>
-                                    </th>
-                                    <td>
-                                        <img src="{{loggedUser.profileImg}}" class="profile-pic-list mt-1"alt="">
-                                    </td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <p class="mb-0 f-bold mr-2">{{loggedUser.firstname}} {{loggedUser.lastname}}</p>
-                                                <p class="mb-0 mr-2">{{loggedUser.username}}</p>
-                                                <span class="mr-2">Entrou em: {{loggedUser.loggedAt}}</span>
+                        <div class="table-all-scroll container">
+                            <table class="table v-al">
+                                <thead class="txt-al-c">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Usuário</th>
+                                  </tr>
+                                </thead>
+                                <tbody class="">
+                                    <tr *ngFor="let loggedUser of loggins" class="">
+                                        <th scope="row">
+                                            <p class="mt-4">{{loggedUser.id}}</p>
+                                        </th>
+                                        <td>
+                                            <img src="{{loggedUser.profileImg}}" class="profile-pic-list mt-1"alt="">
+                                        </td>
+                                        <td>
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-10">
+                                                    <p class="mb-0 f-bold mr-2">{{loggedUser.firstname}} {{loggedUser.lastname}}</p>
+                                                    <!--<span class="mr-2">Entrou em: {{loggedUser.loggedAt}}</span>-->
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="tab-content mt-3" id="allUsers">
                     <div class="tab-pane fade show" id="allUsers-tab-pane" role="tabpanel" aria-labelledby="allUsers-tab" tabindex="2">
-                        <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Foto</th>
-                                <th scope="col">Usuário</th>
-                                <th scope="col">Ações</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let user of users" class="">
-                                    <th scope="row">
-                                        <p class="mt-4">{{user.id}}</p>
-                                    </th>
-                                    <td>
-                                        <img src="{{user.profileImgUrl}}" class="profile-pic-list mt-1"alt="">
-                                    </td>
-                                    <td>
-                                        <div class="row">
-                                            <div class="col-md-10">
-                                                <p class="mb-0 f-bold mr-2">{{user.firstName}} {{user.lastName}}</p>
-                                                <p class="mb-0 mr-2">{{user.email}}</p>
-                                                <span class="mr-2">Criado em: {{user.createdAt}}</span>
+                        <div class="table-all-scroll container">
+                            <table class="table v-al">
+                                <thead class="txt-al-c">
+                                  <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Foto</th>
+                                    <th scope="col">Usuário</th>
+                                    <th scope="col">Ações</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let user of users" class="">
+                                        <th scope="row">
+                                            <p class="mt-4">{{user.id}}</p>
+                                        </th>
+                                        <td>
+                                            <img src="{{user.profileImgUrl}}" class="profile-pic-list mt-1"alt="">
+                                        </td>
+                                        <td>
+                                            <div class="row justify-content-center">
+                                                <div class="col-md-10">
+                                                    <p class="mb-0 f-bold mr-2">{{user.firstName}} {{user.lastName}}</p>
+                                                    <!--<span class="mr-2">Criado em: {{user.createdAt}}</span>-->
+                                                </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="mt-3">
-                                            <button  data-bs-toggle="modal" data-bs-target="#editUsers2" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink cl-white otl-dark-blue drop-shadow" (click)="setEditUser(user.email)">Editar<img src="https://imgur.com/6yhELuo.png" class="btn-edit-ico ml-1 mb-1 filter-white" alt=""></button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                        </td>
+                                        <td>
+                                            <div class="">
+                                                <button  data-bs-toggle="modal" data-bs-target="#editUsers" data-bs-whatever="@post" class="btn btn-primary bg-dark-pink cl-white otl-dark-blue drop-shadow" (click)="setEditUser(user.email)">Editar</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -161,7 +164,7 @@
                     </form>
                 </div>
         </div>
-        <div class="modal-footer">
+        <!--<div class="modal-footer">
           <div class="container">
             <div class="row d-flex drop-shadow">
                 <div class="col-md-6">
@@ -181,58 +184,38 @@
             </div>
            </div>
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 </div>
 
 <div class="modal fade" id="editUsers2" tabindex="-1" aria-labelledby="novoPostLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header bg-dark-pink">
-          <h1 class="modal-title fs-5 cl-white" id="novoPostLabel">Editar Usuário</h1>
-          <button id="close-modals" #closeModals type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <div class="cl-dark-blue box-column">
-                <img src="{{userToEdit.profileImgUrl}}" class="profile-pic-list" alt="">
-                <p class="m-0">{{userToEdit.firstName}} {{userToEdit.lastName}}</p>
-                <p class="m-0 text-secondary">Email: {{userToEdit.email}}</p>
-                <div class="container">
-                    <form [formGroup]="editUserForm" (ngSubmit)="updateEditedUser()">
-                        <label for="email" class="m-0">Nome:</label>
-                        <input [(ngModel)]="userToEdit.firstName"  type="text" class="form-control" formControlName="editFirstname"/>
-                        <label for="email" class="m-0">Sobrenome:</label>
-                        <input [(ngModel)]="userToEdit.lastName"  type="text" class="form-control" formControlName="editLastname"/>
-                        <label for="email" class="m-0">URL da imagem:</label>
-                        <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
-                        <div class="d-grid drop-shadow mt-2 mb-3">
-                            <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit">Alterar</button>
-                        </div>
-                    </form>
-                </div>
-        </div>
-        <div class="modal-footer">
-          <div class="container">
-            <div class="row d-flex drop-shadow">
-                <div class="col-md-6">
-                    <div class="container m-1">
-                        <div class="d-grid">
-                            <button class="btn btn-primary otl-dark-blue bg-dark-orange cl-white d-grid" type="button">Bloquear</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="container m-1">
-                        <div class="d-grid">
-                            <button class="btn btn-primary otl-dark-blue bg-dark-pink cl-white d-grid" type="button">Desativar</button>
-                        </div>
-                    </div>
-                </div>
+        <div class="modal-content">
+            <div class="modal-header bg-dark-pink">
+            <h1 class="modal-title fs-5 cl-white" id="novoPostLabel">Editar Usuário</h1>
+            <button id="close-modals" #closeModals type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-           </div>
-          </div>
+            <div class="modal-body">
+                <div class="cl-dark-blue box-column">
+                    <img src="{{userToEdit.profileImgUrl}}" class="profile-pic-list" alt="">
+                    <p class="m-0">{{userToEdit.firstName}} {{userToEdit.lastName}}</p>
+                    <p class="m-0 text-secondary">Email: {{userToEdit.email}}</p>
+                    <div class="container">
+                        <form [formGroup]="editUserForm" (ngSubmit)="updateEditedUser()">
+                            <label for="email" class="m-0">Nome:</label>
+                            <input [(ngModel)]="userToEdit.firstName"  type="text" class="form-control" formControlName="editFirstname"/>
+                            <label for="email" class="m-0">Sobrenome:</label>
+                            <input [(ngModel)]="userToEdit.lastName"  type="text" class="form-control" formControlName="editLastname"/>
+                            <label for="email" class="m-0">URL da imagem:</label>
+                            <input [(ngModel)]="userToEdit.profileImgUrl"  type="text" class="form-control" formControlName="editProfileImgUrl"/>
+                            <div class="d-grid drop-shadow mt-2 mb-3">
+                                <button class="btn btn-primary bg-light-blue cl-white d-grid otl-dark-blue" type="submit">Alterar</button>
+                            </div>
+                        </form>
+                    </div>
+            </div>
+            </div>
         </div>
-      </div>
     </div>
 </div>
