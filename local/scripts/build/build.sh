@@ -9,6 +9,8 @@ cd $JENKINS_WORKSPACE
 
 echo "Building production assets..."
 
+npm install
+
 ng build --configuration production
 
 echo "Building DONE!"
