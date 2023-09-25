@@ -6,6 +6,8 @@
 /out-tsc
 /bazel-out
 
+.angular
+.vscode
 /dist
 /.vscode
 /.angular

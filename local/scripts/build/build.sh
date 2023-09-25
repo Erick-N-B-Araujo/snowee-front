@@ -1,7 +1,7 @@
 #!/bin/bash
 
-MAC_WORKSPACE=/Users/erickneves/Documents/Dev/snowee-front/local/typescript-app/
-JENKINS_WORKSPACE=/var/jenkins_home/workspace/Frontend/local/typescript-app/
+MAC_WORKSPACE=/Users/erickneves/Documents/Dev/snowee-front/frontend/
+JENKINS_WORKSPACE=/var/jenkins_home/workspace/Frontend/frontend/
 
 echo "Finding resources..."
 
