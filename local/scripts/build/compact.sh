@@ -11,8 +11,6 @@ echo "Compressing production assets..."
 
 rm -rf deploy.zip
 
-##zip -r deploy.zip .
-
-echo $PWD
+zip -r deploy.zip .
 
 echo "Compressing DONE!"
