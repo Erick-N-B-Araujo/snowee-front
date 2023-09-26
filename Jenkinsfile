@@ -1,7 +1,8 @@
 pipeline{
-    agent any 
+    agent none 
     stages {
-        stage('Build') {
+        stage('Building') {
+            agent any
             steps {
                 sh '''
                     ./local/scripts/build/build.sh
@@ -9,10 +10,21 @@ pipeline{
                 '''
             }
         }
-        stage('Deploy') {
+        stage('Sending') {
+            agent any
             steps {
                 sh '''
                     ./local/scripts/deploy/send.sh
+                '''
+            }
+        }
+        stage('Deploying') {
+            agent {
+                label 'agent-prd'
+            }
+            steps {
+                sh '''
+                    ./var/lib/jenkins/scripts/extract_assets.sh
                 '''
             }
         }
