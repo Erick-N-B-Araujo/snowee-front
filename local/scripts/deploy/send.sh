@@ -6,7 +6,7 @@ JENKINS_WORKSPACE=/var/jenkins_home/workspace/Frontend
 echo "Sending assets..."
 
 cd $JENKINS_WORKSPACE/frontend/dist/frontend
-sshpass -p $PROD_PASS scp deploy.zip  jenkins@191.96.251.3:/var/lib/jenkins/packages/
+sshpass -p 'AdcOP1997!' scp deploy.zip  jenkins@191.96.251.3:/var/lib/jenkins/packages/
 
 echo "Sending scripts..."
 
