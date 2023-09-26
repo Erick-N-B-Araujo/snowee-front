@@ -24,7 +24,7 @@ pipeline{
             }
             steps {
                 sh '''
-                    ./var/lib/jenkins/scripts/extract_assets.sh
+                    ./remote/scripts/deploy/extract_assets.sh
                 '''
             }
         }
