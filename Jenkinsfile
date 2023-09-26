@@ -13,7 +13,6 @@ pipeline{
             steps {
                 sh '''
                     ./local/scripts/deploy/send.sh
-                    ./remote/scripts/deploy/extract.sh
                 '''
             }
         }

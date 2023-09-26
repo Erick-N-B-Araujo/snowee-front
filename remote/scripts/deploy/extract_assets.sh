@@ -1,23 +1,28 @@
 #!/bin/bash
 
 SITE_WORKSPACE=/var/www/snoweegamecorp.com/html
+PACKAGE_LOCATION=/var/lib/jenkins/packages
+
+echo "Moving package..."
+
+cd $PACKAGE_LOCATION
+mv deploy.zip $SITE_WORKSPACE/
 
 echo "Cleaning older production assets..."
 
 cd $SITE_WORKSPACE
-
-rm -rf $SITE_WORKSPACE/*.js
-rm -rf $SITE_WORKSPACE/*.png
-rm -rf $SITE_WORKSPACE/*.txt
-rm -rf $SITE_WORKSPACE/*.ico
-rm -rf $SITE_WORKSPACE/*.html
-rm -rf $SITE_WORKSPACE/*.svg
-rm -rf $SITE_WORKSPACE/*.ttf
-rm -rf $SITE_WORKSPACE/*.woff2
-rm -rf $SITE_WORKSPACE/*.woff
-rm -rf $SITE_WORKSPACE/*.eot
-rm -rf $SITE_WORKSPACE/*.css
-rm -rf $SITE_WORKSPACE/assets
+rm -rf *.js
+rm -rf *.png
+rm -rf *.txt
+rm -rf *.ico
+rm -rf *.html
+rm -rf *.svg
+rm -rf *.ttf
+rm -rf *.woff2
+rm -rf *.woff
+rm -rf *.eot
+rm -rf *.css
+rm -rf assets
 
 echo "Extracting new production assets..."
 
