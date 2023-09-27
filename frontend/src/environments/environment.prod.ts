@@ -6,5 +6,14 @@ export const environment = {
   firstName: '',
   lastName: '',
   username: '',
-  isLogged: false
+  profileImg: '',
+  isLogged: false,
+  isAdmin: false,
+  isBlocked: false,
+  isDeleted: false,
+  isHomeActive: false,
+  isForumActive: false,
+  isPortfolioActive: false,
+  isAboutActive: false,
+  isLoginActive: false,
 };
