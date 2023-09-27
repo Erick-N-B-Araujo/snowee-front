@@ -1,19 +1,12 @@
 pipeline{
     agent none 
     stages {
-        stage('Building') {
+        stage('Building and sending') {
             agent any
             steps {
                 sh '''
                     ./local/scripts/build/build.sh
                     ./local/scripts/build/compact.sh
-                '''
-            }
-        }
-        stage('Sending') {
-            agent any
-            steps {
-                sh '''
                     ./local/scripts/deploy/send.sh
                 '''
             }
