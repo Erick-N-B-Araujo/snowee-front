@@ -218,7 +218,11 @@ export class ArticlesComponent implements OnInit {
       this.alerts.showAlertWarning("Adicione ao menos uma instrução!"); 
     } else if(this.articleToEdit.user.id == environment.id){
       articleEdited = this.editArticleForm.value;
-      articleEdited.id = this.articleToEdit.id
+      articleEdited.id = this.articleToEdit.id;
+      articleEdited.title = this.articleToEdit.title;
+      articleEdited.subTitle = this.articleToEdit.subTitle;
+      articleEdited.description = this.articleToEdit.description;
+      articleEdited.descriptionText = this.articleToEdit.descriptionText;
       articleEdited.themes = this.articleToEdit.themes;
       articleEdited.instructionList = this.articleToEdit.instructionList;
       articleEdited.codeList = this.articleToEdit.codeList;
