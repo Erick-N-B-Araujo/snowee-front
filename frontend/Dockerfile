@@ -22,8 +22,8 @@ FROM nginx:latest AS ngi
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /dist/src/app/dist/frontend /usr/share/nginx/html
 
-COPY /path/to/certificates/fullchain.pem /etc/nginx/ssl/fullchain.pem
-COPY /path/to/certificates/privkey.pem /etc/nginx/ssl/privkey.pem
+COPY /opt/certificates/fullchain.pem /etc/nginx/ssl/fullchain.pem
+COPY /opt/certificates/privkey.pem /etc/nginx/ssl/privkey.pem
 
 COPY nginx.conf /etc/nginx/nginx.conf
 
