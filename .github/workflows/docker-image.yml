@@ -20,8 +20,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        docker-compose build -t ericknbaraujo/snowee-front:$(date +%s)
-        docker image tag ericknbaraujo/snowee-front:$(date +%s) ericknbaraujo/snowee-front:latest
+        docker-compose build
+        docker image tag ericknbaraujo/snowee-front:latest ericknbaraujo/snowee-front:$(date +%s)
         docker push ericknbaraujo/snowee-front:(date +%s)
         docker push ericknbaraujo/snowee-front:latest
       env:
