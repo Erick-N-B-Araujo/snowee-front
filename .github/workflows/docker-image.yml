@@ -1,0 +1,27 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and Push Docker Image
+      run: |
+        docker-compose build -t ericknbaraujo/snowee-front:$(date +%s)
+        docker image tag ericknbaraujo/snowee-front:$(date +%s) ericknbaraujo/snowee-front:latest
+        docker push ericknbaraujo/snowee-front:(date +%s)
+        docker push ericknbaraujo/snowee-front:latest
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
