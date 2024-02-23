@@ -20,9 +20,10 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
+        DOCKER_TAG=${{ github.run_number }}
         docker-compose build
         docker image tag ericknbaraujo/snowee-front:latest ericknbaraujo/snowee-front:$(date +%s)
-        docker push ericknbaraujo/snowee-front:"(date +%s)"
+        docker push ericknbaraujo/snowee-front:$(date +%s)
         docker push ericknbaraujo/snowee-front:latest
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
