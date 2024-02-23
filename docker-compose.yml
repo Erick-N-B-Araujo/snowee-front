@@ -2,6 +2,7 @@ version: '3'
 services:
   frontend:
     container_name: frontend
+    image: ericknbaraujo/snowee-front:latest
     build:
       context: .
       dockerfile: Dockerfile
