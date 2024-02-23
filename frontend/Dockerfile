@@ -22,12 +22,6 @@ FROM nginx:latest AS ngi
 # NOTE: This path may change according to your project's output folder 
 COPY --from=build /dist/src/app/dist/frontend /usr/share/nginx/html
 
-COPY /opt/certificates/fullchain.pem /etc/nginx/ssl/fullchain.pem
-COPY /opt/certificates/privkey.pem /etc/nginx/ssl/privkey.pem
-
-COPY nginx.conf /etc/nginx/nginx.conf
-
 # Exposing a port, here it means that inside the container 
 # the app will be using Port 80 while running
 EXPOSE 80
-EXPOSE 443
