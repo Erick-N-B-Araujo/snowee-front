@@ -17,7 +17,6 @@ jobs:
     - name: Login to Docker Hub
       run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
-
     - name: Build and Push Docker Image
       run: |
         DOCKER_TAG=$(date +'%Y%m%d')
@@ -27,3 +26,9 @@ jobs:
         docker push ericknbaraujo/snowee-front:latest
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        
+    - name: Deploy to PROD Server
+      run: |
+        sudo apt-get install sshpass
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOSTNAME }} './frontend/stop_service.sh'
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOSTNAME }} './frontend/start_service.sh'
