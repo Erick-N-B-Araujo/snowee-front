@@ -30,4 +30,4 @@ jobs:
     - name: Deploy to PROD Server
       run: |
         sudo apt-get install sshpass
-        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOSTNAME }} 'cd /home/prod_user/snowee-services/frontend && docker-compose down && docker-compose up -d'
+        sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.HOSTNAME }} 'cd /home/prod_user/snowee-services/frontend && docker-compose down && docker pull ericknbaraujo/snowee-front:latest && docker-compose up -d'
