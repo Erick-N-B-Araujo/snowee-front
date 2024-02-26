@@ -15,5 +15,7 @@ FROM nginx:latest AS ngi
 # Copying compiled code and different folder 
 COPY --from=build /dist/src/app/dist/frontend /usr/share/nginx/html
 
+COPY ./config/default.conf /etc/nginx/conf.d/default.conf
+
 # Exposing a port, here it means that inside the container 
 EXPOSE 80
